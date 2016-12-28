@@ -1,4 +1,4 @@
-function [trafficHistogram] = connectionDistribution(filePath)
+function [trafficHistogram] = connectionDistribution(filePath, arch)
 % filePath: the path containing results for all the traffic matrices
 load betaString.mat
 trafficHistogram = zeros(5, 22);
@@ -31,7 +31,11 @@ for i = 1:length(curdir)
             for j = 1:length(filenames)
                 filename = filenames(j);
                 disp(filename)
-                [~,~,~,~,~,~,tfk_slot] = importfileConnectionAllocation(filename{1}, 2, inf);
+                if arch==1 || arch==2
+                    [~,~,~,~,~,~,tfk_slot] = importfileConnectionAllocation(filename{1}, 2, inf);
+                elseif arch==3
+                    [~,~,~,~,~,~,~,tfk_slot] = importfileConnectionAllocation3(filename{1}, 2, inf);
+                end
                 edges = [49, 99, 199, 399, 999, 1999];
                 [N, ~, ~] = histcounts(tfk_slot, edges);
                 trafficHistogram(:, counter) = trafficHistogram(:, counter)+N'/sum(N);
@@ -46,6 +50,6 @@ for i = 1:length(curdir)
 end
 trafficHistogram = trafficHistogram/ndir;
 tmp = strsplit(curdir(1).folder, '\');
-filename = strcat('tfkhist', '_', tmp{7}, '_', tmp{8}, '.mat');
+filename = strcat('tfkhist', '_', tmp{end-1}, '_', tmp{end}, '.mat');
 save(filename, 'trafficHistogram')
 

@@ -9,7 +9,7 @@ rootdir = pwd;
 curlist = {};
 trafficMatrices = {};
 flowAverage = zeros(3, 1);
-for i = 1:3
+for i = 1:2
     for j = 1:3
         tmp = {rootdir, trafficTypes(i), architectureTypes(j)};
         curlist = [curlist, joinPath(tmp)];
@@ -20,13 +20,13 @@ for i = 1:3
 end
 
 % 25-75, Arch 1
-% plotPareto(curlist{1}, flowAverage(1), 0.9)
+plotPareto(curlist{1}, flowAverage(1), 0.9)
 
 % 25-75, Arch 2
 % plotPareto(curlist{2}, flowAverage(1), 0.9)
 
 % 25-75, Arch 3
-% plotPareto(curlist{3}, flowAverage(1), 0.88)
+% plotPareto(curlist{3}, flowAverage(1), 0.9)
 
 % 30-85, Arch 1
 % plotPareto(curlist{4}, flowAverage(2), 0.9)
