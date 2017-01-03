@@ -492,12 +492,16 @@ class Arch1_decompose(object):
 #            for i in suclist))
         self.suclist_heuristic = cnklist
         
-    def sa_heuristic_aff(self, ascending=True):
+    def sa_heuristic_aff(self, ascending=True, use_suclist=True):
         """First fit with optimized core allocation
         """
         # ordering the connections
-        suclist = list(self.suclist_dc)
-        suclist_tm = [self.traffic_capacities[u] for u in suclist]
+        if use_suclist:
+            suclist = list(self.suclist_dc)
+            suclist_tm = [self.traffic_capacities[u] for u in suclist]
+        else:
+            suclist = list(self.traffic_pairs)
+            suclist_tm = [self.traffic_capacities[u] for u in suclist]
         if ascending:
             suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
         else:
@@ -591,11 +595,15 @@ class Arch1_decompose(object):
         self.obj_heuristic_throughput_ = objthp
         self.cnklist_heuristic_ = cnklist
         
-    def aff(self, ascending=True):
+    def aff(self, ascending=True, use_suclist=True):
         """First fit according to the given connection list
         """
-        suclist = list(self.traffic_pairs)
-        suclist_tm = [self.traffic_capacities[u] for u in suclist]
+        if use_suclist:
+            suclist = list(self.suclist_dc)
+            suclist_tm = [self.traffic_capacities[u] for u in suclist]
+        else:
+            suclist = list(self.traffic_pairs)
+            suclist_tm = [self.traffic_capacities[u] for u in suclist]
         if ascending:
             suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
         else:
@@ -627,7 +635,184 @@ class Arch1_decompose(object):
                           src_core, dst_core, self.tm[u]]
                    self.cnklist_aff.append(tmp)
                    break
+               
+    def reshuffle(self, use_suclist=True):
+        """reshuffle connection list according to their probabilities
+        return reshuffled connection list
+        """
+        if use_suclist:
+            tmplist = copy.deepcopy(self.suclist_dc)
+        else:
+            tmplist = copy.deepcopy(self.traffic_pairs)
+        suclist_tm = [self.tm[u] for u in tmplist]
+        tmplist = [x for (y,x) in sorted(zip(suclist_tm, tmplist))]
+        
+        del suclist_tm
+        
+        data_rates = np.unique(self.tm)
+        data_rates_large = data_rates[data_rates>=400]
+        # convert the object beta to the priority of large data rate 
+        # connections
+        prob = (data_rates_large.sum()*self.beta+
+                len(data_rates_large)*self.alpha)/\
+                (data_rates.sum()*self.beta+(len(data_rates)-1)*self.alpha)
+        final_list = []
+        while len(tmplist)>0:
+            # tmprnd=-1: sample large connections
+            # tmprnd=0: sample small connections
+            tmprnd = np.random.choice([0, -1], p=[1-prob, prob], size=1)
+            final_list.append(tmplist.pop(tmprnd))
+
+        return final_list
+
+    def aff_mix(self):
+        """First fit according to the given connection list
+        """
+        suclist = list(self.suclist_dc)
+        suclist_tm = [self.tm[u] for u in suclist]
+        suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
+        # instead of random shuffle, sample connections according to their 
+        # probabilities
+        suclist = self.reshuffle()
+
+        restensor = np.ones((self.num_pods, self.num_cores, self.num_slots), dtype=np.int0)
+        self.obj_aff_ = 0
+        self.obj_aff_connection_ = 0
+        self.obj_aff_throughput_ = 0
+        self.cnklist_aff = []
+        for i,u in enumerate(suclist):
+            src = u[0]
+            dst = u[1]
+            core_candidates = [(x,y) for x in self.cores for y in self.cores]
+            for src_core, dst_core in core_candidates:
+                tmpsrc = restensor[src,src_core,:]
+                tmpdst = restensor[dst,dst_core,:]
+                tmp = tmpsrc*tmpdst
+                tmpavail = self.one_runs(tmp)
+                tmpidx = np.where(tmpavail[:,1]>=self.traffic_capacities[u])[0]
+                if tmpidx.size:
+                   spec_idx = tmpavail[tmpidx[0],0]
+                   restensor[src,src_core,spec_idx:(spec_idx+self.traffic_capacities[u])] = 0
+                   restensor[dst,dst_core,spec_idx:(spec_idx+self.traffic_capacities[u])] = 0
+                   self.obj_aff_ += self.alpha+self.beta*self.tm[src,dst]
+                   self.obj_aff_connection_ += 1
+                   self.obj_aff_throughput_ += self.tm[src,dst]
+                   tmp = [src, dst, spec_idx, self.traffic_capacities[u], 
+                          src_core, dst_core, self.tm[u]]
+                   self.cnklist_aff.append(tmp)
+                   break
+
+    def aff_mix_repeat(self, nrepeat=20, random_state=0):
+        bestidx = 0
+        seeds = np.random.randint(0, 10000, size=(nrepeat,))
+        bestobj = 0
+        for idx in range(nrepeat):
+            np.random.seed(seeds[idx])
+            self.aff_mix()
+            if bestobj < self.obj_aff_:
+                bestidx = idx
+                bestobj = self.obj_aff_
+            print (idx, self.obj_aff_)
+
+        np.random.seed(seeds[bestidx])
+        self.aff_mix()
+        
+    def aff_mix2(self, th=100):
+        """First fit according to the given connection list
+        """
+        suclist = list(self.suclist_dc)
+        suclist_tm = [self.tm[u] for u in suclist]
+        suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
+        # instead of random shuffle, sample connections according to their 
+        # probabilities
+        suclist = self.reshuffle()
+
+        restensor = np.ones((self.num_pods, self.num_cores, self.num_slots), dtype=np.int0)
+        self.obj_aff_ = 0
+        self.obj_aff_connection_ = 0
+        self.obj_aff_throughput_ = 0
+        self.cnklist_aff = []
+        for i,u in enumerate(suclist):
+            src = u[0]
+            dst = u[1]
+            core_candidates = [(x,y) for x in self.cores for y in self.cores]
+            for src_core, dst_core in core_candidates:
+                tmpsrc = restensor[src,src_core,:]
+                tmpdst = restensor[dst,dst_core,:]
+                tmp = tmpsrc*tmpdst
+                tmpavail = self.one_runs(tmp)
+                tmpidx = np.where(tmpavail[:,1]>=self.traffic_capacities[u])[0]
+                if tmpidx.size:
+                    if self.tm[src,dst]<=th:
+                        spec_idx = tmpavail[tmpidx[0],0]
+                    else:
+                        spec_idx = tmpavail[tmpidx[-1],0]+\
+                            tmpavail[tmpidx[-1],1]-\
+                            self.traffic_capacities[u]
+                    restensor[src,src_core,spec_idx:(spec_idx+self.traffic_capacities[u])] = 0
+                    restensor[dst,dst_core,spec_idx:(spec_idx+self.traffic_capacities[u])] = 0
+                    self.obj_aff_ += self.alpha+self.beta*self.tm[src,dst]
+                    self.obj_aff_connection_ += 1
+                    self.obj_aff_throughput_ += self.tm[src,dst]
+                    tmp = [src, dst, spec_idx, self.traffic_capacities[u], 
+                           src_core, dst_core, self.tm[u]]
+                    self.cnklist_aff.append(tmp)
+                    break
+
+    def aff_mix_repeat2(self, nrepeat=20, random_state=0, th=100):
+        bestidx = 0
+        seeds = np.random.randint(0, 10000, size=(nrepeat,))
+        bestobj = 0
+        for idx in range(nrepeat):
+            np.random.seed(seeds[idx])
+            self.aff_mix2(th=th)
+            if bestobj < self.obj_aff_:
+                bestidx = idx
+                bestobj = self.obj_aff_
+            print (idx, self.obj_aff_)
+
+        np.random.seed(seeds[bestidx])
+        self.aff_mix()
                 
+    def benchmark_aff(self, ascending=True, reshuffle=False):
+        """
+        """
+        suclist = list(self.traffic_pairs)
+        suclist_tm = [self.tm[u] for u in suclist]
+        if ascending:
+            suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
+        else:
+            suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist), reverse=True)]
+        if reshuffle:
+            suclist = self.reshuffle()
+
+        restensor = np.ones((self.num_pods, self.num_cores, self.num_slots), dtype=np.int0)
+        self.obj_aff_ = 0
+        self.obj_aff_connection_ = 0
+        self.obj_aff_throughput_ = 0
+        self.cnklist_aff = []
+        for i,u in enumerate(suclist):
+            src = u[0]
+            dst = u[1]
+            core_candidates = [(x,y) for x in self.cores for y in self.cores]
+            for src_core, dst_core in core_candidates:
+                tmpsrc = restensor[src,src_core,:]
+                tmpdst = restensor[dst,dst_core,:]
+                tmp = tmpsrc*tmpdst
+                tmpavail = self.one_runs(tmp)
+                tmpidx = np.where(tmpavail[:,1]>=self.traffic_capacities[u])[0]
+                if tmpidx.size:
+                    spec_idx = tmpavail[tmpidx[0],0]
+                    restensor[src,src_core,spec_idx:(spec_idx+self.traffic_capacities[u])] = 0
+                    restensor[dst,dst_core,spec_idx:(spec_idx+self.traffic_capacities[u])] = 0
+                    self.obj_aff_ += self.alpha+self.beta*self.tm[src,dst]
+                    self.obj_aff_connection_ += 1
+                    self.obj_aff_throughput_ += self.tm[src,dst]
+                    tmp = [src, dst, spec_idx, self.traffic_capacities[u], 
+                           src_core, dst_core, self.tm[u]]
+                    self.cnklist_aff.append(tmp)
+                    break
+        
     def save_tensor(self, tensor, filename):
         """Save resource tensor
         save as csv
@@ -638,6 +823,89 @@ class Arch1_decompose(object):
         # tmp = np.loadtxt(filename, delimiter=',')
         # tensor = tmp.reshape((self.num_pods, self.num_cores, self.num_slots))
         
+    def multiple_heuristic(self):
+        """Run multiple heuristics, record their results
+        """
+        self.heuristics_results = dict()
+        
+        self.sa_heuristic(ascending1=True, ascending2=True)
+        self.heuristics_results['coreopt_IS_aa'] = {}
+        self.heuristics_results['coreopt_IS_aa']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_aa']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_aa']['obj_sah_thp'] = self.obj_sah_throughput_
+        
+        self.sa_heuristic(ascending1=True, ascending2=False)
+        self.heuristics_results['coreopt_IS_ad'] = {}
+        self.heuristics_results['coreopt_IS_ad']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_ad']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_ad']['obj_sah_thp'] = self.obj_sah_throughput_
+        
+        self.sa_heuristic(ascending1=False, ascending2=True)
+        self.heuristics_results['coreopt_IS_da'] = {}
+        self.heuristics_results['coreopt_IS_da']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_da']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_da']['obj_sah_thp'] = self.obj_sah_throughput_
+            
+        self.sa_heuristic(ascending1=False, ascending2=False)
+        self.heuristics_results['coreopt_IS_dd'] = {}
+        self.heuristics_results['coreopt_IS_dd']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_dd']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_dd']['obj_sah_thp'] = self.obj_sah_throughput_
+            
+        self.sa_heuristic_aff(ascending=True)
+        self.heuristics_results['coreopt_FF_a'] = {}
+        self.heuristics_results['coreopt_FF_a']['obj_sah'] = self.obj_affopt_
+        self.heuristics_results['coreopt_FF_a']['obj_sah_cnk'] = self.obj_affopt_connection_
+        self.heuristics_results['coreopt_FF_a']['obj_sah_thp'] = self.obj_affopt_throughput_
+            
+        self.sa_heuristic_aff(ascending=False)
+        self.heuristics_results['coreopt_FF_d'] = {}
+        self.heuristics_results['coreopt_FF_d']['obj_sah'] = self.obj_affopt_
+        self.heuristics_results['coreopt_FF_d']['obj_sah_cnk'] = self.obj_affopt_connection_
+        self.heuristics_results['coreopt_FF_d']['obj_sah_thp'] = self.obj_affopt_throughput_
+            
+        self.aff(ascending=True)
+        self.heuristics_results['FF_a'] = {}
+        self.heuristics_results['FF_a']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_a']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_a']['obj_sah_thp'] = self.obj_aff_throughput_
+            
+        self.aff(ascending=False)
+        self.heuristics_results['FF_d'] = {}
+        self.heuristics_results['FF_d']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_d']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_d']['obj_sah_thp'] = self.obj_aff_throughput_
+        
+        self.aff_mix_repeat(nrepeat=40)
+        self.heuristics_results['FF_mix'] = {}
+        self.heuristics_results['FF_mix']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_mix']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_mix']['obj_sah_thp'] = self.obj_aff_throughput_        
+
+        self.aff_mix_repeat2(nrepeat=40)
+        self.heuristics_results['FF_mix2'] = {}
+        self.heuristics_results['FF_mix2']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_mix2']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_mix2']['obj_sah_thp'] = self.obj_aff_throughput_
+        
+        self.benchmark_aff(ascending=True)
+        self.heuristics_results['FF_bm1'] = {}
+        self.heuristics_results['FF_bm1']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_bm1']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_bm1']['obj_sah_thp'] = self.obj_aff_throughput_
+
+        self.benchmark_aff(ascending=False)
+        self.heuristics_results['FF_bm2'] = {}
+        self.heuristics_results['FF_bm2']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_bm2']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_bm2']['obj_sah_thp'] = self.obj_aff_throughput_
+        
+        self.benchmark_aff(reshuffle=True)
+        self.heuristics_results['FF_bm3'] = {}
+        self.heuristics_results['FF_bm3']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_bm3']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_bm3']['obj_sah_thp'] = self.obj_aff_throughput_
+
         
 class Arch2_decompose(object):
     """Create models for different SDM DCN architectures
@@ -777,7 +1045,7 @@ class Arch2_decompose(object):
             if u in suclist:
                 for i in u:
                     for k in self.cores:
-                        if core_usage[u,i,k].x==1:
+                        if core_usage[u,i,k].x<=1.1 and core_usage[u,i,k]>=0.9:
                             core_usagex[u,i] = k
                             break
             else:
@@ -934,13 +1202,17 @@ class Arch2_decompose(object):
                 n_oof+=1
         return (n_overlap, n_oof)
         
-    def sa_heuristic(self, ascending1=True,ascending2=True):
+    def sa_heuristic(self, ascending1=True,ascending2=True, use_suclist=True):
         """Spectrum assignment heuristi
         ascending1: order of allocating connections in suclist
         ascending2: order of allocating connections in remain list
         """
-        suclist = list(self.suclist_dc)
-        suclist_tm = [self.traffic_capacities[u] for u in suclist]
+        if use_suclist:
+            suclist = list(self.suclist_dc)
+            suclist_tm = [self.traffic_capacities[u] for u in suclist]
+        else:
+            suclist = list(self.traffic_pairs)
+            suclist_tm = [self.traffic_capacities[u] for u in suclist]
         if ascending1:
             suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
         else:
@@ -1048,12 +1320,16 @@ class Arch2_decompose(object):
 #            for i in suclist))
         self.suclist_heuristic = cnklist
         
-    def sa_heuristic_aff(self, ascending=True):
+    def sa_heuristic_aff(self, ascending=True, use_suclist=True):
         """First fit with optimized core allocation
         """
         # ordering the connections
-        suclist = list(self.suclist_dc)
-        suclist_tm = [self.traffic_capacities[u] for u in suclist]
+        if use_suclist:
+            suclist = list(self.suclist_dc)
+            suclist_tm = [self.traffic_capacities[u] for u in suclist]
+        else:
+            suclist = list(self.traffic_pairs)
+            suclist_tm = [self.traffic_capacities[u] for u in suclist]
         if ascending:
             suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
         else:
@@ -1145,11 +1421,15 @@ class Arch2_decompose(object):
         self.obj_heuristic_throughput_ = objthp
         self.cnklist_heuristic_ = cnklist
         
-    def aff(self, ascending=True):
+    def aff(self, ascending=True, use_suclist=True):
         """First fit according to the given connection list
         """
-        suclist = list(self.traffic_pairs)
-        suclist_tm = [self.traffic_capacities[u] for u in suclist]
+        if use_suclist:
+            suclist = list(self.suclist_dc)
+            suclist_tm = [self.traffic_capacities[u] for u in suclist]
+        else:
+            suclist = list(self.traffic_pairs)
+            suclist_tm = [self.traffic_capacities[u] for u in suclist]
         if ascending:
             suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
         else:
@@ -1181,6 +1461,146 @@ class Arch2_decompose(object):
                           src_core, dst_core, self.tm[u]]
                    self.cnklist_aff.append(tmp)
                    break
+               
+    def reshuffle(self, use_suclist=True):
+        """reshuffle connection list according to their probabilities
+        return reshuffled connection list
+        """
+        if use_suclist:
+            tmplist = copy.deepcopy(self.suclist_dc)
+        else:
+            tmplist = copy.deepcopy(self.traffic_pairs)
+        suclist_tm = [self.tm[u] for u in tmplist]
+        tmplist = [x for (y,x) in sorted(zip(suclist_tm, tmplist))]
+        
+        del suclist_tm
+        
+        data_rates = np.unique(self.tm)
+        data_rates_large = data_rates[data_rates>=400]
+        # convert the object beta to the priority of large data rate 
+        # connections
+        self.mixprob = (data_rates_large.sum()*self.beta+
+                len(data_rates_large)*self.alpha)/\
+                (data_rates.sum()*self.beta+(len(data_rates)-1)*self.alpha)
+        final_list = []
+        while len(tmplist)>0:
+            # tmprnd=-1: sample large connections
+            # tmprnd=0: sample small connections
+            tmprnd = np.random.choice([0, -1], 
+                                      p=[1-self.mixprob, self.mixprob], 
+                                      size=1)
+            final_list.append(tmplist.pop(tmprnd))
+
+        return final_list
+        
+    def aff_mix(self):
+        """First fit according to the given connection list
+        """
+        suclist = list(self.suclist_dc)
+        suclist_tm = [self.tm[u] for u in suclist]
+        suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
+        # instead of random shuffle, sample connections according to their 
+        # probabilities
+        suclist = self.reshuffle()
+
+        restensor = np.ones((self.num_pods, self.num_cores, self.num_slots), dtype=np.int0)
+        self.obj_aff_ = 0
+        self.obj_aff_connection_ = 0
+        self.obj_aff_throughput_ = 0
+        self.cnklist_aff = []
+        for i,u in enumerate(suclist):
+            src = u[0]
+            dst = u[1]
+            core_candidates = [(x,y) for x in self.cores for y in self.cores]
+            for src_core, dst_core in core_candidates:
+                tmpsrc = restensor[src,src_core,:]
+                tmpdst = restensor[dst,dst_core,:]
+                tmp = tmpsrc*tmpdst
+                tmpavail = self.one_runs(tmp)
+                tmpidx = np.where(tmpavail[:,1]>=self.traffic_capacities[u])[0]
+                if tmpidx.size:
+                   spec_idx = tmpavail[tmpidx[0],0]
+                   restensor[src,src_core,spec_idx:(spec_idx+self.traffic_capacities[u])] = 0
+                   restensor[dst,dst_core,spec_idx:(spec_idx+self.traffic_capacities[u])] = 0
+                   self.obj_aff_ += self.alpha+self.beta*self.tm[src,dst]
+                   self.obj_aff_connection_ += 1
+                   self.obj_aff_throughput_ += self.tm[src,dst]
+                   tmp = [src, dst, spec_idx, self.traffic_capacities[u], 
+                          src_core, dst_core, self.tm[u]]
+                   self.cnklist_aff.append(tmp)
+                   break
+               
+    def aff_mix_repeat(self, nrepeat=20, random_state=0):
+        bestidx = 0
+        seeds = np.random.randint(0, 10000, size=(nrepeat,))
+        bestobj = 0
+        for idx in range(nrepeat):
+            np.random.seed(seeds[idx])
+            self.aff_mix()
+            if bestobj < self.obj_aff_:
+                bestidx = idx
+                bestobj = self.obj_aff_
+            print (idx, self.obj_aff_)
+
+        np.random.seed(seeds[bestidx])
+        self.aff_mix()
+
+    def aff_mix2(self, th=100):
+        """First fit according to the given connection list
+        """
+        suclist = list(self.suclist_dc)
+        suclist_tm = [self.tm[u] for u in suclist]
+        suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
+        # instead of random shuffle, sample connections according to their 
+        # probabilities
+        suclist = self.reshuffle()
+
+        restensor = np.ones((self.num_pods, self.num_cores, self.num_slots), dtype=np.int0)
+        self.obj_aff_ = 0
+        self.obj_aff_connection_ = 0
+        self.obj_aff_throughput_ = 0
+        self.cnklist_aff = []
+        for i,u in enumerate(suclist):
+            src = u[0]
+            dst = u[1]
+            core_candidates = [(x,y) for x in self.cores for y in self.cores]
+            for src_core, dst_core in core_candidates:
+                tmpsrc = restensor[src,src_core,:]
+                tmpdst = restensor[dst,dst_core,:]
+                tmp = tmpsrc*tmpdst
+                tmpavail = self.one_runs(tmp)
+                tmpidx = np.where(tmpavail[:,1]>=self.traffic_capacities[u])[0]
+                if tmpidx.size:
+                    if self.tm[src, dst]<=th:
+                        spec_idx = tmpavail[tmpidx[0],0]
+                    else:
+                        spec_idx = tmpavail[tmpidx[-1],0]+\
+                            tmpavail[tmpidx[-1],1]-\
+                            self.traffic_capacities[u]
+                    restensor[src,src_core,spec_idx:(spec_idx+self.traffic_capacities[u])] = 0
+                    restensor[dst,dst_core,spec_idx:(spec_idx+self.traffic_capacities[u])] = 0
+                    self.obj_aff_ += self.alpha+self.beta*self.tm[src,dst]
+                    self.obj_aff_connection_ += 1
+                    self.obj_aff_throughput_ += self.tm[src,dst]
+                    tmp = [src, dst, spec_idx, self.traffic_capacities[u], 
+                          src_core, dst_core, self.tm[u]]
+                    self.cnklist_aff.append(tmp)
+                    break
+               
+    def aff_mix_repeat2(self, nrepeat=20, random_state=0, th=100):
+        bestidx = 0
+        seeds = np.random.randint(0, 10000, size=(nrepeat,))
+        bestobj = 0
+        for idx in range(nrepeat):
+            np.random.seed(seeds[idx])
+            self.aff_mix2(th=th)
+            if bestobj < self.obj_aff_:
+                bestidx = idx
+                bestobj = self.obj_aff_
+            print (idx, self.obj_aff_)
+
+        np.random.seed(seeds[bestidx])
+        self.aff_mix()
                 
     def save_tensor(self, tensor, filename):
         """Save resource tensor
@@ -1192,7 +1612,85 @@ class Arch2_decompose(object):
         # tmp = np.loadtxt(filename, delimiter=',')
         # tensor = tmp.reshape((self.num_pods, self.num_cores, self.num_slots))
 
+    def multiple_heuristic(self):
+        """Run multiple heuristics, record their results
+        """
+        self.heuristics_results = dict()
+        
+        self.sa_heuristic(ascending1=True, ascending2=True)
+        self.heuristics_results['coreopt_IS_aa'] = {}
+        self.heuristics_results['coreopt_IS_aa']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_aa']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_aa']['obj_sah_thp'] = self.obj_sah_throughput_
+        
+        self.sa_heuristic(ascending1=True, ascending2=False)
+        self.heuristics_results['coreopt_IS_ad'] = {}
+        self.heuristics_results['coreopt_IS_ad']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_ad']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_ad']['obj_sah_thp'] = self.obj_sah_throughput_
+        
+        self.sa_heuristic(ascending1=False, ascending2=True)
+        self.heuristics_results['coreopt_IS_da'] = {}
+        self.heuristics_results['coreopt_IS_da']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_da']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_da']['obj_sah_thp'] = self.obj_sah_throughput_
+            
+        self.sa_heuristic(ascending1=False, ascending2=False)
+        self.heuristics_results['coreopt_IS_dd'] = {}
+        self.heuristics_results['coreopt_IS_dd']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_dd']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_dd']['obj_sah_thp'] = self.obj_sah_throughput_
+            
+        self.sa_heuristic_aff(ascending=True)
+        self.heuristics_results['coreopt_FF_a'] = {}
+        self.heuristics_results['coreopt_FF_a']['obj_sah'] = self.obj_affopt_
+        self.heuristics_results['coreopt_FF_a']['obj_sah_cnk'] = self.obj_affopt_connection_
+        self.heuristics_results['coreopt_FF_a']['obj_sah_thp'] = self.obj_affopt_throughput_
+            
+        self.sa_heuristic_aff(ascending=False)
+        self.heuristics_results['coreopt_FF_d'] = {}
+        self.heuristics_results['coreopt_FF_d']['obj_sah'] = self.obj_affopt_
+        self.heuristics_results['coreopt_FF_d']['obj_sah_cnk'] = self.obj_affopt_connection_
+        self.heuristics_results['coreopt_FF_d']['obj_sah_thp'] = self.obj_affopt_throughput_
+            
+        self.aff(ascending=True)
+        self.heuristics_results['FF_a'] = {}
+        self.heuristics_results['FF_a']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_a']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_a']['obj_sah_thp'] = self.obj_aff_throughput_
+            
+        self.aff(ascending=False)
+        self.heuristics_results['FF_d'] = {}
+        self.heuristics_results['FF_d']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_d']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_d']['obj_sah_thp'] = self.obj_aff_throughput_
 
+        self.aff_mix_repeat(nrepeat=40)
+        self.heuristics_results['FF_mix'] = {}
+        self.heuristics_results['FF_mix']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_mix']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_mix']['obj_sah_thp'] = self.obj_aff_throughput_        
+        
+        self.aff_mix_repeat2(nrepeat=40)
+        self.heuristics_results['FF_mix2'] = {}
+        self.heuristics_results['FF_mix2']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_mix2']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_mix2']['obj_sah_thp'] = self.obj_aff_throughput_
+
+        self.aff(ascending=True, use_suclist=True)
+        self.heuristics_results['FF_bm1'] = {}
+        self.heuristics_results['FF_bm1']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_bm1']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_bm1']['obj_sah_thp'] = self.obj_aff_throughput_
+        
+        self.aff(ascending=False, use_suclist=True)
+        self.heuristics_results['FF_bm2'] = {}
+        self.heuristics_results['FF_bm2']['obj_sah'] = self.obj_aff_
+        self.heuristics_results['FF_bm2']['obj_sah_cnk'] = self.obj_aff_connection_
+        self.heuristics_results['FF_bm2']['obj_sah_thp'] = self.obj_aff_throughput_
+
+
+        
 class Arch3_decompose(object):
     """Create models for different SDM DCN architectures
     """
@@ -1564,11 +2062,15 @@ class Arch3_decompose(object):
                     c[3], c[4], c[5], c[6], c[7])
                 f.write(wstr)
         
-    def sa_heuristic(self, ascending1=False, ascending2=True):
+    def sa_heuristic(self, ascending1=False, ascending2=True, use_suclist=True):
         """
         """
-        suclist = list(self.suclist)
-        suclist_tm = [self.nslot_choice[u] for u in suclist]
+        if use_suclist:
+            suclist = list(self.suclist)
+            suclist_tm = [self.tm[u] for u in suclist]
+        else:
+            suclist = list(self.traffic_pairs)
+            suclist_tm = [self.tm[u] for u in suclist]
         if ascending1:
             suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
         else:
@@ -1673,11 +2175,15 @@ class Arch3_decompose(object):
                       src_core, dst_core, 1, self.tm[u]]
                 self.cnklist_sah.append(tmp)
                 
-    def sa_heuristic_ff(self, ascending=True):
+    def sa_heuristic_ff(self, ascending=True, use_suclist=True):
         """
         """
-        suclist = list(self.suclist)
-        suclist_tm = [self.nslot_choice[u] for u in suclist]
+        if use_suclist:
+            suclist = list(self.suclist)
+            suclist_tm = [self.tm[u] for u in suclist]
+        else:
+            suclist = list(self.traffic_pairs)
+            suclist_tm = [self.tm[u] for u in suclist]
         if ascending:
             suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
         else:
@@ -1709,16 +2215,20 @@ class Arch3_decompose(object):
                       src_core[0], dst_core[0], len(src_core), self.tm[u]]
                self.cnklist_sahff.append(tmp)
                 
-    def ff(self, ascending=True):
+    def ff(self, ascending=True, use_suclist=True, core_order=True):
         """First fit 
         """
-        suclist = list(self.traffic_pairs)
-        suclist_tm = [self.tm[u] for u in suclist]
+        if use_suclist:
+            suclist = list(self.suclist)
+            suclist_tm = [self.tm[u] for u in suclist]
+        else:
+            suclist = list(self.traffic_pairs)
+            suclist_tm = [self.tm[u] for u in suclist]
         if ascending:
             suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
         else:
             suclist = [x for (y, x) in sorted(zip(suclist_tm, suclist), reverse=True)]
-            
+
         self.obj_ff_ = 0
         self.obj_ff_connection_ = 0
         self.obj_ff_throughput_ = 0
@@ -1728,11 +2238,161 @@ class Arch3_decompose(object):
             src = u[0]
             dst = u[1]
             tfk = self.tm[u]
-            for ncores in range(1, self.num_cores+1):
-                spec_idx, nslots, src_core, dst_core, flag = \
-                    self.try_channels(src, dst, tfk, restensor, ncores)
-                if flag:
-                    break
+            if core_order:
+                for ncores in range(1, self.num_cores+1):
+                    spec_idx, nslots, src_core, dst_core, flag = \
+                        self.try_channels(src, dst, tfk, restensor, ncores)
+                    if flag:
+                        break
+            else:
+                for ncores in range(self.num_cores, 0, -1):
+                    spec_idx, nslots, src_core, dst_core, flag = \
+                        self.try_channels(src, dst, tfk, restensor, ncores)
+                    if flag:
+                        break
+                    
+    def ff_mix_repeat(self, nrepeat=20, random_state=0, core_order=True, th=100):
+        bestidx = 0
+        seeds = np.random.randint(0, 10000, size=(nrepeat,))
+        bestobj = 0
+        for idx in range(nrepeat):
+            np.random.seed(seeds[idx])
+            self.ff_mix(core_order=core_order, th=th)
+            if bestobj < self.obj_ff_:
+                bestidx = idx
+                bestobj = self.obj_ff_
+            print (idx, self.obj_ff_)
+
+        np.random.seed(seeds[bestidx])
+        self.ff_mix()
+        
+    def reshuffle(self, use_suclist=True):
+        """reshuffle connection list according to their probabilities
+        return reshuffled connection list
+        """
+        if use_suclist:
+            tmplist = copy.deepcopy(self.suclist)
+        else:
+            tmplist = copy.deepcopy(self.traffic_pairs)
+        suclist_tm = [self.tm[u] for u in tmplist]
+        tmplist = [x for (y,x) in sorted(zip(suclist_tm, tmplist))]
+        
+        del suclist_tm
+        
+        data_rates = np.unique(self.tm)
+        data_rates_large = data_rates[data_rates>=400]
+        # convert the object beta to the priority of large data rate 
+        # connections
+        prob = (data_rates_large.sum()*self.beta+
+                len(data_rates_large)*self.alpha)/\
+                (data_rates.sum()*self.beta+(len(data_rates)-1)*self.alpha)
+        final_list = []
+        while len(tmplist)>0:
+            # tmprnd=-1: sample large connections
+            # tmprnd=0: sample small connections
+            tmprnd = np.random.choice([0, -1], p=[1-prob, prob], size=1)
+            final_list.append(tmplist.pop(tmprnd))
+
+        return final_list
+        
+#    def ff_mix2(self, ascending=True):
+#        """Mixing big and small connections
+#        """
+#        suclist = list(self.suclist)
+#        suclist_tm = [self.tm[u] for u in suclist]
+#        suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
+#        # np.random.shuffle(suclist) 
+#        # instead of random shuffle, sample connections according to their 
+#        # probabilities
+#        suclist = self.reshuffle()
+#
+#        self.obj_ff_ = 0
+#        self.obj_ff_connection_ = 0
+#        self.obj_ff_throughput_ = 0
+#        self.cnklist_ff = []
+#        restensor = np.ones((self.num_pods, self.num_cores, self.num_slots))
+#        for u in suclist:
+#            src = u[0]
+#            dst = u[1]
+#            tfk = self.tm[u]
+#            for ncores in range(1, self.num_cores+1):
+#                spec_idx, nslots, src_core, dst_core, flag = \
+#                    self.try_channels(src, dst, tfk, restensor, ncores)
+#                if flag:
+#                    break
+
+    def ff_mix(self, core_order=True, th=100):
+        """Mixing big and small connections
+        """
+        suclist = list(self.suclist)
+        suclist_tm = [self.tm[u] for u in suclist]
+        suclist = [x for (y,x) in sorted(zip(suclist_tm, suclist))]
+        # np.random.shuffle(suclist) 
+        # instead of random shuffle, sample connections according to their 
+        # probabilities
+        suclist = self.reshuffle()
+
+        self.obj_ff_ = 0
+        self.obj_ff_connection_ = 0
+        self.obj_ff_throughput_ = 0
+        self.cnklist_ff = []
+        restensor = np.ones((self.num_pods, self.num_cores, self.num_slots))
+        for u in suclist:
+            src = u[0]
+            dst = u[1]
+            tfk = self.tm[u]
+            if core_order:
+                for ncores in range(1, self.num_cores+1):
+                    spec_idx, nslots, src_core, dst_core, flag = \
+                        self.try_channels_mix(src, dst, tfk, restensor, ncores, th=th)
+                    if flag:
+                        break
+            else:
+                for ncores in range(self.num_cores, 0, -1):
+                    spec_idx, nslots, src_core, dst_core, flag = \
+                        self.try_channels_mix(src, dst, tfk, restensor, ncores, th=th)
+                    if flag:
+                        break
+
+    def try_channels_mix(self, src, dst, tfk, restensor, ncores, th=100):
+        """Find hole for traffic with ncores
+        """
+        group_candidates = [(x,y) for x in self.group_core[ncores]
+                                  for y in self.group_core[ncores]]
+        flag = False
+        for src_group, dst_group in group_candidates:
+            src_cores = np.where(self.B[:,src_group])[0]
+            dst_cores = np.where(self.B[:,dst_group])[0]
+            tmp = restensor[src,src_cores[0],:]
+            for i in src_cores:
+                tmp = tmp*restensor[src,i,:]
+            for i in dst_cores:
+                tmp = tmp*restensor[dst,i,:]
+            tmpavail = self.one_runs(tmp)
+            nslots = self.slot_set[src,dst][ncores-1]
+            tmpidx = np.where(tmpavail[:,1]>=nslots)[0]
+            if tmpidx.size:
+                if self.tm[src,dst]>th:
+                    # put large connections on one side
+                    spec_idx = tmpavail[tmpidx[0],0]
+                else:
+                    # put small connections on the other side
+                    spec_idx = tmpavail[tmpidx[-1],0]+\
+                        tmpavail[tmpidx[-1],1]-nslots
+
+                restensor[src,src_cores[0]:(src_cores[0]+ncores),
+                          spec_idx:(spec_idx+nslots)] = 0
+                restensor[dst,dst_cores[0]:(dst_cores[0]+ncores),
+                          spec_idx:(spec_idx+nslots)] = 0
+                flag = True
+                cnk = [src,dst,spec_idx,nslots,src_cores[0],dst_cores[0],
+                       ncores,self.tm[src,dst]]
+                self.cnklist_ff.append(cnk)
+                self.obj_ff_ += self.alpha+self.beta*self.tm[src,dst]
+                self.obj_ff_connection_ += 1
+                self.obj_ff_throughput_ += self.tm[src,dst]
+                return spec_idx, nslots, src_cores[0], dst_cores[0], flag
+        return self.num_slots+1, 0, self.num_cores+1, self.num_cores+1, flag
         
     def try_channels(self, src, dst, tfk, restensor, ncores):
         """Find hole for traffic with ncores
@@ -1867,13 +2527,114 @@ class Arch3_decompose(object):
             objcnk = self.obj_ff_connection_
             objthp = self.obj_ff_throughput_
             cnklist = self.cnklist_ff
+            
+        self.ff(ascending=True, core_order=False)
+        if objbest < self.obj_ff_:
+            objbest = self.obj_ff_
+            objcnk = self.obj_ff_connection_
+            objthp = self.obj_ff_throughput_
+            cnklist = self.cnklist_ff
+        self.ff(ascending=False, core_order=False)
+        if objbest < self.obj_ff_:
+            objbest = self.obj_ff_
+            objcnk = self.obj_ff_connection_
+            objthp = self.obj_ff_throughput_
+            cnklist = self.cnklist_ff
         
         self.obj_heuristic_ = objbest
         self.obj_heuristic_connection_ = objcnk
         self.obj_heuristic_throughput_ = objthp
         self.cnklist_heuristic_ = cnklist
 
+    def multiple_heuristic(self):
+        """Run multiple heuristics, record their results
+        """
+        self.heuristics_results = dict()
         
+        self.sa_heuristic(ascending1=True, ascending2=True)
+        self.heuristics_results['coreopt_IS_aa'] = {}
+        self.heuristics_results['coreopt_IS_aa']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_aa']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_aa']['obj_sah_thp'] = self.obj_sah_throughput_
+        
+        self.sa_heuristic(ascending1=True, ascending2=False)
+        self.heuristics_results['coreopt_IS_ad'] = {}
+        self.heuristics_results['coreopt_IS_ad']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_ad']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_ad']['obj_sah_thp'] = self.obj_sah_throughput_
+        
+        self.sa_heuristic(ascending1=False, ascending2=True)
+        self.heuristics_results['coreopt_IS_da'] = {}
+        self.heuristics_results['coreopt_IS_da']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_da']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_da']['obj_sah_thp'] = self.obj_sah_throughput_
+            
+        self.sa_heuristic(ascending1=False, ascending2=False)
+        self.heuristics_results['coreopt_IS_dd'] = {}
+        self.heuristics_results['coreopt_IS_dd']['obj_sah'] = self.obj_sah_
+        self.heuristics_results['coreopt_IS_dd']['obj_sah_cnk'] = self.obj_sah_connection_
+        self.heuristics_results['coreopt_IS_dd']['obj_sah_thp'] = self.obj_sah_throughput_
+            
+        self.sa_heuristic_ff(ascending=True)
+        self.heuristics_results['coreopt_FF_a'] = {}
+        self.heuristics_results['coreopt_FF_a']['obj_sah'] = self.obj_sahff_
+        self.heuristics_results['coreopt_FF_a']['obj_sah_cnk'] = self.obj_sahff_connection_
+        self.heuristics_results['coreopt_FF_a']['obj_sah_thp'] = self.obj_sahff_throughput_
+            
+        self.sa_heuristic_ff(ascending=False)
+        self.heuristics_results['coreopt_FF_d'] = {}
+        self.heuristics_results['coreopt_FF_d']['obj_sah'] = self.obj_sahff_
+        self.heuristics_results['coreopt_FF_d']['obj_sah_cnk'] = self.obj_sahff_connection_
+        self.heuristics_results['coreopt_FF_d']['obj_sah_thp'] = self.obj_sahff_throughput_
+            
+        self.ff(ascending=True)
+        self.heuristics_results['FF_a_coreAsc'] = {}
+        self.heuristics_results['FF_a_coreAsc']['obj_sah'] = self.obj_ff_
+        self.heuristics_results['FF_a_coreAsc']['obj_sah_cnk'] = self.obj_ff_connection_
+        self.heuristics_results['FF_a_coreAsc']['obj_sah_thp'] = self.obj_ff_throughput_
+            
+        self.ff(ascending=False)
+        self.heuristics_results['FF_d_coreAsc'] = {}
+        self.heuristics_results['FF_d_coreAsc']['obj_sah'] = self.obj_ff_
+        self.heuristics_results['FF_d_coreAsc']['obj_sah_cnk'] = self.obj_ff_connection_
+        self.heuristics_results['FF_d_coreAsc']['obj_sah_thp'] = self.obj_ff_throughput_
+
+        self.ff(ascending=True, core_order=False)
+        self.heuristics_results['FF_a_coreDes'] = {}
+        self.heuristics_results['FF_a_coreDes']['obj_sah'] = self.obj_ff_
+        self.heuristics_results['FF_a_coreDes']['obj_sah_cnk'] = self.obj_ff_connection_
+        self.heuristics_results['FF_a_coreDes']['obj_sah_thp'] = self.obj_ff_throughput_
+            
+        self.ff(ascending=False, core_order=False)
+        self.heuristics_results['FF_d_coreDes'] = {}
+        self.heuristics_results['FF_d_coreDes']['obj_sah'] = self.obj_ff_
+        self.heuristics_results['FF_d_coreDes']['obj_sah_cnk'] = self.obj_ff_connection_
+        self.heuristics_results['FF_d_coreDes']['obj_sah_thp'] = self.obj_ff_throughput_
+        
+        self.ff(ascending=True, core_order=False, use_suclist=False)
+        self.heuristics_results['FF_a_coreDes_bm1'] = {}
+        self.heuristics_results['FF_a_coreDes_bm1']['obj_sah'] = self.obj_ff_
+        self.heuristics_results['FF_a_coreDes_bm1']['obj_sah_cnk'] = self.obj_ff_connection_
+        self.heuristics_results['FF_a_coreDes_bm1']['obj_sah_thp'] = self.obj_ff_throughput_
+            
+        self.ff(ascending=False, core_order=False, use_suclist=False)
+        self.heuristics_results['FF_d_coreDes_bm2'] = {}
+        self.heuristics_results['FF_d_coreDes_bm2']['obj_sah'] = self.obj_ff_
+        self.heuristics_results['FF_d_coreDes_bm2']['obj_sah_cnk'] = self.obj_ff_connection_
+        self.heuristics_results['FF_d_coreDes_bm2']['obj_sah_thp'] = self.obj_ff_throughput_
+
+        self.ff_mix_repeat(nrepeat=40, core_order=True)
+        self.heuristics_results['FF_a_coreAsc_mix'] = {}
+        self.heuristics_results['FF_a_coreAsc_mix']['obj_sah'] = self.obj_ff_
+        self.heuristics_results['FF_a_coreAsc_mix']['obj_sah_cnk'] = self.obj_ff_connection_
+        self.heuristics_results['FF_a_coreAsc_mix']['obj_sah_thp'] = self.obj_ff_throughput_
+        
+#        self.ff_mix_repeat(nrepeat=40, core_order=False)
+#        self.heuristics_results['FF_d_coreDes_mix'] = {}
+#        self.heuristics_results['FF_d_coreDes_mix']['obj_sah'] = self.obj_ff_
+#        self.heuristics_results['FF_d_coreDes_mix']['obj_sah_cnk'] = self.obj_ff_connection_
+#        self.heuristics_results['FF_d_coreDes_mix']['obj_sah_thp'] = self.obj_ff_throughput_
+
 if __name__=='__main__':
     np.random.seed(2014)
     #%% testing Traffic
