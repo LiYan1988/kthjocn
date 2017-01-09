@@ -89,7 +89,7 @@ for k, v in data_rate_probs.items():
         os.chdir(tm_name)
         line16 = "num_cores={}\n".format(num_cores)
         line17 = "num_slots={}\n".format(num_slots)
-        line19 = "i = {} \n".format(i)
+        line19 = "mtridx = {} \n".format(i)
         line23 = "filename = 'traffic_matrix_{}.csv'\n".format(i)
         replace_lines = {16:line16, 17:line17, 19:line19, 23:line23}
         dst = 'A1_{}.py'.format(i)

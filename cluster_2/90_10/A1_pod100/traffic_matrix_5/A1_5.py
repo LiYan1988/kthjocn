@@ -17,7 +17,7 @@ np.random.seed(2010)
 num_cores=5
 num_slots=80
 
-i = 5 
+mtridx = 5 
 time_limit_routing = 1800 # 1000
 time_limit_sa = 108 # 10800
 
