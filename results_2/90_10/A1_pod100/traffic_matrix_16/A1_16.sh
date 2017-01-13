@@ -4,7 +4,7 @@
 #SBATCH -J A1_16-90_10
 #SBATCH -N 1
 #SBATCH -n 4
-#SBATCH -t 4:00:00
+#SBATCH -t 12:00:00
 #SBATCH -o A1_16-90_10.stdout
 #SBATCH -e A1_16-90_10.stderr
 module purge 

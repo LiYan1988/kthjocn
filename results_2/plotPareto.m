@@ -6,7 +6,7 @@ function [beta, connection_ub_ave, throughput_ub_ave, connection_he_ave,...
 % f: optimality gap, can be any number between 0 and 1
 
 [beta, connection_ub_ave, throughput_ub_ave, connection_he_ave,...
-    throughput_he_ave] = normalizedResults(filePath);
+    throughput_he_ave, obj_bm_ave, obj_ub, obj_he] = normalizedResults(filePath);
 beta = beta/flowAverage;
 
 figureStrings = strsplit(filePath, '\');
@@ -48,8 +48,12 @@ figureName = strcat('figures/', trafficRule, '-', arch, '-', 'throughput.jpg');
 saveas(h, figureName)
 
 h = figure;
-semilogx(beta, (connection_he_ave+beta.*throughput_he_ave)./...
-    (connection_ub_ave+beta.*throughput_ub_ave))
+semilogx(beta, obj_he./obj_ub)
+hold on;
+benchmarkNumber = size(obj_bm_ave, 2);
+for i=1:min(benchmarkNumber, 2)
+    semilogx(beta, obj_bm_ave(:, i)./obj_ub)
+end
 grid on;
 title(strcat('Opt-gap', {' '}, trafficRule, {' '}, arch))
 figureName = strcat('figures/', trafficRule, '-', arch, '-', 'optimality.jpg');

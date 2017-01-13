@@ -11,13 +11,13 @@ optimize both throughput and connections
 #sys.path.insert(0, '/home/li/Dropbox/KTH/numerical_analysis/ILPs')
 from sdm import *
 from gurobipy import *
-
+import pandas as pd
 np.random.seed(2010)
 
 num_cores=5
 num_slots=80
 
-i = 16 
+mtridx = 16 
 time_limit_routing = 1800 # 1000
 time_limit_sa = 108 # 10800
 
@@ -31,61 +31,58 @@ with open(filename) as f:
         tm.append(row)
 
 tm = np.array(tm)
-#%% arch2
+
 betav = np.array([0, 
     1e-5, 2e-5, 4e-5, 8e-5, 
     1e-4, 2e-4, 4e-4, 8e-4, 
     1e-3, 2e-3, 4e-3, 8e-3, 
     1e-2, 2e-2, 4e-2, 8e-2, 
     1e-1, 2e-1, 4e-1, 1, 10])
-#betav = np.array([0, 0.04, 10])
-connection_ub = []
-throughput_ub = []
-obj_ub = []
-
-connection_lb = []
-throughput_lb = []
-obj_lb = []
-
-connection_he = []
-throughput_he = []
-obj_he = []
+#betav = np.array([1e-3, 2e-3, 4e-3, 8e-3])
+results = {}
+obj_results = {}
+cnk_results = {}
+thp_results = {}
+obj_ub = {}
+cnk_ub = {}
+thp_ub = {}
 
 for beta in betav:        
     m = Arch2_decompose(tm, num_slots=num_slots, num_cores=num_cores, 
         alpha=1,beta=beta)
+    m.create_model_routing(mipfocus=1,timelimit=time_limit_routing,mipgap=0.05, method=2)
+    m.multiple_heuristic()
 
-    m.create_model_routing(mipfocus=1,timelimit=time_limit_routing,mipgap=0.01, method=2)
-    connection_ub.append(m.connection_ub_)
-    throughput_ub.append(m.throughput_ub_)
-    obj_ub.append(m.obj_ub_)
+    results[beta] = pd.DataFrame(m.heuristics_results)
+    obj_results[beta] = results[beta].iloc[0, :]
+    cnk_results[beta] = results[beta].iloc[1, :]
+    thp_results[beta] = results[beta].iloc[2, :]
+    obj_ub[beta] = m.obj_ub_
+    cnk_ub[beta] = m.connection_ub_
+    thp_ub[beta] = m.throughput_ub_
 
-#    m.create_model_sa(mipfocus=1,timelimit=10800,mipgap=0.01, method=2, 
-#        SubMIPNodes=2000, heuristics=0.8)
-#    connection_lb.append(m.connection_lb_)
-#    throughput_lb.append(m.throughput_lb_)
-#    obj_lb.append(m.obj_lb_)
-#    m.write_result_csv('cnklist_lb_%d_%.2e.csv'%(i,beta), m.cnklist_sa)
-    
-    connection_lb.append(0)
-    throughput_lb.append(0)
-    obj_lb.append(0)
-
-    m.heuristic()
-    connection_he.append(m.obj_heuristic_connection_)
-    throughput_he.append(m.obj_heuristic_throughput_)
-    obj_he.append(m.obj_heuristic_)
     # write results
-    m.write_result_csv('cnklist_heuristic_{}_{:2}.csv'.format(i, beta), m.cnklist_heuristic_)
+    m.write_result_csv('cnklist_heuristic_%d_%.2e.csv'%(mtridx,beta), m.cnklist_)
 
-result = np.array([betav,
-                   connection_ub,throughput_ub,obj_ub,
-                   connection_lb,throughput_lb,obj_lb,
-                   connection_he,throughput_he,obj_he]).T
-file_name = 'result_A2_16.csv'
-with open(file_name, 'w') as f:
-    writer = csv.writer(f, delimiter=',')
-    writer.writerow(['beta', 'connection_ub', 'throughput_ub', 
-    'obj_ub', 'connection_lb', 'throughput_lb', 'obj_lb',
-    'connection_he', 'throughput_he', 'obj_he'])
-    writer.writerows(result)
+
+obj_results = pd.DataFrame(obj_results)
+cnk_results = pd.DataFrame(cnk_results)
+thp_results = pd.DataFrame(thp_results)
+obj_ub = pd.Series(obj_ub)
+cnk_ub = pd.Series(cnk_ub)
+thp_ub = pd.Series(thp_ub)
+argmax = {betav[i]:obj_results.iloc[:, i].argmax() for i in range(len(betav))}
+objmax = {betav[i]:obj_results.iloc[:, i].max() for i in range(len(betav))}
+cnk_bh = {betav[i]:cnk_results.loc[argmax[betav[i]], betav[i]] 
+              for i in range(len(betav))}
+thp_bh = {betav[i]:thp_results.loc[argmax[betav[i]], betav[i]] 
+              for i in range(len(betav))}
+obj_final = pd.DataFrame({'ub':obj_ub, 'best_heuristic':objmax, 
+                          'best_method':argmax, 'cnk_bh':cnk_bh, 
+                          'thp_bh':thp_bh, 'cnk_ub':cnk_ub, 'thp_ub':thp_ub})
+obj_final['optimality'] = obj_final['best_heuristic']/obj_final['ub']
+
+obj_results.to_csv('obj_results_{}.csv'.format(mtridx))
+cnk_results.to_csv('cnk_results_{}.csv'.format(mtridx))
+thp_results.to_csv('thp_results_{}.csv'.format(mtridx))
+obj_final.to_csv('obj_final_{}.csv'.format(mtridx))

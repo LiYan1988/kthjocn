@@ -10,7 +10,7 @@ curlist = {};
 trafficMatrices = {};
 flowAverage = zeros(3, 1);
 for i = 1:1
-    for j = 1:2
+    for j = 1:3
         tmp = {rootdir, trafficTypes(i), architectureTypes(j)};
         curlist = [curlist, joinPath(tmp)];
         connectionDistribution(curlist{end});
@@ -19,14 +19,15 @@ for i = 1:1
     flowAverage(i) = trafficAverage(trafficMatrixPath);
 end
 
+%%
 % 90-10, Arch 1
-plotPareto(curlist{1}, flowAverage(1), 0.9)
+% plotPareto(curlist{1}, flowAverage(1), 0.9)
 
 % 90-10, Arch 2
-plotPareto(curlist{2}, flowAverage(1), 0.9)
+% plotPareto(curlist{2}, flowAverage(1), 0.9)
 
 % 90-10, Arch 3
-% plotPareto(curlist{3}, flowAverage(1), 0.88)
+plotPareto(curlist{3}, flowAverage(1), 0.88)
 
 % 30-85, Arch 1
 % plotPareto(curlist{4}, flowAverage(2), 0.9)
