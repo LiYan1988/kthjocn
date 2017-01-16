@@ -1,0 +1,3512 @@
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve removed 0 rows and 0 columns (presolve time = 7s) ...
+Presolve removed 0 rows and 0 columns (presolve time = 16s) ...
+Presolve removed 0 rows and 0 columns (presolve time = 21s) ...
+Presolve time: 24.51s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 1.16s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.33180417e+04 -1.04667971e+05  8.20e+01 0.00e+00  2.60e+00    82s
+   1  -1.36323085e+04 -6.93903260e+04  1.56e+01 8.88e-16  5.56e-01    84s
+   2  -7.75807288e+03 -2.22299783e+04  2.00e-15 1.33e-15  5.76e-02    84s
+   3  -7.81472081e+03 -7.89299509e+03  6.66e-16 6.66e-16  3.11e-04    85s
+   4  -7.82763410e+03 -7.82771261e+03  3.89e-14 4.44e-16  3.12e-07    85s
+   5  -7.82764706e+03 -7.82764706e+03  6.11e-15 4.44e-16  3.13e-13    85s
+
+Barrier solved model in 5 iterations and 85.01 seconds
+Optimal objective -7.82764706e+03
+
+
+Root crossover log...
+
+   10429 DPushes remaining with DInf 0.0000000e+00                86s
+       0 DPushes remaining with DInf 7.3552275e-16                86s
+
+  100436 PPushes remaining with PInf 0.0000000e+00                86s
+   48522 PPushes remaining with PInf 0.0000000e+00                90s
+       0 PPushes remaining with PInf 0.0000000e+00                93s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 1.3461454e-15     93s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  110868   -7.8276471e+03   0.000000e+00   0.000000e+00     93s
+  110868   -7.8276471e+03   0.000000e+00   0.000000e+00     94s
+
+Root relaxation: objective -7.827647e+03, 110868 iterations, 45.44 seconds
+Total elapsed time = 96.43s
+Total elapsed time = 101.94s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -7827.6471    0  965    0.00000 -7827.6471      -     -  106s
+H    0     0                    -7736.000000 -7827.6471  1.18%     -  106s
+
+Explored 0 nodes (118226 simplex iterations) in 107.26 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -7736 0 
+Pool objective bound -7827
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -7.736000000000e+03, best bound -7.827000000000e+03, gap 1.1763%
+(0, 7272.0)
+(1, 7228.0)
+(2, 7252.0)
+(3, 7343.0)
+(4, 7257.0)
+(5, 7241.0)
+(6, 7262.0)
+(7, 7181.0)
+(8, 7270.0)
+(9, 7248.0)
+(10, 7281.0)
+(11, 7220.0)
+(12, 7264.0)
+(13, 7258.0)
+(14, 7335.0)
+(15, 7270.0)
+(16, 7228.0)
+(17, 7268.0)
+(18, 7224.0)
+(19, 7293.0)
+(20, 7252.0)
+(21, 7258.0)
+(22, 7260.0)
+(23, 7191.0)
+(24, 7232.0)
+(25, 7245.0)
+(26, 7270.0)
+(27, 7159.0)
+(28, 7242.0)
+(29, 7271.0)
+(30, 7251.0)
+(31, 7244.0)
+(32, 7198.0)
+(33, 7255.0)
+(34, 7241.0)
+(35, 7249.0)
+(36, 7287.0)
+(37, 7192.0)
+(38, 7258.0)
+(39, 7247.0)
+(0, 7451.0)
+(1, 7469.0)
+(2, 7419.0)
+(3, 7438.0)
+(4, 7432.0)
+(5, 7530.0)
+(6, 7418.0)
+(7, 7452.0)
+(8, 7400.0)
+(9, 7459.0)
+(10, 7452.0)
+(11, 7462.0)
+(12, 7533.0)
+(13, 7419.0)
+(14, 7456.0)
+(15, 7508.0)
+(16, 7553.0)
+(17, 7484.0)
+(18, 7494.0)
+(19, 7457.0)
+(20, 7497.0)
+(21, 7409.0)
+(22, 7507.0)
+(23, 7449.0)
+(24, 7428.0)
+(25, 7469.0)
+(26, 7477.0)
+(27, 7485.0)
+(28, 7469.0)
+(29, 7438.0)
+(30, 7498.0)
+(31, 7440.0)
+(32, 7438.0)
+(33, 7476.0)
+(34, 7435.0)
+(35, 7481.0)
+(36, 7373.0)
+(37, 7402.0)
+(38, 7512.0)
+(39, 7464.0)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.40s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.02s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.33458144e+04 -1.04704608e+05  8.20e+01 0.00e+00  2.60e+00     1s
+   1  -1.36439174e+04 -6.94162075e+04  1.56e+01 8.88e-16  5.56e-01     1s
+   2  -7.76303489e+03 -2.22448049e+04  1.78e-15 1.33e-15  5.76e-02     1s
+   3  -7.81973481e+03 -7.89755271e+03  5.55e-16 6.66e-16  3.10e-04     1s
+   4  -7.83267716e+03 -7.83275521e+03  3.84e-14 4.44e-16  3.10e-07     2s
+   5  -7.83269015e+03 -7.83269015e+03  1.17e-14 4.44e-16  3.11e-13     2s
+
+Barrier solved model in 5 iterations and 1.67 seconds
+Optimal objective -7.83269015e+03
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 9s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 2.7755576e-16      9s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  110773   -7.8326901e+03   0.000000e+00   0.000000e+00      9s
+  110773   -7.8326901e+03   0.000000e+00   0.000000e+00      9s
+
+Root relaxation: objective -7.832690e+03, 110773 iterations, 8.59 seconds
+Total elapsed time = 11.65s
+Total elapsed time = 16.54s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -7832.6901    0  979    0.00000 -7832.6901      -     -   20s
+H    0     0                    -7757.779500 -7832.6901  0.97%     -   20s
+
+Explored 0 nodes (118697 simplex iterations) in 20.69 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -7757.78 0 
+Pool objective bound -7832.69
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -7.757779500000e+03, best bound -7.832690147059e+03, gap 0.9656%
+(0, 7218.5100000006241)
+(1, 7257.5295000006281)
+(2, 7289.5455000006314)
+(3, 7258.5300000006282)
+(4, 7268.5350000006292)
+(5, 7300.5510000006325)
+(6, 7283.5425000006308)
+(7, 7254.5280000006278)
+(8, 7304.5530000006329)
+(9, 7294.5480000006319)
+(10, 7262.5320000006286)
+(11, 7210.5060000006233)
+(12, 7253.5275000006277)
+(13, 7334.5680000006359)
+(14, 7323.5625000006348)
+(15, 7315.558500000634)
+(16, 7379.5905000006405)
+(17, 7264.5330000006288)
+(18, 7291.5465000006316)
+(19, 7214.5080000006237)
+(20, 7297.5495000006322)
+(21, 7235.5185000006259)
+(22, 7287.5445000006312)
+(23, 7283.5425000006308)
+(24, 7283.5425000006308)
+(25, 7254.5280000006278)
+(26, 7304.5530000006329)
+(27, 7309.5555000006334)
+(28, 7280.5410000006304)
+(29, 7226.5140000006249)
+(30, 7304.5530000006329)
+(31, 7295.548500000632)
+(32, 7251.5265000006275)
+(33, 7209.5055000006232)
+(34, 7246.524000000627)
+(35, 7330.5660000006355)
+(36, 7289.5455000006314)
+(37, 7282.5420000006307)
+(38, 7348.5750000006374)
+(39, 7295.548500000632)
+(0, 7577.6895000006607)
+(1, 7450.6260000006478)
+(2, 7535.6685000006564)
+(3, 7501.651500000653)
+(4, 7550.676000000658)
+(5, 7547.6745000006576)
+(6, 7519.6605000006548)
+(7, 7560.6810000006581)
+(8, 7561.6815000006591)
+(9, 7521.661500000655)
+(10, 7536.6690000006565)
+(11, 7574.6880000006604)
+(12, 7477.6395000006505)
+(13, 7527.6645000006556)
+(14, 7509.6555000006538)
+(15, 7563.6825000006593)
+(16, 7587.6945000006617)
+(17, 7529.6655000006558)
+(18, 7542.6720000006571)
+(19, 7513.6575000006542)
+(20, 7464.6330000006492)
+(21, 7557.6795000006587)
+(22, 7551.676500000659)
+(23, 7531.666500000656)
+(24, 7555.6785000006585)
+(25, 7507.6545000006536)
+(26, 7517.6595000006546)
+(27, 7565.6835000006595)
+(28, 7522.6620000006551)
+(29, 7551.6765000006581)
+(30, 7565.6835000006595)
+(31, 7522.6620000006551)
+(32, 7501.6515000006539)
+(33, 7498.6500000006527)
+(34, 7532.6670000006561)
+(35, 7554.6780000006584)
+(36, 7532.6670000006561)
+(37, 7574.6880000006604)
+(38, 7581.6915000006611)
+(39, 7504.6530000006533)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.34s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.01s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.33735871e+04 -1.04741245e+05  8.20e+01 0.00e+00  2.60e+00     1s
+   1  -1.36555259e+04 -6.94420894e+04  1.56e+01 7.77e-16  5.57e-01     1s
+   2  -7.76799674e+03 -2.22596206e+04  1.89e-15 1.33e-15  5.76e-02     1s
+   3  -7.82474941e+03 -7.90211216e+03  6.66e-16 8.88e-16  3.08e-04     1s
+   4  -7.83772023e+03 -7.83779781e+03  4.77e-14 4.44e-16  3.09e-07     1s
+   5  -7.83773324e+03 -7.83773324e+03  1.48e-14 4.44e-16  3.09e-13     2s
+
+Barrier solved model in 5 iterations and 1.56 seconds
+Optimal objective -7.83773324e+03
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 8s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 6.3837824e-16      8s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  110849   -7.8377332e+03   0.000000e+00   0.000000e+00      8s
+  110849   -7.8377332e+03   0.000000e+00   0.000000e+00      8s
+
+Root relaxation: objective -7.837733e+03, 110849 iterations, 7.73 seconds
+Total elapsed time = 10.32s
+Total elapsed time = 16.67s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -7837.7332    0  997    0.00000 -7837.7332      -     -   18s
+H    0     0                    -7756.518000 -7837.7332  1.05%     -   18s
+
+Explored 0 nodes (118155 simplex iterations) in 18.93 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -7756.52 0 
+Pool objective bound -7837.73
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -7.756518000000e+03, best bound -7.837733235295e+03, gap 1.0471%
+(0, 7254.0160000010192)
+(1, 7302.0640000010289)
+(2, 7267.0290000010209)
+(3, 7286.0480000010257)
+(4, 7318.0800000010313)
+(5, 7313.0750000010303)
+(6, 7364.1260000010407)
+(7, 7256.0180000010196)
+(8, 7316.0780000010309)
+(9, 7275.0370000010225)
+(10, 7332.0940000010351)
+(11, 7255.0170000010185)
+(12, 7241.0030000010165)
+(13, 7289.0510000010254)
+(14, 7260.0220000010195)
+(15, 7307.06900000103)
+(16, 7308.0700000010302)
+(17, 7318.0800000010313)
+(18, 7294.0560000010264)
+(19, 7289.0510000010254)
+(20, 7354.1160000010386)
+(21, 7340.1020000010358)
+(22, 7277.0390000010239)
+(23, 7349.1110000010376)
+(24, 7275.0370000010225)
+(25, 7281.0430000010238)
+(26, 7286.0480000010248)
+(27, 7317.0790000010311)
+(28, 7311.0730000010299)
+(29, 7357.1190000010392)
+(30, 7331.0930000010339)
+(31, 7347.1090000010372)
+(32, 7311.0730000010317)
+(33, 7304.0660000010284)
+(34, 7382.1440000010443)
+(35, 7293.0550000010271)
+(36, 7314.0760000010305)
+(37, 7311.0730000010299)
+(38, 7313.0750000010303)
+(39, 7304.0660000010294)
+(0, 7496.2580000010685)
+(1, 7552.314000001079)
+(2, 7490.2520000010663)
+(3, 7520.2820000010734)
+(4, 7478.2400000010639)
+(5, 7531.2930000010756)
+(6, 7497.2590000010678)
+(7, 7543.3050000010771)
+(8, 7550.3120000010795)
+(9, 7528.2900000010741)
+(10, 7494.2560000010672)
+(11, 7519.2810000010722)
+(12, 7466.2280000010624)
+(13, 7524.2860000010733)
+(14, 7468.2300000010619)
+(15, 7502.2640000010697)
+(16, 7510.2720000010713)
+(17, 7483.2450000010649)
+(18, 7463.2250000010608)
+(19, 7502.2640000010688)
+(20, 7566.3280000010818)
+(21, 7536.2980000010757)
+(22, 7452.2140000010586)
+(23, 7476.2380000010635)
+(24, 7512.2740000010708)
+(25, 7524.2860000010733)
+(26, 7474.2360000010631)
+(27, 7571.3330000010828)
+(28, 7515.2770000010714)
+(29, 7503.2650000010699)
+(30, 7503.265000001069)
+(31, 7489.2510000010661)
+(32, 7522.2840000010738)
+(33, 7539.3010000010763)
+(34, 7501.2630000010686)
+(35, 7507.2690000010698)
+(36, 7514.2760000010712)
+(37, 7480.2420000010643)
+(38, 7533.2950000010751)
+(39, 7494.2560000010672)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.38s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.02s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.34291324e+04 -1.04814519e+05  8.20e+01 0.00e+00  2.60e+00     1s
+   1  -1.36787416e+04 -6.94938544e+04  1.56e+01 8.88e-16  5.57e-01     1s
+   2  -7.77791995e+03 -2.22892197e+04  1.78e-15 1.33e-15  5.77e-02     1s
+   3  -7.83478037e+03 -7.91123131e+03  6.66e-16 6.66e-16  3.04e-04     1s
+   4  -7.84780635e+03 -7.84788302e+03  3.99e-14 4.44e-16  3.05e-07     1s
+   5  -7.84781941e+03 -7.84781941e+03  6.77e-15 4.44e-16  3.05e-13     2s
+
+Barrier solved model in 5 iterations and 1.61 seconds
+Optimal objective -7.84781941e+03
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 8s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00      8s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  111244   -7.8478194e+03   0.000000e+00   0.000000e+00      8s
+  111244   -7.8478194e+03   0.000000e+00   0.000000e+00      8s
+
+Root relaxation: objective -7.847819e+03, 111244 iterations, 7.90 seconds
+Total elapsed time = 10.65s
+Total elapsed time = 15.52s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -7847.8194    0  989    0.00000 -7847.8194      -     -   19s
+H    0     0                    -7771.004000 -7847.8194  0.99%     -   19s
+
+Explored 0 nodes (119057 simplex iterations) in 19.66 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -7771 0 
+Pool objective bound -7847.82
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -7.771004000000e+03, best bound -7.847819411766e+03, gap 0.9885%
+(0, 7296.0560000011365)
+(1, 7323.1100000011475)
+(2, 7277.0180000011278)
+(3, 7279.0220000011295)
+(4, 7305.0740000011392)
+(5, 7302.068000001138)
+(6, 7296.0560000011355)
+(7, 7256.9780000011197)
+(8, 7318.1000000011445)
+(9, 7283.0300000011312)
+(10, 7311.0860000011417)
+(11, 7406.2760000011804)
+(12, 7378.220000001169)
+(13, 7314.0920000011429)
+(14, 7369.2020000011653)
+(15, 7356.17600000116)
+(16, 7305.0740000011401)
+(17, 7318.1000000011445)
+(18, 7303.0700000011384)
+(19, 7259.9840000011218)
+(20, 7310.0840000011422)
+(21, 7390.2440000011738)
+(22, 7302.0680000011389)
+(23, 7319.1020000011449)
+(24, 7309.0820000011408)
+(25, 7346.1560000011559)
+(26, 7351.1660000011589)
+(27, 7355.1740000011596)
+(28, 7309.0820000011418)
+(29, 7291.0460000011335)
+(30, 7313.0900000011425)
+(31, 7312.088000001143)
+(32, 7291.0460000011344)
+(33, 7304.0720000011388)
+(34, 7270.004000001125)
+(35, 7280.0240000011299)
+(36, 7308.0800000011404)
+(37, 7348.1600000011567)
+(38, 7313.0900000011425)
+(39, 7344.1520000011551)
+(0, 7543.5500000012371)
+(1, 7556.5760000012415)
+(2, 7622.7080000012684)
+(3, 7470.4040000012064)
+(4, 7532.5280000012326)
+(5, 7569.6020000012468)
+(6, 7522.5080000012276)
+(7, 7567.5980000012469)
+(8, 7536.5360000012333)
+(9, 7510.4840000012227)
+(10, 7572.608000001248)
+(11, 7581.6260000012526)
+(12, 7549.5620000012386)
+(13, 7569.6020000012468)
+(14, 7529.5220000012305)
+(15, 7586.6360000012537)
+(16, 7515.4940000012248)
+(17, 7535.5340000012329)
+(18, 7512.4880000012236)
+(19, 7533.5300000012321)
+(20, 7609.6820000012631)
+(21, 7587.6380000012541)
+(22, 7564.5920000012447)
+(23, 7564.5920000012447)
+(24, 7570.6040000012481)
+(25, 7556.5760000012415)
+(26, 7543.5500000012371)
+(27, 7515.4940000012248)
+(28, 7602.6680000012602)
+(29, 7484.4320000012121)
+(30, 7585.6340000012533)
+(31, 7526.5160000012302)
+(32, 7589.6420000012558)
+(33, 7583.6300000012534)
+(34, 7548.5600000012391)
+(35, 7514.4920000012244)
+(36, 7510.4840000012236)
+(37, 7566.5960000012456)
+(38, 7609.682000001264)
+(39, 7515.4940000012257)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.35s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.01s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.35402228e+04 -1.04961066e+05  8.20e+01 0.00e+00  2.61e+00     1s
+   1  -1.37251677e+04 -6.95973896e+04  1.57e+01 8.88e-16  5.59e-01     1s
+   2  -7.79776443e+03 -2.23482884e+04  2.00e-15 1.33e-15  5.79e-02     1s
+   3  -7.85485042e+03 -7.92948458e+03  6.66e-16 6.66e-16  2.97e-04     1s
+   4  -7.86797861e+03 -7.86805344e+03  5.33e-14 4.44e-16  2.98e-07     1s
+   5  -7.86799176e+03 -7.86799176e+03  4.12e-14 4.44e-16  2.98e-13     2s
+
+Barrier solved model in 5 iterations and 1.56 seconds
+Optimal objective -7.86799176e+03
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 9s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 4.3021142e-16      9s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  111489   -7.8679918e+03   0.000000e+00   0.000000e+00      9s
+  111489   -7.8679918e+03   0.000000e+00   0.000000e+00      9s
+
+Root relaxation: objective -7.867992e+03, 111489 iterations, 8.37 seconds
+Total elapsed time = 11.06s
+Total elapsed time = 15.79s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -7867.9918    0  996    0.00000 -7867.9918      -     -   19s
+H    0     0                    -7770.208000 -7867.9918  1.26%     -   19s
+
+Explored 0 nodes (119079 simplex iterations) in 20.05 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -7770.21 0 
+Pool objective bound -7867.99
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -7.770208000000e+03, best bound -7.867991764705e+03, gap 1.2584%
+(0, 7305.3559999994186)
+(1, 7309.3719999994191)
+(2, 7280.255999999421)
+(3, 7352.5439999994142)
+(4, 7325.4359999994167)
+(5, 7310.3759999994181)
+(6, 7249.1319999994239)
+(7, 7310.3759999994181)
+(8, 7340.4959999994153)
+(9, 7279.2519999994211)
+(10, 7326.4399999994166)
+(11, 7321.4199999994171)
+(12, 7280.255999999421)
+(13, 7315.3959999994177)
+(14, 7357.5639999994137)
+(15, 7293.3079999994197)
+(16, 7307.3639999994184)
+(17, 7298.3279999994193)
+(18, 7323.4279999994169)
+(19, 7326.4399999994166)
+(20, 7313.3879999994188)
+(21, 7333.467999999416)
+(22, 7302.3439999994189)
+(23, 7294.3119999994196)
+(24, 7359.5719999994135)
+(25, 7256.1599999994241)
+(26, 7309.3719999994182)
+(27, 7320.4159999994172)
+(28, 7292.3039999994198)
+(29, 7344.5119999994149)
+(30, 7321.4199999994171)
+(31, 7305.3559999994186)
+(32, 7282.2639999994208)
+(33, 7368.6079999994126)
+(34, 7345.5159999994157)
+(35, 7321.4199999994171)
+(36, 7339.4919999994154)
+(37, 7342.5039999994151)
+(38, 7332.463999999416)
+(39, 7355.555999999413)
+(0, 7545.3119999993978)
+(1, 7500.1319999994003)
+(2, 7541.2959999993964)
+(3, 7591.4959999993916)
+(4, 7581.4559999993926)
+(5, 7517.1999999993996)
+(6, 7549.3279999993956)
+(7, 7576.4359999993922)
+(8, 7509.1679999994003)
+(9, 7555.351999999395)
+(10, 7576.4359999993931)
+(11, 7566.395999999394)
+(12, 7524.227999999398)
+(13, 7580.4519999993927)
+(14, 7520.2119999993984)
+(15, 7568.4039999993938)
+(16, 7544.307999999397)
+(17, 7508.1639999993995)
+(18, 7567.3999999993948)
+(19, 7565.3919999993941)
+(20, 7534.267999999397)
+(21, 7563.3839999993943)
+(22, 7531.2559999993964)
+(23, 7464.9919999994036)
+(24, 7537.2799999993968)
+(25, 7543.3039999993962)
+(26, 7538.2839999993967)
+(27, 7566.3959999993949)
+(28, 7519.2079999993985)
+(29, 7539.2879999993966)
+(30, 7545.3119999993969)
+(31, 7521.2159999993992)
+(32, 7502.139999999401)
+(33, 7513.183999999399)
+(34, 7533.2639999993971)
+(35, 7555.351999999395)
+(36, 7570.4119999993936)
+(37, 7515.1919999993988)
+(38, 7568.4039999993938)
+(39, 7542.2999999993963)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.39s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.02s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.35957680e+04 -1.05034340e+05  8.20e+01 0.00e+00  2.61e+00     1s
+   1  -1.37483779e+04 -6.96491597e+04  1.57e+01 8.88e-16  5.59e-01     1s
+   2  -7.80768570e+03 -2.23777584e+04  2.00e-15 1.33e-15  5.80e-02     1s
+   3  -7.86488707e+03 -7.93861889e+03  6.66e-16 6.66e-16  2.93e-04     1s
+   4  -7.87806474e+03 -7.87813865e+03  3.65e-14 4.44e-16  2.94e-07     2s
+   5  -7.87807794e+03 -7.87807794e+03  3.74e-14 6.66e-16  2.94e-13     2s
+
+Barrier solved model in 5 iterations and 1.64 seconds
+Optimal objective -7.87807794e+03
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 8s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00      8s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  111197   -7.8780779e+03   0.000000e+00   0.000000e+00      8s
+  111197   -7.8780779e+03   0.000000e+00   0.000000e+00      8s
+
+Root relaxation: objective -7.878078e+03, 111197 iterations, 7.74 seconds
+Total elapsed time = 10.45s
+Total elapsed time = 16.01s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -7878.0779    0 1014    0.00000 -7878.0779      -     -   17s
+H    0     0                    -7790.500000 -7878.0779  1.12%     -   17s
+
+Explored 0 nodes (117432 simplex iterations) in 18.24 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -7790.5 0 
+Pool objective bound -7878.07
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -7.790500000000e+03, best bound -7.878075000000e+03, gap 1.1241%
+(0, 7371.4150000006875)
+(1, 7373.4250000006878)
+(2, 7406.5900000006914)
+(3, 7378.4500000006883)
+(4, 7380.4600000006894)
+(5, 7357.3450000006869)
+(6, 7404.5800000006911)
+(7, 7362.3700000006866)
+(8, 7370.4100000006874)
+(9, 7379.4550000006884)
+(10, 7409.6050000006917)
+(11, 7409.6050000006917)
+(12, 7349.3050000006851)
+(13, 7373.4250000006878)
+(14, 7362.3700000006866)
+(15, 7344.2800000006846)
+(16, 7347.2950000006849)
+(17, 7418.6500000006927)
+(18, 7364.3800000006868)
+(19, 7368.4000000006872)
+(20, 7372.4200000006867)
+(21, 7334.2300000006835)
+(22, 7354.3300000006857)
+(23, 7381.4650000006886)
+(24, 7396.5400000006903)
+(25, 7368.4000000006872)
+(26, 7366.390000000687)
+(27, 7325.1850000006825)
+(28, 7345.2850000006847)
+(29, 7409.6050000006917)
+(30, 7296.0400000006794)
+(31, 7337.2450000006838)
+(32, 7367.3950000006871)
+(33, 7388.5000000006885)
+(34, 7323.1750000006823)
+(35, 7331.2150000006832)
+(36, 7416.6400000006925)
+(37, 7355.3350000006849)
+(38, 7425.6850000006934)
+(39, 7388.5000000006894)
+(0, 7534.2250000007052)
+(1, 7579.4500000007101)
+(2, 7573.4200000007095)
+(3, 7563.3700000007084)
+(4, 7546.2850000007074)
+(5, 7558.3450000007078)
+(6, 7602.5650000007126)
+(7, 7649.8000000007178)
+(8, 7573.4200000007095)
+(9, 7553.3200000007073)
+(10, 7577.4400000007099)
+(11, 7587.490000000711)
+(12, 7568.3950000007089)
+(13, 7580.4550000007102)
+(14, 7532.215000000705)
+(15, 7534.2250000007061)
+(16, 7571.4100000007084)
+(17, 7566.3850000007096)
+(18, 7581.4600000007104)
+(19, 7583.4700000007106)
+(20, 7555.3300000007075)
+(21, 7563.3700000007084)
+(22, 7566.3850000007087)
+(23, 7562.3650000007083)
+(24, 7560.3550000007081)
+(25, 7528.1950000007046)
+(26, 7583.4700000007106)
+(27, 7562.3650000007083)
+(28, 7577.4400000007099)
+(29, 7587.490000000711)
+(30, 7553.3200000007073)
+(31, 7550.305000000707)
+(32, 7592.5150000007116)
+(33, 7576.4350000007098)
+(34, 7576.4350000007089)
+(35, 7549.3000000007069)
+(36, 7578.44500000071)
+(37, 7584.4750000007116)
+(38, 7528.1950000007046)
+(39, 7593.5200000007117)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.36s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.02s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.38734928e+04 -1.05400710e+05  8.20e+01 0.00e+00  2.62e+00     1s
+   1  -1.38643987e+04 -6.99080343e+04  1.57e+01 8.88e-16  5.62e-01     1s
+   2  -7.85728241e+03 -2.25244704e+04  2.00e-15 1.33e-15  5.83e-02     1s
+   3  -7.91601692e+03 -7.96386746e+03  7.77e-16 6.66e-16  1.90e-04     1s
+   4  -7.92849632e+03 -7.92854436e+03  2.32e-14 4.44e-16  1.91e-07     1s
+   5  -7.92850882e+03 -7.92850882e+03  2.13e-14 4.44e-16  1.91e-13     2s
+
+Barrier solved model in 5 iterations and 1.60 seconds
+Optimal objective -7.92850882e+03
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 9s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00      9s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  112602   -7.9285088e+03   0.000000e+00   0.000000e+00      9s
+  112602   -7.9285088e+03   0.000000e+00   0.000000e+00      9s
+
+Root relaxation: objective -7.928509e+03, 112602 iterations, 8.70 seconds
+Total elapsed time = 11.14s
+Total elapsed time = 15.46s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -7928.5088    0  878    0.00000 -7928.5088      -     -   19s
+H    0     0                    -7852.630000 -7928.5088  0.97%     -   19s
+
+Explored 0 nodes (121140 simplex iterations) in 19.98 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -7852.63 0 
+Pool objective bound -7928.5
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -7.852630000000e+03, best bound -7.928500000000e+03, gap 0.9662%
+(0, 7401.1600000011404)
+(1, 7391.0600000011382)
+(2, 7368.8400000011334)
+(3, 7395.1000000011391)
+(4, 7426.4100000011458)
+(5, 7395.1000000011391)
+(6, 7371.870000001134)
+(7, 7433.4800000011473)
+(8, 7373.8900000011345)
+(9, 7352.6800000011299)
+(10, 7369.8500000011345)
+(11, 7483.9800000011583)
+(12, 7355.7100000011314)
+(13, 7367.8300000011332)
+(14, 7380.960000001136)
+(15, 7389.0400000011377)
+(16, 7343.5900000011288)
+(17, 7408.2300000011419)
+(18, 7395.1000000011391)
+(19, 7319.3500000011236)
+(20, 7382.9800000011373)
+(21, 7374.9000000011347)
+(22, 7422.3700000011449)
+(23, 7383.9900000011376)
+(24, 7437.5200000011482)
+(25, 7433.4800000011473)
+(26, 7385.0000000011369)
+(27, 7373.8900000011345)
+(28, 7377.9300000011353)
+(29, 7355.7100000011305)
+(30, 7427.420000001146)
+(31, 7326.4200000011242)
+(32, 7359.7500000011323)
+(33, 7398.1300000011397)
+(34, 7409.2400000011421)
+(35, 7417.3200000011439)
+(36, 7344.60000000113)
+(37, 7385.0000000011369)
+(38, 7358.7400000011312)
+(39, 7359.7500000011323)
+(0, 7608.210000001186)
+(1, 7565.7900000011768)
+(2, 7625.3800000011897)
+(3, 7608.2100000011851)
+(4, 7643.5600000011927)
+(5, 7611.2400000011858)
+(6, 7593.0600000011818)
+(7, 7642.5500000011934)
+(8, 7562.7600000011753)
+(9, 7562.7600000011753)
+(10, 7615.2800000011866)
+(11, 7601.1400000011836)
+(12, 7610.2300000011855)
+(13, 7597.1000000011827)
+(14, 7620.3300000011877)
+(15, 7619.3200000011875)
+(16, 7625.3800000011888)
+(17, 7576.9000000011793)
+(18, 7617.300000001188)
+(19, 7637.5000000011923)
+(20, 7599.1200000011831)
+(21, 7608.210000001186)
+(22, 7617.3000000011871)
+(23, 7617.300000001188)
+(24, 7637.5000000011914)
+(25, 7617.3000000011871)
+(26, 7592.0500000011816)
+(27, 7600.1300000011834)
+(28, 7644.570000001193)
+(29, 7605.1800000011845)
+(30, 7584.9800000011801)
+(31, 7571.8500000011772)
+(32, 7617.3000000011871)
+(33, 7591.0400000011823)
+(34, 7634.4700000011908)
+(35, 7628.4100000011904)
+(36, 7573.8700000011777)
+(37, 7641.5400000011923)
+(38, 7616.2900000011869)
+(39, 7632.4500000011903)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.34s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.01s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.44289381e+04 -1.06133449e+05  8.20e+01 0.00e+00  2.63e+00     1s
+   1  -1.40962664e+04 -7.04258975e+04  1.59e+01 8.88e-16  5.68e-01     1s
+   2  -7.95642827e+03 -2.28147577e+04  2.00e-15 1.33e-15  5.91e-02     1s
+   3  -8.01682683e+03 -8.05015225e+03  6.66e-16 6.66e-16  1.33e-04     1s
+   4  -8.02935803e+03 -8.02939149e+03  6.00e-15 4.44e-16  1.33e-07     1s
+   5  -8.02937059e+03 -8.02937059e+03  7.36e-15 4.44e-16  1.33e-13     2s
+
+Barrier solved model in 5 iterations and 1.56 seconds
+Optimal objective -8.02937059e+03
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 9s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 3.4694470e-15      9s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  111890   -8.0293706e+03   0.000000e+00   0.000000e+00      9s
+  111890   -8.0293706e+03   0.000000e+00   0.000000e+00      9s
+
+Root relaxation: objective -8.029371e+03, 111890 iterations, 8.50 seconds
+Total elapsed time = 10.88s
+Total elapsed time = 17.33s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -8029.3706    0  897    0.00000 -8029.3706      -     -   19s
+H    0     0                    -7941.820000 -8029.3706  1.10%     -   19s
+
+Explored 0 nodes (120046 simplex iterations) in 19.65 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -7941.82 0 
+Pool objective bound -8029.36
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -7.941820000000e+03, best bound -8.029360000000e+03, gap 1.1023%
+(0, 7413.460000001357)
+(1, 7441.0000000013688)
+(2, 7464.4600000013797)
+(3, 7422.6400000013609)
+(4, 7446.100000001371)
+(5, 7460.3800000013771)
+(6, 7488.9400000013893)
+(7, 7395.1000000013491)
+(8, 7395.1000000013491)
+(9, 7375.7200000013418)
+(10, 7510.3600000013985)
+(11, 7502.200000001395)
+(12, 7466.5000000013797)
+(13, 7424.6800000013627)
+(14, 7460.3800000013771)
+(15, 7385.9200000013461)
+(16, 7371.6400000013391)
+(17, 7453.2400000013749)
+(18, 7412.4400000013575)
+(19, 7441.0000000013688)
+(20, 7483.840000001388)
+(21, 7484.8600000013876)
+(22, 7500.160000001395)
+(23, 7393.0600000013492)
+(24, 7390.000000001347)
+(25, 7455.2800000013749)
+(26, 7391.0200000013474)
+(27, 7431.8200000013649)
+(28, 7456.3000000013753)
+(29, 7466.5000000013797)
+(30, 7409.3800000013553)
+(31, 7481.8000000013872)
+(32, 7387.9600000013461)
+(33, 7455.2800000013749)
+(34, 7403.2600000013535)
+(35, 7419.5800000013605)
+(36, 7394.0800000013478)
+(37, 7411.420000001357)
+(38, 7432.8400000013662)
+(39, 7373.6800000013409)
+(0, 7563.4000000014212)
+(1, 7638.8800000014535)
+(2, 7685.8000000014736)
+(3, 7622.5600000014474)
+(4, 7599.1000000014374)
+(5, 7652.1400000014592)
+(6, 7642.9600000014552)
+(7, 7649.0800000014578)
+(8, 7650.1000000014583)
+(9, 7600.1200000014369)
+(10, 7642.9600000014552)
+(11, 7701.1000000014801)
+(12, 7688.8600000014749)
+(13, 7622.5600000014474)
+(14, 7604.2000000014386)
+(15, 7696.0000000014788)
+(16, 7646.0200000014565)
+(17, 7712.3200000014849)
+(18, 7703.140000001481)
+(19, 7669.4800000014675)
+(20, 7642.9600000014552)
+(21, 7645.0000000014552)
+(22, 7649.0800000014578)
+(23, 7634.8000000014517)
+(24, 7621.5400000014461)
+(25, 7693.960000001478)
+(26, 7633.7800000014513)
+(27, 7603.1800000014391)
+(28, 7664.3800000014644)
+(29, 7658.2600000014627)
+(30, 7716.4000000014867)
+(31, 7574.620000001426)
+(32, 7637.860000001454)
+(33, 7677.640000001471)
+(34, 7639.9000000014539)
+(35, 7628.68000000145)
+(36, 7613.3800000014426)
+(37, 7685.8000000014736)
+(38, 7651.1200000014596)
+(39, 7651.1200000014587)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.35s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.02s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.55398189e+04 -1.07661960e+05  8.20e+01 0.00e+00  2.67e+00     1s
+   1  -1.45638244e+04 -7.15034748e+04  1.61e+01 7.77e-16  5.81e-01     1s
+   2  -8.15455218e+03 -2.34062179e+04  2.11e-15 1.33e-15  6.07e-02     1s
+   3  -8.21815489e+03 -8.24825053e+03  6.66e-16 6.66e-16  1.20e-04     1s
+   4  -8.23108115e+03 -8.23111133e+03  6.11e-15 4.44e-16  1.20e-07     1s
+   5  -8.23109412e+03 -8.23109412e+03  6.88e-15 4.44e-16  1.20e-13     2s
+
+Barrier solved model in 5 iterations and 1.55 seconds
+Optimal objective -8.23109412e+03
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 8s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00      8s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  111678   -8.2310941e+03   0.000000e+00   0.000000e+00      9s
+  111678   -8.2310941e+03   0.000000e+00   0.000000e+00      9s
+
+Root relaxation: objective -8.231094e+03, 111678 iterations, 8.26 seconds
+Total elapsed time = 10.89s
+Total elapsed time = 15.83s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -8231.0941    0  941    0.00000 -8231.0941      -     -   17s
+H    0     0                    -8134.360000 -8231.0941  1.19%     -   18s
+
+Explored 0 nodes (117802 simplex iterations) in 18.35 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -8134.36 0 
+Pool objective bound -8231.08
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -8.134360000000e+03, best bound -8.231080000000e+03, gap 1.1890%
+(0, 7595.6399999997566)
+(1, 7542.5999999997584)
+(2, 7602.9199999997563)
+(3, 7538.4399999997568)
+(4, 7644.5199999997521)
+(5, 7573.7999999997573)
+(6, 7535.3199999997596)
+(7, 7588.3599999997568)
+(8, 7570.6799999997565)
+(9, 7528.0399999997599)
+(10, 7576.9199999997572)
+(11, 7574.8399999997564)
+(12, 7568.5999999997584)
+(13, 7573.7999999997564)
+(14, 7604.9999999997563)
+(15, 7604.9999999997572)
+(16, 7537.3999999997568)
+(17, 7558.1999999997597)
+(18, 7620.5999999997557)
+(19, 7608.1199999997552)
+(20, 7625.7999999997537)
+(21, 7549.8799999997564)
+(22, 7560.2799999997569)
+(23, 7604.9999999997553)
+(24, 7541.5599999997594)
+(25, 7578.9999999997563)
+(26, 7609.1599999997579)
+(27, 7587.3199999997578)
+(28, 7569.6399999997575)
+(29, 7569.6399999997584)
+(30, 7569.6399999997566)
+(31, 7543.6399999997575)
+(32, 7567.5599999997567)
+(33, 7629.9599999997554)
+(34, 7573.7999999997564)
+(35, 7573.7999999997573)
+(36, 7609.159999999757)
+(37, 7576.9199999997591)
+(38, 7555.079999999758)
+(39, 7617.4799999997558)
+(0, 7762.0399999997517)
+(1, 7749.5599999997512)
+(2, 7736.0399999997526)
+(3, 7759.9599999997499)
+(4, 7752.679999999752)
+(5, 7747.4799999997504)
+(6, 7732.9199999997509)
+(7, 7775.5599999997485)
+(8, 7788.0399999997489)
+(9, 7785.9599999997499)
+(10, 7788.0399999997508)
+(11, 7742.2799999997524)
+(12, 7757.8799999997491)
+(13, 7748.5199999997503)
+(14, 7847.3199999997451)
+(15, 7817.1599999997497)
+(16, 7744.3599999997523)
+(17, 7746.4399999997504)
+(18, 7772.4399999997495)
+(19, 7757.8799999997491)
+(20, 7779.7199999997511)
+(21, 7731.8799999997518)
+(22, 7754.7599999997501)
+(23, 7733.9599999997508)
+(24, 7789.0799999997498)
+(25, 7795.3199999997469)
+(26, 7781.7999999997492)
+(27, 7789.0799999997489)
+(28, 7767.2399999997497)
+(29, 7764.1199999997516)
+(30, 7768.2799999997487)
+(31, 7727.7199999997501)
+(32, 7838.9999999997481)
+(33, 7777.6399999997502)
+(34, 7738.1199999997507)
+(35, 7771.3999999997486)
+(36, 7796.3599999997477)
+(37, 7777.6399999997484)
+(38, 7723.559999999753)
+(39, 7732.9199999997527)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.35s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.02s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.60952585e+04 -1.08489809e+05  8.20e+01 0.00e+00  2.69e+00     1s
+   1  -1.47999356e+04 -7.20810000e+04  1.62e+01 9.44e-16  5.87e-01     1s
+   2  -8.25348863e+03 -2.37138451e+04  2.00e-15 1.33e-15  6.15e-02     1s
+   3  -8.31852392e+03 -8.36629406e+03  6.66e-16 6.66e-16  1.90e-04     1s
+   4  -8.33194241e+03 -8.33199034e+03  3.89e-15 4.44e-16  1.91e-07     1s
+   5  -8.33195588e+03 -8.33195588e+03  6.80e-15 4.44e-16  1.91e-13     2s
+
+Barrier solved model in 5 iterations and 1.61 seconds
+Optimal objective -8.33195588e+03
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 8s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00      8s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  112172   -8.3319559e+03   0.000000e+00   0.000000e+00      8s
+  112172   -8.3319559e+03   0.000000e+00   0.000000e+00      8s
+
+Root relaxation: objective -8.331956e+03, 112172 iterations, 7.70 seconds
+Total elapsed time = 10.50s
+Total elapsed time = 15.13s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -8331.9559    0  925    0.00000 -8331.9559      -     -   19s
+H    0     0                    -8238.300000 -8331.9559  1.14%     -   19s
+
+Explored 0 nodes (121293 simplex iterations) in 20.06 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -8238.3 0 
+Pool objective bound -8331.75
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -8.238300000000e+03, best bound -8.331750000000e+03, gap 1.1343%
+(0, 7711.2000000009139)
+(1, 7662.9000000009073)
+(2, 7712.250000000915)
+(3, 7658.7000000009066)
+(4, 7661.8500000009062)
+(5, 7684.9500000009102)
+(6, 7702.8000000009133)
+(7, 7657.6500000009055)
+(8, 7663.9500000009075)
+(9, 7624.0500000008997)
+(10, 7721.7000000009166)
+(11, 7599.9000000008964)
+(12, 7650.3000000009042)
+(13, 7638.7500000009022)
+(14, 7723.800000000917)
+(15, 7688.1000000009117)
+(16, 7649.2500000009049)
+(17, 7725.9000000009173)
+(18, 7636.6500000009019)
+(19, 7678.6500000009091)
+(20, 7628.2500000008995)
+(21, 7669.2000000009084)
+(22, 7639.8000000009024)
+(23, 7682.8500000009099)
+(24, 7657.6500000009055)
+(25, 7613.5500000008979)
+(26, 7703.8500000009135)
+(27, 7639.8000000009015)
+(28, 7708.0500000009151)
+(29, 7654.5000000009059)
+(30, 7676.5500000009088)
+(31, 7686.0000000009113)
+(32, 7647.1500000009037)
+(33, 7658.7000000009066)
+(34, 7652.4000000009037)
+(35, 7649.250000000904)
+(36, 7648.2000000009039)
+(37, 7659.7500000009068)
+(38, 7658.7000000009057)
+(39, 7660.800000000906)
+(0, 7915.9500000009493)
+(1, 7912.8000000009497)
+(2, 7866.6000000009417)
+(3, 7965.3000000009588)
+(4, 7869.7500000009413)
+(5, 7908.600000000949)
+(6, 7952.7000000009575)
+(7, 7911.7500000009495)
+(8, 7941.1500000009546)
+(9, 7882.3500000009435)
+(10, 7991.5500000009642)
+(11, 7912.8000000009515)
+(12, 7972.6500000009601)
+(13, 7919.1000000009508)
+(14, 7888.6500000009455)
+(15, 7939.0500000009552)
+(16, 7960.0500000009579)
+(17, 7860.3000000009397)
+(18, 7922.2500000009504)
+(19, 7970.5500000009597)
+(20, 7917.0000000009495)
+(21, 7908.600000000949)
+(22, 7991.5500000009633)
+(23, 7968.4500000009593)
+(24, 7904.4000000009482)
+(25, 7946.4000000009564)
+(26, 7936.9500000009539)
+(27, 7845.6000000009381)
+(28, 7949.550000000957)
+(29, 7831.9500000009357)
+(30, 7911.7500000009495)
+(31, 7991.5500000009642)
+(32, 7956.9000000009573)
+(33, 7960.0500000009588)
+(34, 7965.3000000009588)
+(35, 7968.4500000009593)
+(36, 7923.3000000009524)
+(37, 7965.3000000009588)
+(38, 7919.1000000009499)
+(39, 7911.7500000009486)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 2e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.37s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.02s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.88723901e+04 -1.12629057e+05  8.20e+01 0.00e+00  2.78e+00     1s
+   1  -1.59160057e+04 -7.50305054e+04  1.66e+01 8.88e-16  6.17e-01     1s
+   2  -8.74597791e+03 -2.50893977e+04  1.89e-15 1.33e-15  6.50e-02     1s
+   3  -8.81803128e+03 -8.93011131e+03  6.66e-16 6.66e-16  4.46e-04     1s
+   4  -8.83624636e+03 -8.83635946e+03  2.22e-15 4.44e-16  4.50e-07     1s
+   5  -8.83626471e+03 -8.83626471e+03  2.11e-15 4.44e-16  4.50e-13     2s
+
+Barrier solved model in 5 iterations and 1.57 seconds
+Optimal objective -8.83626471e+03
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 8s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00      8s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  111409   -8.8362647e+03   0.000000e+00   0.000000e+00      8s
+  111409   -8.8362647e+03   0.000000e+00   0.000000e+00      8s
+
+Root relaxation: objective -8.836265e+03, 111409 iterations, 7.93 seconds
+Total elapsed time = 10.50s
+Total elapsed time = 15.47s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -8836.2647    0  944    0.00000 -8836.2647      -     -   19s
+H    0     0                    -8703.900000 -8836.2647  1.52%     -   20s
+
+Explored 0 nodes (121040 simplex iterations) in 20.44 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -8703.9 0 
+Pool objective bound -8836.2
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -8.703900000000e+03, best bound -8.836200000000e+03, gap 1.5200%
+(0, 8160.5000000010987)
+(1, 8145.1000000010936)
+(2, 8138.5000000010914)
+(3, 8117.6000000010845)
+(4, 8092.3000000010761)
+(5, 8149.5000000010959)
+(6, 8175.9000000011038)
+(7, 8107.7000000010812)
+(8, 8148.4000000010947)
+(9, 8147.3000000010952)
+(10, 8182.500000001105)
+(11, 8111.0000000010823)
+(12, 8157.2000000010976)
+(13, 8098.9000000010783)
+(14, 8163.8000000010998)
+(15, 8157.2000000010967)
+(16, 8127.5000000010887)
+(17, 8195.7000000011103)
+(18, 8146.2000000010948)
+(19, 8161.6000000010981)
+(20, 8170.4000000011019)
+(21, 8216.6000000011172)
+(22, 8125.300000001087)
+(23, 8123.1000000010863)
+(24, 8195.7000000011103)
+(25, 8130.8000000010898)
+(26, 8131.9000000010901)
+(27, 8131.9000000010883)
+(28, 8179.2000000011049)
+(29, 8159.4000000010983)
+(30, 8063.7000000010667)
+(31, 8135.2000000010912)
+(32, 8147.3000000010952)
+(33, 8179.2000000011049)
+(34, 8201.2000000011121)
+(35, 8167.1000000010999)
+(36, 8147.3000000010934)
+(37, 8125.300000001087)
+(38, 8150.6000000010954)
+(39, 8172.6000000011018)
+(0, 8410.2000000011813)
+(1, 8466.300000001198)
+(2, 8478.4000000012038)
+(3, 8398.1000000011772)
+(4, 8350.8000000011598)
+(5, 8353.0000000011623)
+(6, 8381.6000000011718)
+(7, 8390.4000000011747)
+(8, 8343.1000000011591)
+(9, 8410.2000000011813)
+(10, 8406.9000000011802)
+(11, 8378.3000000011707)
+(12, 8375.0000000011696)
+(13, 8323.3000000011525)
+(14, 8420.1000000011845)
+(15, 8348.6000000011609)
+(16, 8375.0000000011696)
+(17, 8455.3000000011962)
+(18, 8369.500000001166)
+(19, 8389.3000000011743)
+(20, 8362.9000000011656)
+(21, 8320.0000000011514)
+(22, 8486.1000000012064)
+(23, 8347.5000000011605)
+(24, 8379.4000000011692)
+(25, 8436.60000000119)
+(26, 8388.2000000011722)
+(27, 8427.8000000011853)
+(28, 8372.8000000011689)
+(29, 8441.0000000011914)
+(30, 8375.0000000011696)
+(31, 8388.200000001174)
+(32, 8387.1000000011736)
+(33, 8394.800000001178)
+(34, 8356.3000000011634)
+(35, 8403.6000000011791)
+(36, 8400.300000001178)
+(37, 8464.1000000011991)
+(38, 8392.6000000011754)
+(39, 8371.7000000011685)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 3e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.35s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.01s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -4.44313555e+04 -1.64115973e+05  8.20e+01 0.00e+00  4.14e+00     1s
+   1  -1.79169500e+04 -1.07822456e+05  1.69e+01 1.55e-15  9.27e-01     1s
+   2  -9.74881667e+03 -3.42394651e+04  1.24e-01 1.55e-15  9.97e-02     1s
+   3  -9.78918090e+03 -1.02176997e+04  7.77e-16 1.33e-15  1.70e-03     1s
+   4  -9.84481021e+03 -9.84656866e+03  1.11e-15 8.88e-16  6.99e-06     1s
+   5  -9.84488235e+03 -9.84488235e+03  1.78e-15 8.88e-16  7.91e-12     2s
+
+Barrier solved model in 5 iterations and 1.59 seconds
+Optimal objective -9.84488235e+03
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 9s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00      9s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  114296   -9.8448824e+03   0.000000e+00   0.000000e+00      9s
+  114296   -9.8448824e+03   0.000000e+00   0.000000e+00      9s
+
+Root relaxation: objective -9.844882e+03, 114296 iterations, 8.66 seconds
+Total elapsed time = 11.35s
+Total elapsed time = 16.50s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -9844.8824    0  730    0.00000 -9844.8824      -     -   20s
+H    0     0                    -9695.200000 -9844.8824  1.54%     -   21s
+
+Explored 0 nodes (125648 simplex iterations) in 21.41 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -9695.2 0 
+Pool objective bound -9844.8
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -9.695200000000e+03, best bound -9.844800000000e+03, gap 1.5430%
+(0, 9033.9999999996289)
+(1, 9012.3999999996176)
+(2, 9005.1999999996133)
+(3, 9041.1999999996333)
+(4, 9026.7999999996246)
+(5, 9045.9999999996362)
+(6, 9007.5999999996129)
+(7, 9074.7999999996555)
+(8, 9049.5999999996384)
+(9, 8964.3999999995885)
+(10, 8937.9999999995725)
+(11, 9042.399999999634)
+(12, 9042.399999999634)
+(13, 8967.9999999995889)
+(14, 9015.999999999618)
+(15, 9055.599999999642)
+(16, 8999.1999999996078)
+(17, 9051.9999999996398)
+(18, 8979.999999999598)
+(19, 9005.1999999996133)
+(20, 9003.9999999996126)
+(21, 8987.1999999996005)
+(22, 9025.5999999996238)
+(23, 9042.3999999996358)
+(24, 9072.399999999654)
+(25, 9087.9999999996617)
+(26, 8977.5999999995965)
+(27, 9030.3999999996267)
+(28, 9063.9999999996471)
+(29, 9062.7999999996464)
+(30, 9031.5999999996275)
+(31, 9019.5999999996202)
+(32, 8995.5999999996056)
+(33, 9008.7999999996136)
+(34, 8999.1999999996078)
+(35, 9018.3999999996213)
+(36, 9098.7999999996682)
+(37, 8995.5999999996056)
+(38, 8951.1999999995787)
+(39, 9155.1999999997042)
+(0, 9347.1999999998206)
+(1, 9350.7999999998228)
+(2, 9301.599999999793)
+(3, 9381.9999999998399)
+(4, 9259.5999999997657)
+(5, 9276.3999999997759)
+(6, 9351.9999999998217)
+(7, 9306.3999999997941)
+(8, 9315.9999999998017)
+(9, 9288.3999999997832)
+(10, 9255.9999999997635)
+(11, 9273.9999999997744)
+(12, 9366.3999999998305)
+(13, 9241.5999999997548)
+(14, 9355.5999999998257)
+(15, 9277.5999999997766)
+(16, 9271.599999999773)
+(17, 9254.7999999997628)
+(18, 9255.9999999997635)
+(19, 9277.5999999997766)
+(20, 9366.3999999998305)
+(21, 9284.799999999781)
+(22, 9285.9999999997835)
+(23, 9325.5999999998076)
+(24, 9351.9999999998217)
+(25, 9300.3999999997905)
+(26, 9323.1999999998061)
+(27, 9327.9999999998072)
+(28, 9338.7999999998137)
+(29, 9297.999999999789)
+(30, 9275.1999999997752)
+(31, 9252.3999999997632)
+(32, 9345.9999999998199)
+(33, 9289.5999999997857)
+(34, 9386.7999999998428)
+(35, 9307.5999999997966)
+(36, 9321.9999999998054)
+(37, 9379.5999999998403)
+(38, 9306.3999999997959)
+(39, 9252.3999999997613)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+00, 4e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.35s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.02s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -5.55490780e+04 -2.95479074e+05  8.20e+01 2.22e-16  7.64e+00     1s
+   1  -2.18672506e+04 -1.91344148e+05  1.69e+01 2.66e-15  1.71e+00     1s
+   2  -1.17059541e+04 -5.78010562e+04  1.29e-01 2.44e-15  1.88e-01     1s
+   3  -1.17325307e+04 -1.26964179e+04  3.72e-04 1.78e-15  3.84e-03     1s
+   4  -1.18618769e+04 -1.18732186e+04  1.67e-15 1.78e-15  4.51e-05     1s
+   5  -1.18621176e+04 -1.18621177e+04  3.66e-15 1.78e-15  1.93e-10     2s
+
+Barrier solved model in 5 iterations and 1.63 seconds
+Optimal objective -1.18621176e+04
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 9s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00      9s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  114385   -1.1862118e+04   0.000000e+00   0.000000e+00     10s
+  114385   -1.1862118e+04   0.000000e+00   0.000000e+00     10s
+
+Root relaxation: objective -1.186212e+04, 114385 iterations, 9.32 seconds
+Total elapsed time = 12.20s
+Total elapsed time = 15.71s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -11862.118    0  762    0.00000 -11862.118      -     -   18s
+H    0     0                    -11648.00000 -11862.118  1.84%     -   18s
+
+Explored 0 nodes (121680 simplex iterations) in 19.02 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -11648 0 
+Pool objective bound -11860.8
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -1.164800000000e+04, best bound -1.186080000000e+04, gap 1.8269%
+(0, 10771.599999998454)
+(1, 10778.599999998452)
+(2, 10821.999999998443)
+(3, 10735.199999998466)
+(4, 10865.399999998432)
+(5, 10840.199999998438)
+(6, 10772.999999998456)
+(7, 10831.799999998439)
+(8, 10879.399999998428)
+(9, 10863.999999998432)
+(10, 10872.399999998428)
+(11, 10774.399999998455)
+(12, 10852.799999998435)
+(13, 10852.799999998433)
+(14, 10791.199999998449)
+(15, 10765.999999998456)
+(16, 10805.199999998445)
+(17, 10876.599999998429)
+(18, 10845.799999998437)
+(19, 10845.799999998435)
+(20, 10791.199999998449)
+(21, 10848.599999998434)
+(22, 10767.399999998455)
+(23, 10921.399999998415)
+(24, 10824.79999999844)
+(25, 10872.399999998428)
+(26, 10870.999999998428)
+(27, 10845.799999998435)
+(28, 10786.999999998452)
+(29, 10781.399999998453)
+(30, 10914.399999998419)
+(31, 10886.399999998426)
+(32, 10821.999999998441)
+(33, 10851.399999998435)
+(34, 10819.199999998442)
+(35, 10750.599999998458)
+(36, 10851.399999998433)
+(37, 10760.399999998457)
+(38, 10854.199999998433)
+(39, 10893.399999998424)
+(0, 11253.199999998329)
+(1, 11255.99999999833)
+(2, 11239.199999998335)
+(3, 11149.599999998356)
+(4, 11170.599999998351)
+(5, 11258.799999998329)
+(6, 11304.999999998317)
+(7, 11255.99999999833)
+(8, 11254.599999998331)
+(9, 11246.199999998331)
+(10, 11240.599999998334)
+(11, 11281.199999998322)
+(12, 11304.999999998316)
+(13, 11272.799999998324)
+(14, 11296.599999998318)
+(15, 11292.399999998319)
+(16, 11257.399999998328)
+(17, 11234.999999998334)
+(18, 11253.199999998329)
+(19, 11282.599999998321)
+(20, 11290.999999998321)
+(21, 11254.599999998327)
+(22, 11220.999999998339)
+(23, 11297.999999998317)
+(24, 11278.399999998323)
+(25, 11288.19999999832)
+(26, 11265.799999998326)
+(27, 11233.599999998336)
+(28, 11199.999999998341)
+(29, 11178.999999998348)
+(30, 11302.199999998316)
+(31, 11188.799999998346)
+(32, 11229.399999998337)
+(33, 11248.999999998332)
+(34, 11184.599999998349)
+(35, 11246.199999998333)
+(36, 11255.999999998328)
+(37, 11218.199999998338)
+(38, 11237.799999998333)
+(39, 11136.999999998361)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [2e+00, 5e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.35s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.02s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -6.11073806e+04 -3.61164355e+05  8.20e+01 4.44e-16  9.39e+00     1s
+   1  -2.39305260e+04 -2.33222762e+05  1.70e+01 2.89e-15  2.10e+00     1s
+   2  -1.27208013e+04 -6.97498584e+04  1.48e-01 2.66e-15  2.33e-01     1s
+   3  -1.27168308e+04 -1.40867933e+04  1.22e-03 1.78e-15  5.46e-03     1s
+   4  -1.28704085e+04 -1.28888077e+04  8.88e-16 1.78e-15  7.32e-05     1s
+   5  -1.28707353e+04 -1.28707354e+04  4.11e-15 1.78e-15  5.19e-10     2s
+   6  -1.28707353e+04 -1.28707353e+04  1.19e-14 1.78e-15  5.75e-16     2s
+
+Barrier solved model in 6 iterations and 1.74 seconds
+Optimal objective -1.28707353e+04
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 9s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 4.9960036e-16      9s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  109731   -1.2870735e+04   0.000000e+00   0.000000e+00      9s
+  109731   -1.2870735e+04   0.000000e+00   0.000000e+00     10s
+
+Root relaxation: objective -1.287074e+04, 109731 iterations, 9.21 seconds
+Total elapsed time = 12.11s
+Total elapsed time = 16.11s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -12870.735    0  906    0.00000 -12870.735      -     -   19s
+H    0     0                    -12570.00000 -12870.735  2.39%     -   19s
+
+Explored 0 nodes (116283 simplex iterations) in 20.25 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -12570 0 
+Pool objective bound -12870.5
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -1.257000000000e+04, best bound -1.287050000000e+04, gap 2.3906%
+(0, 11800.5)
+(1, 11833.5)
+(2, 11832.0)
+(3, 11785.5)
+(4, 11785.5)
+(5, 11724.0)
+(6, 11851.5)
+(7, 11794.5)
+(8, 11799.0)
+(9, 11842.5)
+(10, 11793.0)
+(11, 11785.5)
+(12, 11850.0)
+(13, 11772.0)
+(14, 11896.5)
+(15, 11785.5)
+(16, 11749.5)
+(17, 11812.5)
+(18, 11734.5)
+(19, 11893.5)
+(20, 11797.5)
+(21, 11860.5)
+(22, 11787.0)
+(23, 11803.5)
+(24, 11799.0)
+(25, 11860.5)
+(26, 11826.0)
+(27, 11830.5)
+(28, 11856.0)
+(29, 11818.5)
+(30, 11820.0)
+(31, 11857.5)
+(32, 11776.5)
+(33, 11850.0)
+(34, 11751.0)
+(35, 11821.5)
+(36, 11848.5)
+(37, 11764.5)
+(38, 11802.0)
+(39, 11809.5)
+(0, 12049.5)
+(1, 12132.0)
+(2, 12085.5)
+(3, 12202.5)
+(4, 12204.0)
+(5, 12162.0)
+(6, 12172.5)
+(7, 12132.0)
+(8, 12058.5)
+(9, 12087.0)
+(10, 12118.5)
+(11, 12177.0)
+(12, 12142.5)
+(13, 12108.0)
+(14, 12156.0)
+(15, 12201.0)
+(16, 12112.5)
+(17, 12133.5)
+(18, 12112.5)
+(19, 12150.0)
+(20, 12184.5)
+(21, 12117.0)
+(22, 12166.5)
+(23, 12103.5)
+(24, 12229.5)
+(25, 12141.0)
+(26, 12100.5)
+(27, 12120.0)
+(28, 12219.0)
+(29, 12144.0)
+(30, 12121.5)
+(31, 12163.5)
+(32, 12181.5)
+(33, 12172.5)
+(34, 12099.0)
+(35, 12133.5)
+(36, 12112.5)
+(37, 12163.5)
+(38, 12147.0)
+(39, 12097.5)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [2e+00, 9e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.33s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.01s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -8.88976149e+04 -6.89590761e+05  8.20e+01 8.88e-16  1.81e+01     1s
+   1  -3.44027367e+04 -4.42672272e+05  1.73e+01 5.33e-15  4.11e+00     1s
+   2  -1.78647800e+04 -1.30108123e+05  1.95e-01 6.22e-15  4.61e-01     1s
+   3  -1.77458113e+04 -1.90559286e+04  4.84e-03 3.55e-15  5.24e-03     1s
+   4  -1.79080465e+04 -1.79507310e+04  2.66e-15 3.55e-15  1.70e-04     1s
+   5  -1.79138184e+04 -1.79138623e+04  8.88e-15 3.55e-15  1.75e-07     2s
+   6  -1.79138235e+04 -1.79138235e+04  3.62e-14 5.33e-15  1.75e-13     2s
+
+Barrier solved model in 6 iterations and 1.67 seconds
+Optimal objective -1.79138235e+04
+
+
+Root crossover log...
+
+       0 PPushes remaining with PInf 0.0000000e+00                 9s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00      9s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  113432   -1.7913824e+04   0.000000e+00   0.000000e+00      9s
+  113432   -1.7913824e+04   0.000000e+00   0.000000e+00      9s
+
+Root relaxation: objective -1.791382e+04, 113432 iterations, 8.65 seconds
+Total elapsed time = 11.13s
+Total elapsed time = 15.70s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -17913.824    0  900    0.00000 -17913.824      -     -   20s
+H    0     0                    -17362.00000 -17913.824  3.18%     -   20s
+
+Explored 0 nodes (122576 simplex iterations) in 20.62 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -17362 0 
+Pool objective bound -17913
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -1.736200000000e+04, best bound -1.791300000000e+04, gap 3.1736%
+(0, 16304.0)
+(1, 16474.0)
+(2, 16568.0)
+(3, 16394.0)
+(4, 16472.0)
+(5, 16328.0)
+(6, 16444.0)
+(7, 16450.0)
+(8, 16336.0)
+(9, 16380.0)
+(10, 16378.0)
+(11, 16382.0)
+(12, 16376.0)
+(13, 16392.0)
+(14, 16404.0)
+(15, 16370.0)
+(16, 16512.0)
+(17, 16406.0)
+(18, 16424.0)
+(19, 16358.0)
+(20, 16408.0)
+(21, 16408.0)
+(22, 16402.0)
+(23, 16418.0)
+(24, 16424.0)
+(25, 16374.0)
+(26, 16460.0)
+(27, 16394.0)
+(28, 16402.0)
+(29, 16506.0)
+(30, 16414.0)
+(31, 16332.0)
+(32, 16452.0)
+(33, 16348.0)
+(34, 16428.0)
+(35, 16468.0)
+(36, 16392.0)
+(37, 16456.0)
+(38, 16426.0)
+(39, 16380.0)
+(0, 16968.0)
+(1, 16928.0)
+(2, 16784.0)
+(3, 16920.0)
+(4, 16768.0)
+(5, 16784.0)
+(6, 16790.0)
+(7, 16870.0)
+(8, 16768.0)
+(9, 16826.0)
+(10, 16788.0)
+(11, 17004.0)
+(12, 16866.0)
+(13, 16720.0)
+(14, 16850.0)
+(15, 16824.0)
+(16, 16792.0)
+(17, 16934.0)
+(18, 16814.0)
+(19, 16766.0)
+(20, 16838.0)
+(21, 16774.0)
+(22, 16776.0)
+(23, 16796.0)
+(24, 16754.0)
+(25, 16772.0)
+(26, 16886.0)
+(27, 16694.0)
+(28, 16844.0)
+(29, 16868.0)
+(30, 16808.0)
+(31, 16910.0)
+(32, 16752.0)
+(33, 16864.0)
+(34, 16802.0)
+(35, 16794.0)
+(36, 16844.0)
+(37, 16982.0)
+(38, 16736.0)
+(39, 16858.0)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [3e+00, 2e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.33s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.01s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -1.44476711e+05 -1.34644357e+06  8.21e+01 1.78e-15  3.56e+01     1s
+   1  -5.54123979e+04 -8.61664967e+05  1.75e+01 1.07e-14  8.12e+00     1s
+   2  -2.82197081e+04 -2.51071858e+05  2.12e-01 8.88e-15  9.18e-01     1s
+   3  -2.79819722e+04 -2.98470899e+04  6.47e-03 7.44e-15  7.48e-03     1s
+   4  -2.79999676e+04 -2.80018545e+04  5.11e-15 7.11e-15  7.51e-06     1s
+   5  -2.80000000e+04 -2.80000000e+04  8.77e-15 7.11e-15  7.52e-12     2s
+
+Barrier solved model in 5 iterations and 1.56 seconds
+Optimal objective -2.80000000e+04
+
+
+Root crossover log...
+
+   19447 PPushes remaining with PInf 0.0000000e+00                10s
+       0 PPushes remaining with PInf 0.0000000e+00                11s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00     11s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  121872   -2.8000000e+04   0.000000e+00   0.000000e+00     12s
+  121872   -2.8000000e+04   0.000000e+00   0.000000e+00     12s
+
+Root relaxation: objective -2.800000e+04, 121872 iterations, 11.27 seconds
+Total elapsed time = 15.84s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -28000.000    0  598    0.00000 -28000.000      -     -   21s
+H    0     0                    -27614.00000 -28000.000  1.40%     -   21s
+
+Explored 0 nodes (130636 simplex iterations) in 22.21 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -27614 0 
+Pool objective bound -28000
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -2.761400000000e+04, best bound -2.800000000000e+04, gap 1.3978%
+(0, 25481.0)
+(1, 25313.0)
+(2, 25298.0)
+(3, 25241.0)
+(4, 25283.0)
+(5, 25469.0)
+(6, 25448.0)
+(7, 25190.0)
+(8, 25454.0)
+(9, 25565.0)
+(10, 25310.0)
+(11, 25556.0)
+(12, 25433.0)
+(13, 25436.0)
+(14, 25445.0)
+(15, 25493.0)
+(16, 25397.0)
+(17, 25346.0)
+(18, 25415.0)
+(19, 25247.0)
+(20, 25403.0)
+(21, 25382.0)
+(22, 25421.0)
+(23, 25430.0)
+(24, 25220.0)
+(25, 25415.0)
+(26, 25364.0)
+(27, 25322.0)
+(28, 25364.0)
+(29, 25451.0)
+(30, 25415.0)
+(31, 25445.0)
+(32, 25526.0)
+(33, 25463.0)
+(34, 25373.0)
+(35, 25370.0)
+(36, 25388.0)
+(37, 25307.0)
+(38, 25322.0)
+(39, 25415.0)
+(0, 26000.0)
+(1, 26042.0)
+(2, 25883.0)
+(3, 26000.0)
+(4, 26114.0)
+(5, 26174.0)
+(6, 25964.0)
+(7, 25940.0)
+(8, 26048.0)
+(9, 25898.0)
+(10, 26096.0)
+(11, 25991.0)
+(12, 25928.0)
+(13, 26096.0)
+(14, 25985.0)
+(15, 25910.0)
+(16, 25916.0)
+(17, 25979.0)
+(18, 26141.0)
+(19, 26081.0)
+(20, 25841.0)
+(21, 26051.0)
+(22, 26012.0)
+(23, 26015.0)
+(24, 25964.0)
+(25, 26006.0)
+(26, 25952.0)
+(27, 25967.0)
+(28, 25964.0)
+(29, 26072.0)
+(30, 25967.0)
+(31, 26066.0)
+(32, 25928.0)
+(33, 25937.0)
+(34, 26009.0)
+(35, 26078.0)
+(36, 25991.0)
+(37, 25940.0)
+(38, 26024.0)
+(39, 25985.0)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [5e+00, 3e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.33s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.01s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.55634174e+05 -2.66014920e+06  8.21e+01 3.55e-15  7.06e+01     1s
+   1  -9.75090183e+04 -1.69971457e+06  1.77e+01 2.13e-14  1.62e+01     1s
+   2  -4.89749859e+04 -4.93299708e+05  2.17e-01 1.95e-14  1.83e+00     1s
+   3  -4.86188796e+04 -6.25986700e+04  8.62e-03 1.49e-14  5.58e-02     1s
+   4  -4.93265498e+04 -5.72788915e+04  5.35e-03 1.42e-14  3.18e-02     1s
+   5  -4.97145806e+04 -5.57950210e+04  4.48e-03 1.42e-14  2.43e-02     2s
+   6  -4.99920302e+04 -5.42285880e+04  3.76e-03 1.42e-14  1.69e-02     2s
+   7  -5.01638943e+04 -5.37540745e+04  3.25e-03 7.11e-15  1.43e-02     2s
+   8  -5.02304371e+04 -5.35185054e+04  3.02e-03 1.42e-14  1.31e-02     2s
+   9  -5.03328063e+04 -5.31798864e+04  2.67e-03 1.42e-14  1.14e-02     2s
+  10  -5.04161968e+04 -5.28460578e+04  2.35e-03 1.42e-14  9.71e-03     2s
+  11  -5.04495193e+04 -5.25932906e+04  2.17e-03 8.45e-15  8.57e-03     2s
+  12  -5.05081735e+04 -5.23050642e+04  1.91e-03 1.42e-14  7.18e-03     3s
+  13  -5.05173180e+04 -5.19722776e+04  1.81e-03 7.42e-15  5.82e-03     3s
+  14  -5.05303490e+04 -5.15676337e+04  1.63e-03 7.11e-15  4.15e-03     3s
+  15  -5.05362502e+04 -5.11971762e+04  1.57e-03 7.11e-15  2.65e-03     3s
+  16  -5.05494818e+04 -5.07721220e+04  1.34e-03 7.11e-15  9.06e-04     3s
+  17  -5.06342414e+04 -5.07514709e+04  7.46e-05 7.11e-15  4.67e-04     3s
+  18  -5.06403283e+04 -5.06815355e+04  1.72e-05 7.11e-15  1.64e-04     3s
+  19  -5.06417590e+04 -5.06446063e+04  1.78e-13 1.42e-14  1.13e-05     4s
+  20  -5.06426657e+04 -5.06426718e+04  1.52e-13 7.11e-15  2.43e-08     4s
+  21  -5.06426667e+04 -5.06426667e+04  7.25e-14 7.11e-15  2.45e-14     4s
+
+Barrier solved model in 21 iterations and 3.85 seconds
+Optimal objective -5.06426667e+04
+
+
+Root crossover log...
+
+   13140 PPushes remaining with PInf 0.0000000e+00                10s
+       0 PPushes remaining with PInf 0.0000000e+00                11s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00     11s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  115905   -5.0642667e+04   0.000000e+00   0.000000e+00     11s
+  115905   -5.0642667e+04   0.000000e+00   0.000000e+00     11s
+
+Root relaxation: objective -5.064267e+04, 115905 iterations, 10.37 seconds
+Total elapsed time = 16.71s
+Total elapsed time = 22.28s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -50642.667    0 1083    0.00000 -50642.667      -     -   24s
+H    0     0                    -49161.00000 -50642.667  3.01%     -   25s
+
+Explored 0 nodes (126298 simplex iterations) in 25.36 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -49161 0 
+Pool objective bound -50642
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -4.916100000000e+04, best bound -5.064200000000e+04, gap 3.0126%
+(0, 46941.0)
+(1, 46916.0)
+(2, 46801.0)
+(3, 46916.0)
+(4, 46931.0)
+(5, 47076.0)
+(6, 46791.0)
+(7, 46976.0)
+(8, 47116.0)
+(9, 47116.0)
+(10, 46876.0)
+(11, 46821.0)
+(12, 46961.0)
+(13, 46866.0)
+(14, 47021.0)
+(15, 46866.0)
+(16, 46841.0)
+(17, 46871.0)
+(18, 46916.0)
+(19, 46961.0)
+(20, 46666.0)
+(21, 46896.0)
+(22, 46881.0)
+(23, 46906.0)
+(24, 46821.0)
+(25, 46841.0)
+(26, 47061.0)
+(27, 46951.0)
+(28, 46886.0)
+(29, 46986.0)
+(30, 46811.0)
+(31, 46786.0)
+(32, 46806.0)
+(33, 46881.0)
+(34, 46971.0)
+(35, 46766.0)
+(36, 46906.0)
+(37, 46846.0)
+(38, 46971.0)
+(39, 46831.0)
+(0, 47151.0)
+(1, 47356.0)
+(2, 47311.0)
+(3, 47476.0)
+(4, 47001.0)
+(5, 47446.0)
+(6, 47276.0)
+(7, 47386.0)
+(8, 47111.0)
+(9, 47436.0)
+(10, 47131.0)
+(11, 47341.0)
+(12, 47281.0)
+(13, 47236.0)
+(14, 47481.0)
+(15, 47046.0)
+(16, 47301.0)
+(17, 47086.0)
+(18, 47286.0)
+(19, 47356.0)
+(20, 47396.0)
+(21, 47321.0)
+(22, 47141.0)
+(23, 47301.0)
+(24, 47206.0)
+(25, 47276.0)
+(26, 47311.0)
+(27, 47201.0)
+(28, 47151.0)
+(29, 47166.0)
+(30, 47401.0)
+(31, 47166.0)
+(32, 47341.0)
+(33, 47116.0)
+(34, 47306.0)
+(35, 47441.0)
+(36, 47186.0)
+(37, 47201.0)
+(38, 47221.0)
+(39, 47376.0)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [6e+00, 4e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.35s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.01s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -3.11212830e+05 -3.31700201e+06  8.21e+01 3.55e-15  8.81e+01     1s
+   1  -1.18565014e+05 -2.11874527e+06  1.77e+01 2.84e-14  2.02e+01     1s
+   2  -5.93536739e+04 -6.14463511e+05  2.17e-01 2.49e-14  2.29e+00     1s
+   3  -5.89613431e+04 -7.93617500e+04  8.80e-03 1.64e-14  8.14e-02     1s
+   4  -5.99956778e+04 -7.54472098e+04  5.21e-03 1.42e-14  6.16e-02     1s
+   5  -6.05640880e+04 -7.10738311e+04  3.98e-03 1.42e-14  4.19e-02     2s
+   6  -6.09967627e+04 -6.84167026e+04  3.26e-03 1.42e-14  2.96e-02     2s
+   7  -6.12898395e+04 -6.71776784e+04  2.65e-03 1.42e-14  2.35e-02     2s
+   8  -6.14655176e+04 -6.63515034e+04  2.27e-03 1.42e-14  1.95e-02     2s
+   9  -6.15508630e+04 -6.58233622e+04  2.08e-03 1.42e-14  1.70e-02     2s
+  10  -6.16314140e+04 -6.52735045e+04  1.89e-03 1.42e-14  1.45e-02     2s
+  11  -6.16893755e+04 -6.45755391e+04  1.73e-03 1.42e-14  1.15e-02     2s
+  12  -6.17476295e+04 -6.42570147e+04  1.54e-03 1.42e-14  1.00e-02     3s
+  13  -6.17643020e+04 -6.41180557e+04  1.48e-03 1.42e-14  9.39e-03     3s
+  14  -6.17904469e+04 -6.34992213e+04  1.34e-03 1.42e-14  6.82e-03     3s
+  15  -6.17909380e+04 -6.33462418e+04  1.32e-03 1.42e-14  6.21e-03     3s
+  16  -6.18304420e+04 -6.22613304e+04  1.02e-03 1.42e-14  1.73e-03     3s
+  17  -6.19596366e+04 -6.19680505e+04  3.37e-05 1.42e-14  3.41e-05     3s
+  18  -6.19639955e+04 -6.19640040e+04  3.45e-14 1.42e-14  3.41e-08     3s
+  19  -6.19640000e+04 -6.19640000e+04  8.18e-14 1.42e-14  3.44e-14     4s
+
+Barrier solved model in 19 iterations and 3.60 seconds
+Optimal objective -6.19640000e+04
+
+
+Root crossover log...
+
+    4602 PPushes remaining with PInf 0.0000000e+00                10s
+       0 PPushes remaining with PInf 0.0000000e+00                10s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00     10s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  115784   -6.1964000e+04   0.000000e+00   0.000000e+00     10s
+  115784   -6.1964000e+04   0.000000e+00   0.000000e+00     10s
+
+Root relaxation: objective -6.196400e+04, 115784 iterations, 9.98 seconds
+Total elapsed time = 16.63s
+Total elapsed time = 21.71s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -61964.000    0 1013    0.00000 -61964.000      -     -   24s
+H    0     0                    -60136.00000 -61964.000  3.04%     -   24s
+
+Explored 0 nodes (126607 simplex iterations) in 24.87 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -60136 0 
+Pool objective bound -61964
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -6.013600000000e+04, best bound -6.196400000000e+04, gap 3.0398%
+(0, 57616.0)
+(1, 57364.0)
+(2, 57478.0)
+(3, 57418.0)
+(4, 57346.0)
+(5, 57460.0)
+(6, 57694.0)
+(7, 57520.0)
+(8, 57454.0)
+(9, 57370.0)
+(10, 57382.0)
+(11, 57478.0)
+(12, 57508.0)
+(13, 57244.0)
+(14, 57382.0)
+(15, 57280.0)
+(16, 57460.0)
+(17, 57340.0)
+(18, 57370.0)
+(19, 57514.0)
+(20, 57430.0)
+(21, 57238.0)
+(22, 57430.0)
+(23, 57340.0)
+(24, 57466.0)
+(25, 57370.0)
+(26, 57328.0)
+(27, 57460.0)
+(28, 57676.0)
+(29, 57310.0)
+(30, 57442.0)
+(31, 57298.0)
+(32, 57346.0)
+(33, 57424.0)
+(34, 57538.0)
+(35, 57340.0)
+(36, 57322.0)
+(37, 57406.0)
+(38, 57430.0)
+(39, 57316.0)
+(0, 58156.0)
+(1, 58054.0)
+(2, 57886.0)
+(3, 57742.0)
+(4, 57712.0)
+(5, 57682.0)
+(6, 57814.0)
+(7, 57676.0)
+(8, 58048.0)
+(9, 57736.0)
+(10, 58096.0)
+(11, 57904.0)
+(12, 57826.0)
+(13, 57904.0)
+(14, 57622.0)
+(15, 57802.0)
+(16, 57742.0)
+(17, 57946.0)
+(18, 57808.0)
+(19, 57574.0)
+(20, 57862.0)
+(21, 57778.0)
+(22, 57934.0)
+(23, 57820.0)
+(24, 58144.0)
+(25, 57916.0)
+(26, 58072.0)
+(27, 57730.0)
+(28, 57796.0)
+(29, 57640.0)
+(30, 58036.0)
+(31, 57820.0)
+(32, 57844.0)
+(33, 57712.0)
+(34, 57706.0)
+(35, 57844.0)
+(36, 57976.0)
+(37, 57682.0)
+(38, 57754.0)
+(39, 58000.0)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [1e+01, 8e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.35s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.01s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -5.89105957e+05 -6.60126607e+06  8.21e+01 7.11e-15  1.75e+02     1s
+   1  -2.23848171e+05 -4.21390920e+06  1.77e+01 5.68e-14  4.03e+01     1s
+   2  -1.11255773e+05 -1.22031761e+06  2.15e-01 5.68e-14  4.57e+00     1s
+   3  -1.10626992e+05 -1.64474472e+05  7.17e-03 3.46e-14  2.15e-01     1s
+   4  -1.13947331e+05 -1.53320612e+05  3.82e-03 2.84e-14  1.57e-01     1s
+   5  -1.15234303e+05 -1.41768510e+05  2.98e-03 2.84e-14  1.06e-01     2s
+   6  -1.16412231e+05 -1.36631736e+05  2.45e-03 2.84e-14  8.06e-02     2s
+   7  -1.16986193e+05 -1.33214546e+05  2.13e-03 2.84e-14  6.47e-02     2s
+   8  -1.17442771e+05 -1.30018077e+05  1.83e-03 2.84e-14  5.01e-02     2s
+   9  -1.17745285e+05 -1.27581530e+05  1.61e-03 2.84e-14  3.92e-02     2s
+  10  -1.18012829e+05 -1.24826723e+05  1.37e-03 2.84e-14  2.72e-02     2s
+  11  -1.18144118e+05 -1.22614826e+05  1.21e-03 2.84e-14  1.78e-02     2s
+  12  -1.18246280e+05 -1.20452590e+05  1.04e-03 2.84e-14  8.82e-03     3s
+  13  -1.18282065e+05 -1.19668503e+05  9.55e-04 2.84e-14  5.55e-03     3s
+  14  -1.18433094e+05 -1.18744126e+05  3.66e-04 2.84e-14  1.25e-03     3s
+  15  -1.18567050e+05 -1.18576746e+05  1.03e-05 1.42e-14  3.90e-05     3s
+  16  -1.18570663e+05 -1.18570673e+05  2.17e-13 2.84e-14  3.90e-08     3s
+  17  -1.18570667e+05 -1.18570667e+05  2.46e-13 1.42e-14  3.95e-14     3s
+
+Barrier solved model in 17 iterations and 3.37 seconds
+Optimal objective -1.18570667e+05
+
+
+Root crossover log...
+
+    5890 PPushes remaining with PInf 0.0000000e+00                10s
+       0 PPushes remaining with PInf 0.0000000e+00                10s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00     10s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  115707   -1.1857067e+05   0.000000e+00   0.000000e+00     10s
+  115707   -1.1857067e+05   0.000000e+00   0.000000e+00     10s
+
+Root relaxation: objective -1.185707e+05, 115707 iterations, 10.05 seconds
+Total elapsed time = 15.65s
+Total elapsed time = 20.73s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -118570.67    0 1093    0.00000 -118570.67      -     -   23s
+H    0     0                    -113854.0000 -118570.67  4.14%     -   23s
+
+Explored 0 nodes (122308 simplex iterations) in 23.93 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -113854 0 
+Pool objective bound -118570
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -1.138540000000e+05, best bound -1.185700000000e+05, gap 4.1421%
+(0, 109267.0)
+(1, 108948.0)
+(2, 109267.0)
+(3, 109256.0)
+(4, 109586.0)
+(5, 109245.0)
+(6, 109322.0)
+(7, 109025.0)
+(8, 108915.0)
+(9, 108871.0)
+(10, 109289.0)
+(11, 108948.0)
+(12, 109300.0)
+(13, 109025.0)
+(14, 108728.0)
+(15, 109058.0)
+(16, 109311.0)
+(17, 109113.0)
+(18, 109333.0)
+(19, 109476.0)
+(20, 109432.0)
+(21, 109157.0)
+(22, 109267.0)
+(23, 108948.0)
+(24, 109388.0)
+(25, 109069.0)
+(26, 109410.0)
+(27, 109443.0)
+(28, 108959.0)
+(29, 109421.0)
+(30, 109223.0)
+(31, 109135.0)
+(32, 109322.0)
+(33, 109410.0)
+(34, 109223.0)
+(35, 109289.0)
+(36, 109113.0)
+(37, 109245.0)
+(38, 109058.0)
+(39, 109080.0)
+(0, 110268.0)
+(1, 110015.0)
+(2, 110092.0)
+(3, 110048.0)
+(4, 110103.0)
+(5, 110037.0)
+(6, 110026.0)
+(7, 110070.0)
+(8, 110312.0)
+(9, 110103.0)
+(10, 110697.0)
+(11, 110246.0)
+(12, 110444.0)
+(13, 109927.0)
+(14, 109707.0)
+(15, 110378.0)
+(16, 109883.0)
+(17, 110488.0)
+(18, 110301.0)
+(19, 110532.0)
+(20, 110246.0)
+(21, 110092.0)
+(22, 110279.0)
+(23, 109927.0)
+(24, 110169.0)
+(25, 110004.0)
+(26, 109861.0)
+(27, 110246.0)
+(28, 110114.0)
+(29, 110466.0)
+(30, 110191.0)
+(31, 110334.0)
+(32, 109850.0)
+(33, 111148.0)
+(34, 110290.0)
+(35, 109993.0)
+(36, 110103.0)
+(37, 109949.0)
+(38, 110444.0)
+(39, 110510.0)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [2e+01, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.37s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.02s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -1.14489206e+06 -1.31697942e+07  8.21e+01 1.42e-14  3.50e+02     1s
+   1  -4.34444930e+05 -8.40425252e+06  1.78e+01 1.07e-13  8.05e+01     1s
+   2  -2.15077111e+05 -2.43224142e+06  2.15e-01 9.95e-14  9.14e+00     1s
+   3  -2.14066056e+05 -3.36782297e+05  6.53e-03 6.39e-14  4.89e-01     1s
+   4  -2.21749286e+05 -2.96260862e+05  3.42e-03 5.68e-14  2.97e-01     2s
+   5  -2.25402725e+05 -2.76324184e+05  2.68e-03 5.68e-14  2.03e-01     2s
+   6  -2.26800608e+05 -2.67563148e+05  2.34e-03 5.68e-14  1.62e-01     2s
+   7  -2.28149380e+05 -2.60603482e+05  2.00e-03 5.68e-14  1.29e-01     2s
+   8  -2.29173409e+05 -2.55727151e+05  1.70e-03 5.68e-14  1.06e-01     2s
+   9  -2.29708455e+05 -2.52524426e+05  1.54e-03 5.68e-14  9.09e-02     2s
+  10  -2.30397279e+05 -2.49005342e+05  1.31e-03 5.68e-14  7.42e-02     2s
+  11  -2.30544108e+05 -2.47116135e+05  1.21e-03 5.68e-14  6.60e-02     3s
+  12  -2.30713820e+05 -2.43557194e+05  1.08e-03 5.68e-14  5.12e-02     3s
+  13  -2.30775798e+05 -2.40620825e+05  1.02e-03 5.68e-14  3.93e-02     3s
+  14  -2.31584084e+05 -2.33081821e+05  1.38e-04 5.68e-14  5.97e-03     3s
+  15  -2.31753244e+05 -2.32245035e+05  1.71e-07 5.68e-14  1.96e-03     3s
+  16  -2.31783821e+05 -2.31806564e+05  1.11e-13 2.84e-14  9.05e-05     3s
+  17  -2.31784000e+05 -2.31784000e+05  1.15e-14 5.68e-14  9.83e-11     3s
+
+Barrier solved model in 17 iterations and 3.48 seconds
+Optimal objective -2.31784000e+05
+
+
+Root crossover log...
+
+   12739 PPushes remaining with PInf 0.0000000e+00                10s
+       0 PPushes remaining with PInf 0.0000000e+00                10s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00     11s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  115729   -2.3178400e+05   0.000000e+00   0.000000e+00     11s
+  115729   -2.3178400e+05   0.000000e+00   0.000000e+00     11s
+
+Root relaxation: objective -2.317840e+05, 115729 iterations, 10.31 seconds
+Total elapsed time = 16.87s
+Total elapsed time = 22.00s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -231784.00    0 1036    0.00000 -231784.00      -     -   24s
+H    0     0                    -222656.0000 -231784.00  4.10%     -   24s
+
+Explored 0 nodes (124805 simplex iterations) in 25.21 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -222656 0 
+Pool objective bound -231784
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -2.226560000000e+05, best bound -2.317840000000e+05, gap 4.0996%
+(0, 214109.0)
+(1, 213731.0)
+(2, 214193.0)
+(3, 213647.0)
+(4, 214361.0)
+(5, 214025.0)
+(6, 213983.0)
+(7, 214025.0)
+(8, 213794.0)
+(9, 213710.0)
+(10, 214067.0)
+(11, 213815.0)
+(12, 214130.0)
+(13, 214613.0)
+(14, 213731.0)
+(15, 213731.0)
+(16, 213941.0)
+(17, 213794.0)
+(18, 213752.0)
+(19, 213878.0)
+(20, 213710.0)
+(21, 213878.0)
+(22, 213920.0)
+(23, 213710.0)
+(24, 214193.0)
+(25, 214214.0)
+(26, 213815.0)
+(27, 213710.0)
+(28, 214319.0)
+(29, 213983.0)
+(30, 213836.0)
+(31, 214424.0)
+(32, 213920.0)
+(33, 213752.0)
+(34, 213689.0)
+(35, 213899.0)
+(36, 213479.0)
+(37, 213668.0)
+(38, 214319.0)
+(39, 213920.0)
+(0, 215264.0)
+(1, 214970.0)
+(2, 216020.0)
+(3, 215789.0)
+(4, 215663.0)
+(5, 215621.0)
+(6, 215915.0)
+(7, 215873.0)
+(8, 215726.0)
+(9, 215390.0)
+(10, 215747.0)
+(11, 215558.0)
+(12, 215222.0)
+(13, 214928.0)
+(14, 215243.0)
+(15, 215474.0)
+(16, 215579.0)
+(17, 215936.0)
+(18, 215579.0)
+(19, 215264.0)
+(20, 215810.0)
+(21, 215873.0)
+(22, 216188.0)
+(23, 215579.0)
+(24, 214907.0)
+(25, 216167.0)
+(26, 215621.0)
+(27, 215306.0)
+(28, 215747.0)
+(29, 216146.0)
+(30, 215579.0)
+(31, 215432.0)
+(32, 215180.0)
+(33, 215243.0)
+(34, 215621.0)
+(35, 216188.0)
+(36, 215495.0)
+(37, 215978.0)
+(38, 215936.0)
+(39, 215852.0)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [5e+01, 4e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.35s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.01s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.81225024e+06 -3.28753785e+07  8.21e+01 2.84e-14  8.75e+02     1s
+   1  -1.06624492e+06 -2.09752924e+07  1.78e+01 2.84e-13  2.01e+02     1s
+   2  -5.26547112e+05 -6.06809497e+06  2.14e-01 2.84e-13  2.28e+01     1s
+   3  -5.24425393e+05 -8.53736878e+05  6.14e-03 1.24e-13  1.31e+00     1s
+   4  -5.44992406e+05 -7.41165897e+05  3.23e-03 1.14e-13  7.82e-01     1s
+   5  -5.52486129e+05 -6.88758622e+05  2.54e-03 1.14e-13  5.43e-01     2s
+   6  -5.57331652e+05 -6.57414963e+05  2.15e-03 1.14e-13  3.99e-01     2s
+   7  -5.61137400e+05 -6.42634766e+05  1.83e-03 1.14e-13  3.25e-01     2s
+   8  -5.63983714e+05 -6.31143923e+05  1.57e-03 1.14e-13  2.68e-01     2s
+   9  -5.64476452e+05 -6.27848361e+05  1.53e-03 1.14e-13  2.52e-01     2s
+  10  -5.65860440e+05 -6.19280262e+05  1.40e-03 1.14e-13  2.13e-01     2s
+  11  -5.66297993e+05 -6.15757977e+05  1.36e-03 1.14e-13  1.97e-01     2s
+  12  -5.67552366e+05 -6.08807789e+05  1.22e-03 1.14e-13  1.64e-01     3s
+  13  -5.67765793e+05 -6.06974154e+05  1.19e-03 1.14e-13  1.56e-01     3s
+  14  -5.67879689e+05 -6.04541839e+05  1.16e-03 1.14e-13  1.46e-01     3s
+  15  -5.68507891e+05 -5.94615815e+05  1.07e-03 1.14e-13  1.04e-01     3s
+  16  -5.68592394e+05 -5.92142311e+05  1.03e-03 1.14e-13  9.39e-02     3s
+  17  -5.69173865e+05 -5.88199175e+05  8.98e-04 1.14e-13  7.59e-02     3s
+  18  -5.71100823e+05 -5.73232963e+05  5.09e-07 1.14e-13  8.48e-03     3s
+  19  -5.71421135e+05 -5.71525193e+05  6.01e-09 1.14e-13  4.14e-04     4s
+  20  -5.71423997e+05 -5.71424101e+05  2.07e-14 1.14e-13  4.14e-07     4s
+  21  -5.71424000e+05 -5.71424000e+05  1.23e-13 1.14e-13  4.15e-13     4s
+
+Barrier solved model in 21 iterations and 3.94 seconds
+Optimal objective -5.71424000e+05
+
+
+Root crossover log...
+
+   14358 PPushes remaining with PInf 0.0000000e+00                10s
+       0 PPushes remaining with PInf 0.0000000e+00                11s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00     11s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  115778   -5.7142400e+05   0.000000e+00   0.000000e+00     11s
+  115778   -5.7142400e+05   0.000000e+00   0.000000e+00     11s
+
+Root relaxation: objective -5.714240e+05, 115778 iterations, 10.40 seconds
+Total elapsed time = 17.40s
+Total elapsed time = 20.16s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -571424.00    0 1080    0.00000 -571424.00      -     -   25s
+H    0     0                    -547661.0000 -571424.00  4.34%     -   25s
+
+Explored 0 nodes (126381 simplex iterations) in 25.89 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -547661 0 
+Pool objective bound -571424
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -5.476610000000e+05, best bound -5.714240000000e+05, gap 4.3390%
+(0, 526394.0)
+(1, 523997.0)
+(2, 525425.0)
+(3, 525374.0)
+(4, 524660.0)
+(5, 525425.0)
+(6, 525323.0)
+(7, 524762.0)
+(8, 523997.0)
+(9, 525527.0)
+(10, 524405.0)
+(11, 525680.0)
+(12, 524660.0)
+(13, 525782.0)
+(14, 525323.0)
+(15, 524507.0)
+(16, 525578.0)
+(17, 524813.0)
+(18, 524354.0)
+(19, 523334.0)
+(20, 523640.0)
+(21, 523844.0)
+(22, 525527.0)
+(23, 524915.0)
+(24, 523997.0)
+(25, 525170.0)
+(26, 524660.0)
+(27, 523487.0)
+(28, 524048.0)
+(29, 526139.0)
+(30, 525374.0)
+(31, 526598.0)
+(32, 526037.0)
+(33, 525374.0)
+(34, 524609.0)
+(35, 523589.0)
+(36, 522875.0)
+(37, 524813.0)
+(38, 523487.0)
+(39, 524813.0)
+(0, 530372.0)
+(1, 529556.0)
+(2, 530729.0)
+(3, 530678.0)
+(4, 530066.0)
+(5, 529811.0)
+(6, 529301.0)
+(7, 530576.0)
+(8, 530525.0)
+(9, 527924.0)
+(10, 529250.0)
+(11, 529556.0)
+(12, 531290.0)
+(13, 530525.0)
+(14, 531341.0)
+(15, 528638.0)
+(16, 530627.0)
+(17, 530321.0)
+(18, 528995.0)
+(19, 530729.0)
+(20, 530066.0)
+(21, 531596.0)
+(22, 529199.0)
+(23, 528944.0)
+(24, 532259.0)
+(25, 529607.0)
+(26, 530321.0)
+(27, 531290.0)
+(28, 529811.0)
+(29, 529709.0)
+(30, 529964.0)
+(31, 529556.0)
+(32, 531545.0)
+(33, 528893.0)
+(34, 528689.0)
+(35, 528995.0)
+(36, 530168.0)
+(37, 529811.0)
+(38, 532055.0)
+(39, 528842.0)
+Changed value of parameter MIPGap to 0.05
+   Prev: 0.0001  Min: 0.0  Max: 1e+100  Default: 0.0001
+Changed value of parameter TimeLimit to 1800.0
+   Prev: 1e+100  Min: 0.0  Max: 1e+100  Default: 1e+100
+Changed value of parameter Method to 2
+   Prev: -1  Min: -1  Max: 4  Default: -1
+Changed value of parameter MIPFocus to 1
+   Prev: 0  Min: 0  Max: 3  Default: 0
+Optimize a model with 17414 rows, 125355 columns and 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [5e+02, 4e+03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [8e+01, 8e+01]
+Found heuristic solution: objective 0
+Presolve time: 0.37s
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+Variable types: 0 continuous, 125355 integer (125355 binary)
+Presolved: 17414 rows, 125355 columns, 250710 nonzeros
+
+Root barrier log...
+
+Ordering time: 0.02s
+
+Barrier statistics:
+ AA' NZ     : 1.254e+05
+ Factor NZ  : 5.044e+05 (roughly 60 MBytes of memory)
+ Factor Ops : 1.186e+08 (less than 1 second per iteration)
+ Threads    : 20
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.78226225e+07 -3.28459144e+08  8.21e+01 4.55e-13  8.74e+03     1s
+   1  -1.05432492e+07 -2.09540934e+08  1.78e+01 2.73e-12  2.01e+03     1s
+   2  -5.19862430e+06 -6.06058679e+07  2.13e-01 2.50e-12  2.28e+02     1s
+   3  -5.17997220e+06 -8.60882818e+06  5.93e-03 1.59e-12  1.37e+01     1s
+   4  -5.39343382e+06 -7.41450395e+06  3.11e-03 9.09e-13  8.05e+00     1s
+   5  -5.47118841e+06 -6.87459190e+06  2.45e-03 9.09e-13  5.59e+00     2s
+   6  -5.52105437e+06 -6.55913000e+06  2.08e-03 9.09e-13  4.14e+00     2s
+   7  -5.56065298e+06 -6.40254735e+06  1.76e-03 9.09e-13  3.35e+00     2s
+   8  -5.58992261e+06 -6.28580971e+06  1.51e-03 9.09e-13  2.77e+00     2s
+   9  -5.59486255e+06 -6.25008248e+06  1.47e-03 9.09e-13  2.61e+00     2s
+  10  -5.60930363e+06 -6.16017727e+06  1.35e-03 9.09e-13  2.19e+00     2s
+  11  -5.61765774e+06 -6.08944776e+06  1.26e-03 9.09e-13  1.88e+00     2s
+  12  -5.62704897e+06 -6.04237574e+06  1.16e-03 9.09e-13  1.65e+00     3s
+  13  -5.63177768e+06 -5.98075117e+06  1.06e-03 9.09e-13  1.39e+00     3s
+  14  -5.63434684e+06 -5.90836133e+06  9.40e-04 9.09e-13  1.09e+00     3s
+  15  -5.63638104e+06 -5.89188448e+06  8.95e-04 9.09e-13  1.02e+00     3s
+  16  -5.64729842e+06 -5.85707424e+06  6.76e-04 9.09e-13  8.36e-01     3s
+  17  -5.65942777e+06 -5.75667437e+06  2.00e-04 9.09e-13  3.87e-01     3s
+  18  -5.66539288e+06 -5.66820622e+06  2.31e-13 9.09e-13  1.12e-02     4s
+  19  -5.66602305e+06 -5.66602649e+06  9.11e-14 9.09e-13  1.37e-05     4s
+  20  -5.66602400e+06 -5.66602400e+06  1.08e-13 9.09e-13  1.37e-08     4s
+  21  -5.66602400e+06 -5.66602400e+06  7.22e-14 9.09e-13  2.45e-14     4s
+
+Barrier solved model in 21 iterations and 4.01 seconds
+Optimal objective -5.66602400e+06
+
+
+Root crossover log...
+
+   18006 PPushes remaining with PInf 0.0000000e+00                10s
+       0 PPushes remaining with PInf 0.0000000e+00                11s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00     11s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  115786   -5.6660240e+06   0.000000e+00   0.000000e+00     11s
+  115786   -5.6660240e+06   0.000000e+00   0.000000e+00     11s
+
+Root relaxation: objective -5.666024e+06, 115786 iterations, 10.64 seconds
+Total elapsed time = 17.57s
+Total elapsed time = 20.80s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -5666024.0    0 1071    0.00000 -5666024.0      -     -   26s
+H    0     0                    -5438784.000 -5666024.0  4.18%     -   26s
+
+Explored 0 nodes (127401 simplex iterations) in 26.78 seconds
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: -5.43878e+06 0 
+Pool objective bound -5.66602e+06
+
+Optimal solution found (tolerance 5.00e-02)
+Best objective -5.438784000000e+06, best bound -5.666024000000e+06, gap 4.1781%
+(0, 5198304.0)
+(1, 5203314.0)
+(2, 5209326.0)
+(3, 5198805.0)
+(4, 5211831.0)
+(5, 5216340.0)
+(6, 5217342.0)
+(7, 5213334.0)
+(8, 5210328.0)
+(9, 5223354.0)
+(10, 5207322.0)
+(11, 5207322.0)
+(12, 5211831.0)
+(13, 5209326.0)
+(14, 5213835.0)
+(15, 5206320.0)
+(16, 5208324.0)
+(17, 5196300.0)
+(18, 5210829.0)
+(19, 5193294.0)
+(20, 5223855.0)
+(21, 5206821.0)
+(22, 5233875.0)
+(23, 5205318.0)
+(24, 5208324.0)
+(25, 5205819.0)
+(26, 5216841.0)
+(27, 5191290.0)
+(28, 5195298.0)
+(29, 5209326.0)
+(30, 5226861.0)
+(31, 5209326.0)
+(32, 5226861.0)
+(33, 5210829.0)
+(34, 5209827.0)
+(35, 5218344.0)
+(36, 5198805.0)
+(37, 5205819.0)
+(38, 5210829.0)
+(39, 5203314.0)
+(0, 5251410.0)
+(1, 5252913.0)
+(2, 5251410.0)
+(3, 5253414.0)
+(4, 5251911.0)
+(5, 5252412.0)
+(6, 5262432.0)
+(7, 5264436.0)
+(8, 5246901.0)
+(9, 5253915.0)
+(10, 5245398.0)
+(11, 5259927.0)
+(12, 5240889.0)
+(13, 5259426.0)
+(14, 5245398.0)
+(15, 5258925.0)
+(16, 5260929.0)
+(17, 5260428.0)
+(18, 5245398.0)
+(19, 5255418.0)
+(20, 5255418.0)
+(21, 5258925.0)
+(22, 5261430.0)
+(23, 5258424.0)
+(24, 5239386.0)
+(25, 5267943.0)
+(26, 5256921.0)
+(27, 5262432.0)
+(28, 5254917.0)
+(29, 5264436.0)
+(30, 5258925.0)
+(31, 5264436.0)
+(32, 5235378.0)
+(33, 5253414.0)
+(34, 5253915.0)
+(35, 5250909.0)
+(36, 5245899.0)
+(37, 5238384.0)
+(38, 5239887.0)
+(39, 5267442.0)
