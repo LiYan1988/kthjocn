@@ -1,5 +1,5 @@
 function [beta, connection_ub_ave, throughput_ub_ave, connection_he_ave,...
-    throughput_he_ave] = plotPareto(filePath, flowAverage, f)
+    throughput_he_ave] = plotPareto(filePath, flowAverage, f, optiGapFile)
 % filePath: the path containing results for all the traffic matrices
 % flowAverage: average data rate per connection calculated from the traffic
 % matrices
@@ -58,3 +58,6 @@ grid on;
 title(strcat('Opt-gap', {' '}, trafficRule, {' '}, arch))
 figureName = strcat('figures/', trafficRule, '-', arch, '-', 'optimality.jpg');
 saveas(h, figureName)
+
+optimalityGap = [beta, obj_he./obj_ub, obj_bm_ave(:, 1)./obj_ub, obj_bm_ave(:, 2)./obj_ub];
+csvwrite(optiGapFile, optimalityGap)
