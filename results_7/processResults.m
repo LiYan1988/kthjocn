@@ -33,23 +33,23 @@ end
 %     throughput_he_ave] = plotPareto(curlist{3}, flowAverage(1), 0.88);
 
 %%
-[beta, connection_ub_ave1, throughput_ub_ave1, connection_he_ave1,...
-    throughput_he_ave1] = plotPareto(curlist{1}, flowAverage(1), 0.9);
-
-[~, connection_ub_ave2, throughput_ub_ave2, connection_he_ave2,...
-    throughput_he_ave2] = plotPareto(curlist{2}, flowAverage(1), 0.9);
-
-[~, connection_ub_ave3, throughput_ub_ave3, connection_he_ave3,...
-    throughput_he_ave3] = plotPareto(curlist{3}, flowAverage(1), 0.88);
-
-%%
-close all;
-figure(1); hold on;
-plot(connection_ub_ave1, throughput_ub_ave1, 'b--', 'marker', '^')
-plot(connection_he_ave1, throughput_he_ave1, 'b', 'marker', 's')
-
-plot(connection_ub_ave2, throughput_ub_ave2, 'r--', 'marker', '^')
-plot(connection_he_ave2, throughput_he_ave2, 'r', 'marker', 's')
-
-plot(connection_ub_ave3, throughput_ub_ave3, 'g--', 'marker', '^')
-plot(connection_he_ave3, throughput_he_ave3, 'g', 'marker', 's')
+% [beta, connection_ub_ave1, throughput_ub_ave1, connection_he_ave1,...
+%     throughput_he_ave1] = plotPareto(curlist{1}, flowAverage(1), 0.9);
+% 
+% [~, connection_ub_ave2, throughput_ub_ave2, connection_he_ave2,...
+%     throughput_he_ave2] = plotPareto(curlist{2}, flowAverage(1), 0.9);
+% 
+% [~, connection_ub_ave3, throughput_ub_ave3, connection_he_ave3,...
+%     throughput_he_ave3] = plotPareto(curlist{3}, flowAverage(1), 0.88);
+% 
+% %%
+% close all;
+% figure(1); hold on;
+% plot(connection_ub_ave1, throughput_ub_ave1, 'b--', 'marker', '^')
+% plot(connection_he_ave1, throughput_he_ave1, 'b', 'marker', 's')
+% 
+% plot(connection_ub_ave2, throughput_ub_ave2, 'r--', 'marker', '^')
+% plot(connection_he_ave2, throughput_he_ave2, 'r', 'marker', 's')
+% 
+% plot(connection_ub_ave3, throughput_ub_ave3, 'g--', 'marker', '^')
+% plot(connection_he_ave3, throughput_he_ave3, 'g', 'marker', 's')
