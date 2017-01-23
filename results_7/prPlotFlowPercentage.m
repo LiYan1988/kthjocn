@@ -2,7 +2,7 @@ clc;
 close all;
 clear;
 load betaVector.mat
-flowAverage = [237.5855, 238.0523];
+flowAverage = [86.7343];
 
 files = dir;
 for i = 1:length(files)
