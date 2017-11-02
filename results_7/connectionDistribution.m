@@ -1,7 +1,7 @@
-function [trafficHistogram] = connectionDistribution(filePath, arch)
+function [trafficHistogram] = connectionDistribution(filePath, arch, nclasses, edges)
 % filePath: the path containing results for all the traffic matrices
 load betaString.mat
-trafficHistogram = zeros(5, 22);
+trafficHistogram = zeros(nclasses, 22);
 curdir = dir(filePath);
 % process for each traffic matrix
 ndir = 0;
@@ -10,33 +10,33 @@ for i = 1:length(curdir)
         folderName = strcat(curdir(i).folder, '\', curdir(i).name);
         filenames = dir(folderName);
         
+        cnknames = {};
         foldername = filenames(1).folder;
         for j = 1:length(filenames)
             filename = filenames(j).name;
             tmp = strsplit(filename, '_');
             if strcmp(tmp{1}, 'cnklist')
-                filenameRoot = strjoin(tmp(1:end-1), '_');
-                break
+                cnknames = [cnknames, strcat(foldername, '\', filename)];
             end
         end
         
-        filenames = {};
-        for j = 1:length(betaString)
-            tmp = strcat(foldername, '\', filenameRoot, '_', betaString(j), '.csv');
-            filenames = [filenames, strcat(foldername, '\', filenameRoot, '_', betaString(j), '.csv')];
-        end
+%         filenames = {};
+%         for j = 1:length(betaString)
+%             tmp = strcat(foldername, '\', filenameRoot, '_', betaString(j), '.csv');
+%             filenames = [filenames, strcat(foldername, '\', filenameRoot, '_', betaString(j), '.csv')];
+%         end
         
         try
             counter = 1;
-            for j = 1:length(filenames)
-                filename = filenames(j);
+            for j = 1:length(cnknames)
+                filename = cnknames(j);
                 disp(filename)
                 if arch==1 || arch==2
                     [~,~,~,~,~,~,tfk_slot] = importfileConnectionAllocation(filename{1}, 2, inf);
                 elseif arch==3
                     [~,~,~,~,~,~,~,tfk_slot] = importfileConnectionAllocation3(filename{1}, 2, inf);
                 end
-                edges = [49, 99, 199, 399, 999, 1999];
+%                 edges = [49, 99, 199, 399, 999, 1999];
                 [N, ~, ~] = histcounts(tfk_slot, edges);
                 trafficHistogram(:, counter) = trafficHistogram(:, counter)+N'/sum(N);
                 counter = counter+1;

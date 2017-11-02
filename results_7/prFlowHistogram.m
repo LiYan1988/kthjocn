@@ -12,7 +12,7 @@ flowAverage = zeros(3, 1);
 
 %% connection histograms
 for i = 1:1
-    for j = 1:2
+    for j = 1:3
         tmp = {rootdir, trafficTypes(i), architectureTypes(j)};
         curlist = [curlist, joinPath(tmp)];
 %         disp(curlist{end})
