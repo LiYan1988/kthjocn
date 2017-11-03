@@ -11,6 +11,7 @@ import os
 from sdm import *
 from shutil import copyfile
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def copy_template(src, dst, replace_lines):
     destination = open(dst, 'wb')
@@ -30,6 +31,25 @@ max_pod_connected=25
 min_pod_connected=10
 num_cores=5
 num_slots=80
+
+mu_1 = 50
+mu_2 = 400
+sigma_1 = 25
+sigma_2 = 50
+
+data_samples_1 = np.arange(0, mu_1+2*sigma_1, 10)
+prob_1 = 1/np.sqrt(2*pi*sigma_1**2)*np.exp(-(data_samples_1-mu_1)**2/(2*sigma_1**2))
+prob_1 = prob_1/np.sum(prob_1)
+
+data_samples_2 = np.arange(mu_2-2*sigma_2, mu_2+2*sigma_2, 10)
+prob_2 = 1/np.sqrt(2*pi*sigma_2**2)*np.exp(-(data_samples_2-mu_2)**2/(2*sigma_2**2))
+prob_2 = prob_2/np.sum(prob_2)
+
+plt.plot(data_samples_1, prob_1)
+plt.plot(data_samples_2, prob_2)
+plt.show()
+
+#%%
 
 data_rate_choice = [50, 400]
 
