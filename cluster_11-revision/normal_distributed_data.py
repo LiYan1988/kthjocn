@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jan 08 09:20:59 2017
+Created on Mon Nov 06 11:55:10 2017
 
-@author: celin
-
-simulations for A3
+@author: liyan
 """
 
 import os
@@ -39,11 +37,11 @@ sigma_1 = 25
 sigma_2 = 50
 n_samples = 20
 
-data_samples_1 = np.arange(0, mu_1+2*sigma_1, (mu_1+2*sigma_1-0)/n_samples, dtype=np.float)
+data_samples_1 = np.arange((mu_1+2*sigma_1-0)/n_samples, mu_1+2*sigma_1, (mu_1+2*sigma_1-0)/n_samples, dtype=np.float)
 prob_1 = 1/np.sqrt(2*pi*sigma_1**2)*np.exp(-(data_samples_1-mu_1)**2/(2*sigma_1**2))
 prob_1 = prob_1/np.sum(prob_1)
 
-data_samples_2 = np.arange(mu_2-2*sigma_2, mu_2+2*sigma_2, 4*sigma_2/n_samples, dtype=np.float)
+data_samples_2 = np.arange(mu_2-2*sigma_2+4*sigma_2/n_samples, mu_2+2*sigma_2, 4*sigma_2/n_samples, dtype=np.float)
 prob_2 = 1/np.sqrt(2*pi*sigma_2**2)*np.exp(-(data_samples_2-mu_2)**2/(2*sigma_2**2))
 prob_2 = prob_2/np.sum(prob_2)
 
@@ -57,6 +55,7 @@ plt.stem(data_samples, prob)
 plt.show()
 
 #%%
+num_repetition = 2
 
 #data_rate_choice = [50, 400]
 data_rate_choice = np.concatenate((data_samples_1, data_samples_2), axis=0)
@@ -83,7 +82,7 @@ for k, v in data_rate_probs.items():
     if not os.path.exists(tm_folder):
         os.mkdir(tm_folder)
     os.chdir(tm_folder)
-    for i in range(20):
+    for i in range(num_repetition):
         t = Traffic(num_pods=num_pods, max_pod_connected=max_pod_connected, 
                     min_pod_connected=min_pod_connected, 
                     capacity_choices=data_rate_choice,
@@ -109,7 +108,7 @@ for k, v in data_rate_probs.items():
     if not os.path.exists(workdir):
         os.mkdir(workdir)
     os.chdir(workdir)
-    for i in range(20):
+    for i in range(num_repetition):
         # write .py file
         src = os.path.join(rootdir, 'templateA1.py')
         tm_name = 'traffic_matrix_{}'.format(i)
@@ -147,7 +146,7 @@ for k, v in data_rate_probs.items():
     if not os.path.exists(workdir):
         os.mkdir(workdir)
     os.chdir(workdir)
-    for i in range(20):
+    for i in range(num_repetition):
         # write .py file
         src = os.path.join(rootdir, 'templateA2.py')
         tm_name = 'traffic_matrix_{}'.format(i)
@@ -185,7 +184,7 @@ for k, v in data_rate_probs.items():
     if not os.path.exists(workdir):
         os.mkdir(workdir)
     os.chdir(workdir)
-    for i in range(20):
+    for i in range(num_repetition):
         # write .py file
         src = os.path.join(rootdir, 'templateA3.py')
         tm_name = 'traffic_matrix_{}'.format(i)
