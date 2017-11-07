@@ -13,7 +13,7 @@ for i = 1:1
     for j = 1:3
         tmp = {rootdir, trafficTypes(i), architectureTypes(j)};
         curlist = [curlist, joinPath(tmp)];
-        connectionDistribution(curlist{end});
+%         connectionDistribution(curlist{end});
     end
     trafficMatrixPath = joinPath({rootdir, trafficTypes(i), {'trafficMatrix'}});
     flowAverage(i) = trafficAverage(trafficMatrixPath);

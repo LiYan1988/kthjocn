@@ -21,7 +21,7 @@ mtridx = 1
 time_limit_routing = 1800 # 1000
 time_limit_sa = 108 # 10800
 
-filename = '../../trafficMatrix/traffic_matrix_1.csv'
+filename = 'traffic_matrix_1.csv'
 #    print filename
 tm = []
 with open(filename) as f:
@@ -32,13 +32,13 @@ with open(filename) as f:
 
 tm = np.array(tm)
 
-#betav = np.array([0, 
-#    1e-5, 2e-5, 4e-5, 8e-5, 
-#    1e-4, 2e-4, 4e-4, 8e-4, 
-#    1e-3, 2e-3, 4e-3, 8e-3, 
-#    1e-2, 2e-2, 4e-2, 8e-2, 
-#    1e-1, 2e-1, 4e-1, 1, 10])
-betav = np.array([1e-3, 2e-3, 4e-3, 8e-3])
+betav = np.array([0, 
+    1e-5, 2e-5, 4e-5, 8e-5, 
+    1e-4, 2e-4, 4e-4, 8e-4, 
+    1e-3, 2e-3, 4e-3, 8e-3, 
+    1e-2, 2e-2, 4e-2, 8e-2, 
+    1e-1, 2e-1, 4e-1, 1, 10])
+#betav = np.array([1e-3, 2e-3, 4e-3, 8e-3])
 results = {}
 obj_results = {}
 cnk_results = {}
