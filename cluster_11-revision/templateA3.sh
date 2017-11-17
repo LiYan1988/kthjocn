@@ -8,7 +8,7 @@
 #SBATCH -o arch5_old_0.stdout
 #SBATCH -e arch5_old_0.stderr
 module purge 
-source ~/.usr_path_grb
+source ~/.usr_path_grb_py27
 
 
 
