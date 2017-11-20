@@ -53,3 +53,18 @@ end
 % 
 % plot(connection_ub_ave3, throughput_ub_ave3, 'g--', 'marker', '^')
 % plot(connection_he_ave3, throughput_he_ave3, 'g', 'marker', 's')
+
+%%
+close all;
+figure;
+x = connection_he_ave2;
+y = throughput_he_ave2;
+% marker = '^';
+marker = 'none';
+plot(x, y, 'marker', marker)
+hold on;
+a = 8; b = 14;
+plot(x(a:b), y(a:b), 'marker', marker)
+filename = strsplit(pwd, '\');
+filename = strcat(filename{end}, '.csv');
+csvwrite(filename, [x, y])
