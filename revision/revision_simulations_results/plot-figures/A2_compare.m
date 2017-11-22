@@ -20,6 +20,7 @@ legend('show')
 %% sigma = 10
 figure;
 hold on;
-plot(x1(:, 1), x1(:, 2), 'displayname', 'mean=50/400')
-plot(x4(:, 1), x1(:, 2), 'displayname', 'mean=50/400')
-plot(x5(:, 1), x1(:, 2), 'displayname', 'mean=50/400')
+plot(x1(:, 1), x1(:, 2), 'displayname', 'sigma=0/0')
+plot(x4(:, 1), x1(:, 2), 'displayname', 'sigma=10/20')
+plot(x5(:, 1), x1(:, 2), 'displayname', 'sigma=25/50')
+legend('show')
