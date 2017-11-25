@@ -9,7 +9,7 @@ function [beta, connection_ub_ave, throughput_ub_ave, connection_he_ave,...
     throughput_he_ave, obj_bm_ave, obj_ub, obj_he] = normalizedResults(filePath);
 beta = beta/flowAverage;
 
-figureStrings = strsplit(filePath, '\');
+figureStrings = strsplit(filePath, filesep);
 trafficRule = figureStrings{end-1};
 trafficRule = strrep(trafficRule, '_', '-');
 arch = figureStrings{end};
