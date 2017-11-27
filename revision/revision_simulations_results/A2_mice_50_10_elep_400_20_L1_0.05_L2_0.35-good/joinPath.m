@@ -3,7 +3,7 @@ function outputPath = joinPath(pathList)
 outputPath = pathList(1);
 if length(pathList) >=2
     for i = 2:length(pathList)
-        outputPath = strcat(outputPath{1}, '\', pathList{i});
+        outputPath = strcat(outputPath{1}, filesep, pathList{i});
     end
 end
 outputPath = outputPath{1};

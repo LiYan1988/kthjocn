@@ -8,19 +8,19 @@ benchmarks = {};
 for i = 1:length(curdir)
     if curdir(i).isdir && ~strcmp(curdir(i).name, '.') && ~strcmp(curdir(i).name, '..')
         trafficMatrixNames = [trafficMatrixNames, curdir(i).name];
-        folderName = strcat(curdir(i).folder, '\', curdir(i).name);
+        folderName = strcat(curdir(i).folder, filesep, curdir(i).name);
         filenames = dir(folderName);
         for j = 1:length(filenames)
             filename = filenames(j).name;
             tmp = strsplit(filename, '_');
             if strcmp(tmp{1}, 'obj') && strcmp(tmp{2}, 'final')
                 %                 disp(filename)
-                filepath = strcat(filenames(j).folder, '\', filename);
+                filepath = strcat(filenames(j).folder, filesep, filename);
                 results = [results, importObjFinal(filepath)];
             end
             % import benchmarks
             folderdir = curdir(i).folder;
-            folderdir = strsplit(folderdir, '\');
+            folderdir = strsplit(folderdir, filesep);
             arch = strsplit(folderdir{end}, '_');
             arch = arch{1};
             if strcmp(arch, 'A1')
@@ -31,7 +31,7 @@ for i = 1:length(curdir)
                 arch = 3;
             end
             if strcmp(tmp{1}, 'obj') && strcmp(tmp{2}, 'results')
-                filepath = strcat(filenames(j).folder, '\', filename);
+                filepath = strcat(filenames(j).folder, filesep, filename);
                 benchmarks = [benchmarks, importBenchMark(filepath, arch)'];
             end
         end

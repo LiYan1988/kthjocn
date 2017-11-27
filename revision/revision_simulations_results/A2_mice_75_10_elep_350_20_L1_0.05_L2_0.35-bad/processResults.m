@@ -63,7 +63,7 @@ y = throughput_he_ave2;
 marker = 'none';
 plot(x, y, 'marker', marker)
 hold on;
-a = 1; b = 22;
+a = 8; b = 15;
 plot(x(a:b), y(a:b), 'marker', marker)
 filename = strsplit(pwd, '\');
 filename = strcat(filename{end}, '.csv');
