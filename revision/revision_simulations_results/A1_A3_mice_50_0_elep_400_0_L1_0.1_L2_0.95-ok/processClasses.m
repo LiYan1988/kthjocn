@@ -3,14 +3,14 @@ close all;
 clear;
 
 trafficTypes = {'90_10'};
-architectureTypes = {'A2_pod100'};
+architectureTypes = {'A1_pod100', 'A3_pod100'};
 
 rootdir = pwd;
 curlist = {};
 trafficMatrices = {};
-flowAverage = zeros(3, 1);
+flowAverage = zeros(1, 1);
 for i = 1:1
-    for j = 1:1
+    for j = 1:2
         tmp = {rootdir, trafficTypes(i), architectureTypes(j)};
         curlist = [curlist, joinPath(tmp)];
     end
@@ -18,23 +18,20 @@ for i = 1:1
     flowAverage(i) = trafficAverage(trafficMatrixPath);
 end
 
-%%
+%% A1
 [mouseConnection, mouseThroughput, elephantConnection, elephantThrought, beta] = extractClassData(curlist{1}, flowAverage(1), 20);
 
-%%
 figure;
 hold on;
 plot(mouseConnection, mouseThroughput);
 plot(elephantConnection, elephantThrought);
 
-%% 
 objConnection = mouseConnection+elephantConnection;
 objThroughput = mouseThroughput+elephantThrought;
 figure;
 hold on;
 plot(objConnection, objThroughput);
 
-%% 
 figure; 
 semilogx(beta, mouseConnection)
 hold on;
@@ -44,3 +41,32 @@ figure;
 semilogx(beta, mouseThroughput);
 hold on;
 semilogx(beta, elephantThrought);
+
+csvName = 'A1_mice_50_0_elep_400_0_L1_0.1_L2_0.95-ok.csv';
+csvwrite(csvName, [beta', mouseConnection, mouseThroughput, elephantConnection, elephantThrought])
+%% A3
+[mouseConnection, mouseThroughput, elephantConnection, elephantThrought, beta] = extractClassData(curlist{2}, flowAverage(1), 20);
+
+figure;
+hold on;
+plot(mouseConnection, mouseThroughput);
+plot(elephantConnection, elephantThrought);
+
+objConnection = mouseConnection+elephantConnection;
+objThroughput = mouseThroughput+elephantThrought;
+figure;
+hold on;
+plot(objConnection, objThroughput);
+
+figure; 
+semilogx(beta, mouseConnection)
+hold on;
+semilogx(beta, elephantConnection);
+
+figure;
+semilogx(beta, mouseThroughput);
+hold on;
+semilogx(beta, elephantThrought);
+
+csvName = 'A3_mice_50_0_elep_400_0_L1_0.1_L2_0.95-ok.csv';
+csvwrite(csvName, [beta', mouseConnection, mouseThroughput, elephantConnection, elephantThrought])

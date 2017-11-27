@@ -44,3 +44,7 @@ figure;
 semilogx(beta, mouseThroughput);
 hold on;
 semilogx(beta, elephantThrought);
+
+%% 
+csvName = 'A2_mice_50_10_elep_400_20_L1_0.05_L2_0.35-good.csv';
+csvwrite(csvName, [beta', mouseConnection, mouseThroughput, elephantConnection, elephantThrought])
