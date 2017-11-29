@@ -48,7 +48,7 @@ mu_1 = 25
 mu_2 = 375
 sigma_1 = 10
 sigma_2 = 10
-n_samples = 5
+n_samples = 2
 num_repetition = 20
 
 mu_1 = float(mu_1)
@@ -249,4 +249,4 @@ for k, v in data_rate_probs.items():
         os.chdir('../')
     os.chdir('../../')
 
-    
+    print 'All done!'
