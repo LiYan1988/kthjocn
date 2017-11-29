@@ -100,7 +100,7 @@ semilogx(beta3, x3(:, 4)/200, 'displayname', 'elephant~(400, 10)')
 % hold on;
 % semilogx(beta5, x5(:, 4)/200, 'displayname', 'elephant~(450, 10)')
 legend('show')
-csvwrite('A2-blocking-both-classes.csv', [beta3, x3(:, 2)/1800, x3(:, 4)/200])
+csvwrite('A2-blocking-both-classes.csv', [beta3, 
 %% Plot throughput of both classes
 figure;
 % semilogx(beta1, x1(:, 3), 'displayname', 'mouse~(25, 10)')
@@ -111,9 +111,9 @@ figure;
 % hold on;
 % semilogx(beta2, x2(:, 5), 'displayname', 'elephant~(400, 0)')
 % hold on;
-semilogx(beta3, x3(:, 3)/1e3, 'displayname', 'mouse~(50, 10)')
+semilogx(beta3, x3(:, 3), 'displayname', 'mouse~(50, 10)')
 hold on;
-semilogx(beta3, x3(:, 5)/1e3, 'displayname', 'elephant~(400, 10)')
+semilogx(beta3, x3(:, 5), 'displayname', 'elephant~(400, 10)')
 % hold on;
 % semilogx(beta4, x4(:, 3), 'displayname', 'mouse~(50, 25)')
 % hold on;
@@ -123,4 +123,3 @@ semilogx(beta3, x3(:, 5)/1e3, 'displayname', 'elephant~(400, 10)')
 % hold on;
 % semilogx(beta5, x5(:, 5), 'displayname', 'elephant~(450, 10)')
 legend('show')
-csvwrite('A2-throughput-both-classes.csv', [beta3, x3(:, 3)/1e3, x3(:, 5)/1e3])
