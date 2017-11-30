@@ -4,7 +4,7 @@ close all;
 
 %% A2
 % columns are: beta, mouseConnection, mouseThroughput, elephantConnection, elephantThrought
-x1 = csvread('A2_mice_25_10_elep_450_20_L1_0.05_L2_0.35-bad.csv');
+x1 = csvread('A2_mice_25_10_elep_375_10_L1_0.05_L2_0.35.csv');
 x2 = csvread('A2_mice_50_0_elep_400_0_L1_0.05_L2_0.35-ok.csv');
 x3 = csvread('A2_mice_50_10_elep_400_20_L1_0.05_L2_0.35-good.csv');
 x4 = csvread('A2_mice_50_25_elep_400_50_L1_0.05_L2_0.35-good.csv');
