@@ -78,49 +78,49 @@ plot(x3Connection, x3Throughput, 'marker', '^', 'displayname', '\mu (50, 400), \
 plot(x5Connection, x5Throughput, 'marker', '^', 'displayname', '\mu (75, 450), \sigma (10, 10)')
 legend('show')
 csvwrite('A1-pareto-fix-std.csv', [x1Connection, x1Throughput, x3Connection, x3Throughput, x5Connection, x5Throughput])
-%% Plot blocking of both classes
-figure;
-% semilogx(beta1, x1(:, 2)/1800, 'displayname', 'mouse~(25, 10)')
+% %% Plot blocking of both classes
+% figure;
+% % semilogx(beta1, x1(:, 2)/1800, 'displayname', 'mouse~(25, 10)')
+% % hold on;
+% % semilogx(beta1, x1(:, 4)/200, 'displayname', 'elephant~(350, 10)')
+% % hold on;
+% % semilogx(beta2, x2(:, 2)/1800, 'displayname', 'mouse~(50, 0)')
+% % hold on;
+% % semilogx(beta2, x2(:, 4)/200, 'displayname', 'elephant~(400, 0)')
+% % hold on;
+% semilogx(beta3, x3(:, 2)/1800, 'displayname', 'mouse~(50, 10)')
 % hold on;
-% semilogx(beta1, x1(:, 4)/200, 'displayname', 'elephant~(350, 10)')
+% semilogx(beta3, x3(:, 4)/200, 'displayname', 'elephant~(400, 10)')
+% % hold on;
+% % semilogx(beta4, x4(:, 2)/1800, 'displayname', 'mouse~(50, 25)')
+% % hold on;
+% % semilogx(beta4, x4(:, 4)/200, 'displayname', 'elephant~(400, 25)')
+% % hold on;
+% % semilogx(beta5, x5(:, 2)/1800, 'displayname', 'mouse~(75, 10)')
+% % hold on;
+% % semilogx(beta5, x5(:, 4)/200, 'displayname', 'elephant~(450, 10)')
+% legend('show')
+% csvwrite('A1-blocking-both-classes.csv', [beta3, x3(:, 2)/1800, x3(:, 4)/200])
+% %% Plot throughput of both classes
+% figure;
+% % semilogx(beta1, x1(:, 3), 'displayname', 'mouse~(25, 10)')
+% % hold on;
+% % semilogx(beta1, x1(:, 5), 'displayname', 'elephant~(350, 10)')
+% % hold on;
+% % semilogx(beta2, x2(:, 3), 'displayname', 'mouse~(50, 0)')
+% % hold on;
+% % semilogx(beta2, x2(:, 5), 'displayname', 'elephant~(400, 0)')
+% % hold on;
+% semilogx(beta3, x3(:, 3)/1e3, 'displayname', 'mouse~(50, 10)')
 % hold on;
-% semilogx(beta2, x2(:, 2)/1800, 'displayname', 'mouse~(50, 0)')
-% hold on;
-% semilogx(beta2, x2(:, 4)/200, 'displayname', 'elephant~(400, 0)')
-% hold on;
-semilogx(beta3, x3(:, 2)/1800, 'displayname', 'mouse~(50, 10)')
-hold on;
-semilogx(beta3, x3(:, 4)/200, 'displayname', 'elephant~(400, 10)')
-% hold on;
-% semilogx(beta4, x4(:, 2)/1800, 'displayname', 'mouse~(50, 25)')
-% hold on;
-% semilogx(beta4, x4(:, 4)/200, 'displayname', 'elephant~(400, 25)')
-% hold on;
-% semilogx(beta5, x5(:, 2)/1800, 'displayname', 'mouse~(75, 10)')
-% hold on;
-% semilogx(beta5, x5(:, 4)/200, 'displayname', 'elephant~(450, 10)')
-legend('show')
-csvwrite('A1-blocking-both-classes.csv', [beta3, x3(:, 2)/1800, x3(:, 4)/200])
-%% Plot throughput of both classes
-figure;
-% semilogx(beta1, x1(:, 3), 'displayname', 'mouse~(25, 10)')
-% hold on;
-% semilogx(beta1, x1(:, 5), 'displayname', 'elephant~(350, 10)')
-% hold on;
-% semilogx(beta2, x2(:, 3), 'displayname', 'mouse~(50, 0)')
-% hold on;
-% semilogx(beta2, x2(:, 5), 'displayname', 'elephant~(400, 0)')
-% hold on;
-semilogx(beta3, x3(:, 3)/1e3, 'displayname', 'mouse~(50, 10)')
-hold on;
-semilogx(beta3, x3(:, 5)/1e3, 'displayname', 'elephant~(400, 10)')
-% hold on;
-% semilogx(beta4, x4(:, 3), 'displayname', 'mouse~(50, 25)')
-% hold on;
-% semilogx(beta4, x4(:, 5), 'displayname', 'elephant~(400, 25)')
-% hold on;
-% semilogx(beta5, x5(:, 3), 'displayname', 'mouse~(75, 10)')
-% hold on;
-% semilogx(beta5, x5(:, 5), 'displayname', 'elephant~(450, 10)')
-legend('show')
-csvwrite('A1-throughput-both-classes.csv', [beta3, x3(:, 3)/1e3, x3(:, 5)/1e3])
+% semilogx(beta3, x3(:, 5)/1e3, 'displayname', 'elephant~(400, 10)')
+% % hold on;
+% % semilogx(beta4, x4(:, 3), 'displayname', 'mouse~(50, 25)')
+% % hold on;
+% % semilogx(beta4, x4(:, 5), 'displayname', 'elephant~(400, 25)')
+% % hold on;
+% % semilogx(beta5, x5(:, 3), 'displayname', 'mouse~(75, 10)')
+% % hold on;
+% % semilogx(beta5, x5(:, 5), 'displayname', 'elephant~(450, 10)')
+% legend('show')
+% csvwrite('A1-throughput-both-classes.csv', [beta3, x3(:, 3)/1e3, x3(:, 5)/1e3])
