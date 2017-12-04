@@ -46,5 +46,5 @@ hold on;
 semilogx(beta, elephantThrought);
 
 %% 
-csvName = 'A2_mice_50_25_elep_400_50_L1_0.05_L2_0.35-good.csv';
+csvName = 'A2_mice_50_25_elep_400_25_L1_0.05_L2_0.35.csv';
 csvwrite(csvName, [beta', mouseConnection, mouseThroughput, elephantConnection, elephantThrought])

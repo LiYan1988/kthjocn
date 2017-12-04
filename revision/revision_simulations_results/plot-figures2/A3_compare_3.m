@@ -6,8 +6,8 @@ close all;
 % columns are: beta, mouseConnection, mouseThroughput, elephantConnection, elephantThrought
 x1 = csvread('A3_mice_25_10_elep_450_20_L1_0.1_L2_0.95-good.csv');
 x2 = csvread('A3_mice_50_0_elep_400_0_L1_0.1_L2_0.95-ok.csv');
-x3 = csvread('A3_mice_50_10_elep_400_20_L1_0.1_L2_0.95-good.csv');
-x4 = csvread('A3_mice_50_25_elep_400_50_L1_0.1_L2_0.95-good.csv');
+x3 = csvread('A3_mice_50_25_elep_400_25_L1_0.1_L2_0.95.csv');
+x4 = csvread('A3_mice_50_50_elep_400_50_L1_0.1_L2_0.95.csv');
 x5 = csvread('A3_mice_75_10_elep_350_20_L1_0.1_L2_0.95-good.csv');
 beta1 = x1(:, 1);
 beta1(1) = 1e-8;
@@ -66,8 +66,8 @@ x5Throughput = x5(:, 3) + x5(:, 5);
 figure;
 hold on
 plot(x2Connection, x2Throughput, 'marker', '^', 'displayname', '\mu (50, 400), \sigma (0, 0)')
-plot(x3Connection, x3Throughput, 'marker', '^', 'displayname', '\mu (50, 400), \sigma (10, 10)')
-plot(x4Connection, x4Throughput, 'marker', '^', 'displayname', '\mu (50, 400), \sigma (25, 25)')
+plot(x3Connection, x3Throughput, 'marker', '^', 'displayname', '\mu (50, 400), \sigma (25, 25)')
+plot(x4Connection, x4Throughput, 'marker', '^', 'displayname', '\mu (50, 400), \sigma (50, 50)')
 legend('show')
 csvwrite('A3-pareto-fix-mean.csv', [x2Connection, x2Throughput, x3Connection, x3Throughput, x4Connection, x4Throughput])
 % %% Plot Pareto curve, different mean (25, 450), (50, 400), (75, 350), same std 10
