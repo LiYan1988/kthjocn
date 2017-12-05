@@ -79,6 +79,9 @@ prob = np.concatenate((0.9*prob_1, 0.1*prob_2), axis=0)
 plt.stem(data_samples, prob)
 plt.show()
 
+print(data_samples_1.mean())
+print(data_samples_2.mean())
+
 #%%
 
 #data_rate_choice = [50, 400]
