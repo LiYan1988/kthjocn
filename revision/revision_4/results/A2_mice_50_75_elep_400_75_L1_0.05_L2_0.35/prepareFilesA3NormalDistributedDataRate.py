@@ -46,8 +46,8 @@ num_slots=80
 
 mu_1 = 50
 mu_2 = 400
-sigma_1 = 75
-sigma_2 = 75
+sigma_1 = 50
+sigma_2 = 50
 n_samples = 100
 num_repetition = 20
 
