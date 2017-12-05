@@ -46,8 +46,8 @@ num_slots=80
 
 mu_1 = 50
 mu_2 = 400
-sigma_1 = 50
-sigma_2 = 50
+sigma_1 = 25
+sigma_2 = 25
 n_samples = 100
 num_repetition = 20
 
@@ -56,15 +56,15 @@ mu_2 = float(mu_2)
 sigma_1 = float(sigma_1)
 sigma_2 = float(sigma_2)
 
-data_samples_1_min = float(max(mu_1-2*sigma_1,0)+4*sigma_1/n_samples)
-data_samples_1_max = float(mu_1+2*sigma_1)
+data_samples_1_min = 25
+data_samples_1_max = 125
 data_samples_1_step = float((data_samples_1_max-data_samples_1_min)/n_samples)
 data_samples_1 = np.arange(data_samples_1_min, data_samples_1_max, (mu_1+2*sigma_1-0)/n_samples, dtype=np.float)
 prob_1 = 1/np.sqrt(2*pi*sigma_1**2)*np.exp(-(data_samples_1-mu_1)**2/(2*sigma_1**2))
 prob_1 = prob_1/np.sum(prob_1)
 
-data_samples_2_min = float(mu_2-2*sigma_2+4*sigma_2/n_samples)
-data_samples_2_max = float(mu_2+2*sigma_2)
+data_samples_2_min = 375
+data_samples_2_max = 500
 data_samples_2_step = float(4*sigma_2/n_samples)
 data_samples_2 = np.arange(data_samples_2_min, data_samples_2_max, data_samples_2_step, dtype=np.float)
 prob_2 = 1/np.sqrt(2*pi*sigma_2**2)*np.exp(-(data_samples_2-mu_2)**2/(2*sigma_2**2))
