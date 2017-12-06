@@ -44,8 +44,8 @@ min_pod_connected=5
 num_cores=5
 num_slots=80
 
-mu_1 = 100
-mu_2 = 450
+mu_1 = 50
+mu_2 = 400
 sigma_1 = 25
 sigma_2 = 25
 n_samples = 100
