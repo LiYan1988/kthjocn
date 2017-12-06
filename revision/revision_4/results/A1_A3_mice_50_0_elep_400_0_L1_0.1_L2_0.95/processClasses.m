@@ -42,7 +42,7 @@ semilogx(beta, mouseThroughput);
 hold on;
 semilogx(beta, elephantThrought);
 
-csvName = 'A1_mice_50_0_elep_400_0_L1_0.1_L2_0.95-ok.csv';
+csvName = 'A1_mice_50_0_elep_400_0_L1_0.1_L2_0.95.csv';
 csvwrite(csvName, [beta', mouseConnection, mouseThroughput, elephantConnection, elephantThrought])
 %% A3
 [mouseConnection, mouseThroughput, elephantConnection, elephantThrought, beta] = extractClassData(curlist{2}, flowAverage(1), 20);
@@ -68,5 +68,5 @@ semilogx(beta, mouseThroughput);
 hold on;
 semilogx(beta, elephantThrought);
 
-csvName = 'A3_mice_50_0_elep_400_0_L1_0.1_L2_0.95-ok.csv';
+csvName = 'A3_mice_50_0_elep_400_0_L1_0.1_L2_0.95.csv';
 csvwrite(csvName, [beta', mouseConnection, mouseThroughput, elephantConnection, elephantThrought])
