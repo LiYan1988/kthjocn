@@ -56,7 +56,12 @@ x5 = x5([1, 2, 7, 11:22], :);
 x5 = interp1(x5(:, 1), x5(:, 2:5), beta5, 'linear');
 x5 = [beta5, x5];
 
-
+%%
+x1(:, [3, 5]) = x1(:, [3, 5]) / 1000;
+x2(:, [3, 5]) = x2(:, [3, 5]) / 1000;
+x3(:, [3, 5]) = x3(:, [3, 5]) / 1000;
+x4(:, [3, 5]) = x4(:, [3, 5]) / 1000;
+x5(:, [3, 5]) = x5(:, [3, 5]) / 1000;
 
 %%
 x1Connection = x1(:, 2) + x1(:, 4);
@@ -86,31 +91,31 @@ csvwrite('A2-fix-mean-pareto.csv', ...
     x3Connection, x3Throughput, x4Connection, x4Throughput])
 
 %% Plot mice classes
-a1 = csvread('../A2_mice_50_0_elep_400_0_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
+a1 = csvread('../results-fix-mean/A2_mice_50_0_elep_400_0_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
 a1 = a1(:);
 a1(a1==0) = [];
 numberMice1 = sum(a1<200);
 numberElephant1 = sum(a1>200);
 
-a2 = csvread('../A2_mice_50_25_elep_400_25_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
+a2 = csvread('../results-fix-mean/A2_mice_50_25_elep_400_25_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
 a2 = a2(:);
 a2(a2==0) = [];
 numberMice2 = sum(a2<200);
 numberElephant2 = sum(a2>200);
 
-a3 = csvread('../A2_mice_50_50_elep_400_50_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
+a3 = csvread('../results-fix-mean/A2_mice_50_50_elep_400_50_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
 a3 = a3(:);
 a3(a3==0) = [];
 numberMice3 = sum(a3<200);
 numberElephant3 = sum(a3>200);
 
-a4 = csvread('../A2_mice_50_75_elep_400_75_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
+a4 = csvread('../results-fix-mean/A2_mice_50_75_elep_400_75_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
 a4 = a4(:);
 a4(a4==0) = [];
 numberMice4 = sum(a4<200);
 numberElephant4 = sum(a4>200);
 
-a5 = csvread('../A2_mice_50_75_elep_400_75_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
+a5 = csvread('../results-fix-mean/A2_mice_50_75_elep_400_75_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
 a5 = a5(:);
 a5(a5==0) = [];
 numberMice5 = sum(a5<200);
