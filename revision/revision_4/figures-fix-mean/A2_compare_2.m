@@ -129,16 +129,16 @@ hold on;
 semilogx(beta3, 1-x3(:, 2)/numberMice3, 'displayname', 'mouse~50')
 hold on;
 semilogx(beta4, 1-x4(:, 2)/numberMice4, 'displayname', 'mouse~75')
-% hold on;
+hold on;
 % semilogx(beta5, 1-x5(:, 2)/numberMice5, 'displayname', 'mouse~100')
-legend('show')
-title('BP of mice')
-saveas(gcf, 'A2-fix-mean-mice-block.png')
+% legend('show')
+% title('BP of mice')
+% saveas(gcf, 'A2-fix-mean-mice-block.png')
 csvwrite('A2-fix-mean-mice-block.csv', ...
     [beta1, 1-x1(:, 2)/numberMice1, beta2, 1-x2(:, 2)/numberMice2, ...
     beta3, 1-x3(:, 2)/numberMice3, beta4, 1-x4(:, 2)/numberMice4])
 
-figure;
+% figure;
 semilogx(beta1, 1-x1(:, 4)/numberElephant1, 'displayname', 'mouse~0')
 hold on;
 semilogx(beta2, 1-x2(:, 4)/numberElephant2, 'displayname', 'mouse~25')
@@ -147,8 +147,8 @@ semilogx(beta3, 1-x3(:, 4)/numberElephant3, 'displayname', 'mouse~50')
 hold on;
 semilogx(beta4, 1-x4(:, 4)/numberElephant4, 'displayname', 'mouse~75')
 legend('show')
-title('BP of elephant')
-saveas(gcf, 'A2-fix-mean-elephant-block.png')
+% title('BP of elephant')
+% saveas(gcf, 'A2-fix-mean-elephant-block.png')
 csvwrite('A2-fix-mean-elephant-block.csv', ...
     [beta1, 1-x1(:, 4)/numberElephant1, beta2, 1-x2(:, 4)/numberElephant2, ...
     beta3, 1-x3(:, 4)/numberElephant3, beta4, 1-x4(:, 4)/numberElephant4])
@@ -170,13 +170,14 @@ hold on;
 semilogx(beta3, x3(:, 5), 'displayname', 'mouse~50')
 hold on;
 semilogx(beta4, x4(:, 5), 'displayname', 'mouse~75')
-legend('show')
-title('elephant throughput')
-saveas(gcf, 'A2-fix-mean-elephant-throughput.png')
+hold on;
+% legend('show')
+% title('elephant throughput')
+% saveas(gcf, 'A2-fix-mean-elephant-throughput.png')
 csvwrite('A2-fix-mean-elephant-throughput.csv', ...
     [beta1, x1(:, 5), beta2, x2(:, 5), beta3, x3(:, 5), beta4, x4(:, 5)])
 
-figure;
+% figure;
 semilogx(beta1, x1(:, 3), 'displayname', 'mouse~0')
 hold on;
 semilogx(beta2, x2(:, 3), 'displayname', 'mouse~25')
@@ -185,7 +186,7 @@ semilogx(beta3, x3(:, 3), 'displayname', 'mouse~50')
 hold on;
 semilogx(beta4, x4(:, 3), 'displayname', 'mouse~75')
 legend('show')
-title('mice throughput')
-saveas(gcf, 'A2-fix-mean-mice-throughput.png')
+% title('mice throughput')
+% saveas(gcf, 'A2-fix-mean-mice-throughput.png')
 csvwrite('A2-fix-mean-mice-throughput.csv', ...
     [beta1, x1(:, 3), beta2, x2(:, 3), beta3, x3(:, 3), beta4, x4(:, 3)])
