@@ -26,6 +26,25 @@ x3(1, 1) = 1e-8;
 x4(1, 1) = 1e-8;
 x5(1, 1) = 1e-8;
 
+%%
+% x1(:, [3, 5]) = x1(:, [3, 5]) / 1000;
+x2(:, [3, 5]) = x2(:, [3, 5]) / 1000;
+x3(:, [3, 5]) = x3(:, [3, 5]) / 1000;
+x4(:, [3, 5]) = x4(:, [3, 5]) / 1000;
+x5(:, [3, 5]) = x5(:, [3, 5]) / 1000;
+
+%%
+% x1Connection = x1(:, 2) + x1(:, 4);
+% x1Throughput = x1(:, 3) + x1(:, 5);
+x2Connection = x2(:, 2) + x2(:, 4);
+x2Throughput = x2(:, 3) + x2(:, 5);
+x3Connection = x3(:, 2) + x3(:, 4);
+x3Throughput = x3(:, 3) + x3(:, 5);
+x4Connection = x4(:, 2) + x4(:, 4);
+x4Throughput = x4(:, 3) + x4(:, 5);
+x5Connection = x5(:, 2) + x5(:, 4);
+x5Throughput = x5(:, 3) + x5(:, 5);
+
 %% 
 % x1 = x1([1, 8, 9, 14, 15], :);
 % x1 = interp1(x1(:, 1), x1(:, 2:5), beta1, 'linear');
@@ -34,28 +53,33 @@ x5(1, 1) = 1e-8;
 %     x1(i, 2:5) = x1(15, 2:5);
 % end
 % 
-% x2 = x2([7, 9, 10, 13, 14, 15, 16, 17, 19, 21, 22], :);
-% x2(:, [3, 5]) = x2(:, [3, 5])+1e3;
-% x2 = interp1(x2(:, 1), x2(:, 2:5), beta2, 'linear');
-% x2 = [beta2, x2];
-% for i=1:6
-%     x2(i, 2:5) = x2(7, 2:5);
-% end
+x2 = x2([7, 9, 10, 15, 16, 17, 19, 21, 22], :);
+x2(:, [3, 5]) = x2(:, [3, 5]);
+x2 = interp1(x2(:, 1), x2(:, 2:5), beta2, 'linear');
+x2 = [beta2, x2];
+for i=1:6
+    x2(i, 2:5) = x2(7, 2:5);
+end
 % 
-% x3 = x3([2, 9, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21], :);
-% x3 = interp1(x3(:, 1), x3(:, 2:5), beta3, 'linear');
-% x3 = [beta3, x3];
-% x3(1, 2:5) = x3(2, 2:5);
-% x3(22, 2:5) = x3(21, 2:5);
+x3 = x3([2, 9, 11, 15, 16, 17, 18, 19, 20, 21], :);
+x3 = interp1(x3(:, 1), x3(:, 2:5), beta3, 'linear');
+x3 = [beta3, x3];
+x3(1, 2:5) = x3(2, 2:5);
+x3(22, 2:5) = x3(21, 2:5);
 % 
-% idx = [1, 8, 9, 11:22];
-% x4 = x4(idx, :);
-% x4 = interp1(x4(:, 1), x4(:, 2:5), beta4, 'linear');
-% x4 = [beta4, x4];
-% x5 = x5([1, 2, 7, 11:22], :);
-% x5 = interp1(x5(:, 1), x5(:, 2:5), beta5, 'linear');
-% x5 = [beta5, x5];
-
+idx = [1, 8, 9, 11:18];
+x4 = x4(idx, :);
+x4 = interp1(x4(:, 1), x4(:, 2:5), beta4, 'linear');
+x4 = [beta4, x4];
+for i=19:22
+    x4(i, 2:5) = x4(18, 2:5);
+end
+x5 = x5([1, 2, 10:20], :);
+x5 = interp1(x5(:, 1), x5(:, 2:5), beta5, 'linear');
+x5 = [beta5, x5];
+for i=21:22
+    x5(i, 2:5) = x5(20, 2:5);
+end
 
 
 %%
@@ -93,25 +117,25 @@ csvwrite('A2-fix-std-pareto.csv', ...
 % numberMice1 = sum(a1<200);
 % numberElephant1 = sum(a1>200);
 
-a2 = csvread('../A2_mice_50_25_elep_400_25_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
+a2 = csvread('../results-fix-std/A2_mice_50_25_elep_400_25_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
 a2 = a2(:);
 a2(a2==0) = [];
 numberMice2 = sum(a2<200);
 numberElephant2 = sum(a2>200);
 
-a3 = csvread('../A2_mice_75_25_elep_425_25_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
+a3 = csvread('../results-fix-std/A2_mice_75_25_elep_425_25_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
 a3 = a3(:);
 a3(a3==0) = [];
 numberMice3 = sum(a3<200);
 numberElephant3 = sum(a3>200);
 
-a4 = csvread('../A2_mice_100_25_elep_450_25_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
+a4 = csvread('../results-fix-std/A2_mice_100_25_elep_450_25_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
 a4 = a4(:);
 a4(a4==0) = [];
 numberMice4 = sum(a4<200);
 numberElephant4 = sum(a4>200);
 
-a5 = csvread('../A2_mice_125_25_elep_475_25_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
+a5 = csvread('../results-fix-std/A2_mice_125_25_elep_475_25_L1_0.05_L2_0.35/90_10/trafficMatrix/traffic_matrix_0.csv');
 a5 = a5(:);
 a5(a5==0) = [];
 numberMice5 = sum(a5<200);
@@ -151,7 +175,7 @@ saveas(gcf, 'A2-fix-std-elephant-block.png')
 csvwrite('A2-fix-std-elephant-block.csv', ...
     [beta2, 1-x2(:, 4)/numberElephant2, ...
     beta3, 1-x3(:, 4)/numberElephant3, beta4, 1-x4(:, 4)/numberElephant4, ...
-    beta5, 1-x5(:, 5)/numberElephant5])
+    beta5, 1-x5(:, 4)/numberElephant5])
 
 %% Plot throughput of both classes
 % figure;

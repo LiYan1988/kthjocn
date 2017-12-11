@@ -25,6 +25,13 @@ x3(1, 1) = 1e-8;
 x4(1, 1) = 1e-8;
 x5(1, 1) = 1e-8;
 
+%%
+x1(:, [3, 5]) = x1(:, [3, 5]) / 1000;
+x2(:, [3, 5]) = x2(:, [3, 5]) / 1000;
+x3(:, [3, 5]) = x3(:, [3, 5]) / 1000;
+x4(:, [3, 5]) = x4(:, [3, 5]) / 1000;
+x5(:, [3, 5]) = x5(:, [3, 5]) / 1000;
+
 %% 
 % x2 = x2([1, 8, 9, 11, 13, 17, 19, 21], :);
 % x2 = interp1(x2(:, 1), x2(:, 2:5), beta2, 'linear');
@@ -82,25 +89,25 @@ csvwrite('A3-fix-mean-pareto.csv', ...
 % csvwrite('A3-blocking-both-classes.csv', [beta3, x3(:, 2)/1800, x3(:, 4)/200])
 
 %% Plot blocking of mice flows
-a1 = csvread('../A1_A3_mice_50_0_elep_400_0_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
+a1 = csvread('../results-fix-mean/A1_A3_mice_50_0_elep_400_0_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
 a1 = a1(:);
 a1(a1==0) = [];
 numberMice1 = sum(a1<200);
 numberElephant1 = sum(a1>200);
 
-a2 = csvread('../A1_A3_mice_50_25_elep_400_25_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
+a2 = csvread('../results-fix-mean/A1_A3_mice_50_25_elep_400_25_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
 a2 = a2(:);
 a2(a2==0) = [];
 numberMice2 = sum(a2<200);
 numberElephant2 = sum(a2>200);
 
-a3 = csvread('../A1_A3_mice_50_50_elep_400_50_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
+a3 = csvread('../results-fix-mean/A1_A3_mice_50_50_elep_400_50_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
 a3 = a3(:);
 a3(a3==0) = [];
 numberMice3 = sum(a3<200);
 numberElephant3 = sum(a3>200);
 
-a4 = csvread('../A1_A3_mice_50_75_elep_400_75_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
+a4 = csvread('../results-fix-mean/A1_A3_mice_50_75_elep_400_75_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
 a4 = a4(:);
 a4(a4==0) = [];
 numberMice4 = sum(a4<200);
@@ -139,8 +146,8 @@ legend('show')
 title('BP of elephant')
 saveas(gcf, 'A3-fix-mean-elephant-block.png')
 csvwrite('A3-fix-mean-elephant-block.csv', ...
-    [beta1, 1-x1(:, 4)/numberElephant1, beta2, 1-x2(:, 4)/numberElephant2...
-    beta3, 1-x3(:, 4)/numberElephant3, beta4, 1-x4(:, 4)/numberElephant4])
+    [beta1, max(1e-4, 1-x1(:, 4)/numberElephant1), beta2, max(1e-4, 1-x2(:, 4)/numberElephant2)...
+    beta3, max(1e-4, 1-x3(:, 4)/numberElephant3), beta4, max(1e-4, 1-x4(:, 4)/numberElephant4)])
 
 %% Ratio of mice
 % figure;

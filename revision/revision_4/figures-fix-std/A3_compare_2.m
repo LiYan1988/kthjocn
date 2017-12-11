@@ -25,6 +25,13 @@ x3(1, 1) = 1e-8;
 x4(1, 1) = 1e-8;
 x5(1, 1) = 1e-8;
 
+%%
+% x1(:, [3, 5]) = x1(:, [3, 5]) / 1000;
+x2(:, [3, 5]) = x2(:, [3, 5]) / 1000;
+x3(:, [3, 5]) = x3(:, [3, 5]) / 1000;
+x4(:, [3, 5]) = x4(:, [3, 5]) / 1000;
+x5(:, [3, 5]) = x5(:, [3, 5]) / 1000;
+
 %% 
 % x2 = x2([1, 8, 9, 11, 13, 17, 19, 21], :);
 % x2 = interp1(x2(:, 1), x2(:, 2:5), beta2, 'linear');
@@ -90,25 +97,25 @@ csvwrite('A3-fix-std-pareto.csv', ...
 % numberMice1 = sum(a1<200);
 % numberElephant1 = sum(a1>200);
 
-a2 = csvread('../A1_A3_mice_50_25_elep_400_25_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
+a2 = csvread('../results-fix-std/A1_A3_mice_50_25_elep_400_25_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
 a2 = a2(:);
 a2(a2==0) = [];
 numberMice2 = sum(a2<200);
 numberElephant2 = sum(a2>200);
 
-a3 = csvread('../A1_A3_mice_75_25_elep_425_25_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
+a3 = csvread('../results-fix-std/A1_A3_mice_75_25_elep_425_25_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
 a3 = a3(:);
 a3(a3==0) = [];
 numberMice3 = sum(a3<200);
 numberElephant3 = sum(a3>200);
 
-a4 = csvread('../A1_A3_mice_100_25_elep_450_25_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
+a4 = csvread('../results-fix-std/A1_A3_mice_100_25_elep_450_25_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
 a4 = a4(:);
 a4(a4==0) = [];
 numberMice4 = sum(a4<200);
 numberElephant4 = sum(a4>200);
 
-a5 = csvread('../A1_A3_mice_125_25_elep_475_25_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
+a5 = csvread('../results-fix-std/A1_A3_mice_125_25_elep_475_25_L1_0.1_L2_0.95/90_10/trafficMatrix/traffic_matrix_0.csv');
 a5 = a5(:);
 a5(a5==0) = [];
 numberMice5 = sum(a5<200);
