@@ -36,6 +36,10 @@ data_rate_choice = [50, 400]
 data_rate_probs = {}
 data_rate_probs['90_10'] = [0.90, 0.10]
 
+if not os.path.exists('generated_data'):
+    os.mkdir('generated_data')
+os.chdir('generated_data')
+
 rootdir = os.getcwd()
 num_stat = []
 thp_stat = []
