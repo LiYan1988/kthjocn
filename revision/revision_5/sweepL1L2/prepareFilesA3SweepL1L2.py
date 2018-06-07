@@ -51,13 +51,13 @@ mu_2 = 400
 sigma_1 = 25
 sigma_2 = 25
 n_samples = 100
-num_repetition = 2
+num_repetition = 20
 
 data_samples_1 = [mu_1]
 data_samples_2 = [mu_2]
 
 #%%
-step_size = 0.5
+step_size = 0.1
 traffic_loads = {}
 L1 = np.arange(0, 1+step_size, step_size)
 for l1 in L1:
